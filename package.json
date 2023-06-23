@@ -1,5 +1,5 @@
 {
-  "name": "editor",
+  "name": "my-vue-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -14,14 +14,6 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@tiptap/core": "^2.0.3",
-    "@tiptap/extension-focus": "^2.0.3",
-    "@tiptap/extension-hard-break": "^2.0.3",
-    "@tiptap/extension-paragraph": "^2.0.3",
-    "@tiptap/extension-text": "^2.0.3",
-    "@tiptap/pm": "^2.0.3",
-    "@tiptap/react": "^2.0.3",
-    "@types/node": "^20.3.1",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
@@ -30,7 +22,6 @@
     "eslint": "^8.38.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
-    "styled-components": "^6.0.0-rc.3",
     "typescript": "^5.0.2",
     "vite": "^4.3.9"
   }
