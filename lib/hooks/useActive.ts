@@ -7,7 +7,6 @@ export const useActive = (editor: Editor, name: string,) => {
 
     useEffect(() => {
         const listener = () => {
-            const selection = editor.state.selection;
             toggleActive(editor.isActive(name));
         };
 

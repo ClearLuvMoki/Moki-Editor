@@ -18,10 +18,13 @@ import {
     ListMenu
 } from "../../extensions/index"
 
+export {Editor} from "@tiptap/core"
+
 export interface EditorKit {
-    schema: string;
     extensions: Array<AnyExtension | AnyExtension[]>;
+    editable?: boolean;
     autofocus?: boolean;
+    isToolBar?: boolean;
     children?: React.ReactNode;
 }
 
@@ -31,14 +34,15 @@ export interface EditorRenderProps extends EditorKit {
 
 
 const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
-    const {content, schema, extensions, autofocus = true, children} = props;
+    const {content = null, editable = true, extensions, isToolBar = true, autofocus = true, children} = props;
 
     useImperativeHandle(ref, () => editor as TipTapEditor);
 
     const editor = useEditor(
         {
             content,
-            extensions: resolveEditorKit({schema, extensions}),
+            editable,
+            extensions: resolveEditorKit({extensions}),
             editorProps: {
                 attributes: {
                     class: "moki-editor",
@@ -56,7 +60,7 @@ const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
 
     return (
         <StyledEditor>
-            {children || (editor && (
+            {children || (editor && isToolBar && (
                 <div>
                     <BoldMenu editor={editor}/>
                     <ItalicMenu editor={editor}/>

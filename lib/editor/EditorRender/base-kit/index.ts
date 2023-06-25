@@ -7,12 +7,11 @@ import {HardBreak} from "../../../extensions/hard-break";
 import {Document, Heading} from "../../../extensions";
 
 export interface EditorKit {
-    schema: string;
     extensions: Array<AnyExtension | AnyExtension[]>;
 }
 
 export const resolveEditorKit = (props: EditorKit) => {
-    const {schema, extensions} = props;
+    const {extensions} = props;
 
     return [
         Document,

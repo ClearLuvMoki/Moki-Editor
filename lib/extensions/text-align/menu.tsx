@@ -1,5 +1,6 @@
 import React, {useCallback} from 'react';
-import {Button, Popover, Space} from "@arco-design/web-react";
+import {Popover, Space} from "@arco-design/web-react";
+import {Button} from "../../components"
 import {BiAlignLeft, BiAlignMiddle, BiAlignRight} from "react-icons/bi"
 import {Editor} from "@tiptap/core";
 
@@ -24,19 +25,19 @@ const SuperscriptMenu = ({editor}: SuperscriptMenuProps) => {
             trigger='click'
             content={<Space>
                 <Button
-                    type={editor.isActive({textAlign: 'left'}) ? "primary" : "outline"}
+                    type={editor.isActive({textAlign: 'left'}) ? "primary" : "normal"}
                     onClick={() => {
                         toggleActive("left")
                     }}
                 ><BiAlignLeft/></Button>
                 <Button
-                    type={editor.isActive({textAlign: 'center'}) ? "primary" : "outline"}
+                    type={editor.isActive({textAlign: 'center'}) ? "primary" : "normal"}
                     onClick={() => {
                         toggleActive("center")
                     }}
                 ><BiAlignMiddle/></Button>
                 <Button
-                    type={editor.isActive({textAlign: 'right'}) ? "primary" : "outline"}
+                    type={editor.isActive({textAlign: 'right'}) ? "primary" : "normal"}
                     onClick={() => {
                         toggleActive("right")
                     }}
@@ -44,7 +45,7 @@ const SuperscriptMenu = ({editor}: SuperscriptMenuProps) => {
             </Space>}
         >
             <Button
-                type={"outline"}
+                type={"normal"}
             >
                 <BiAlignMiddle/>
             </Button>

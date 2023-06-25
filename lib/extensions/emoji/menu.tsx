@@ -1,5 +1,6 @@
 import React from 'react';
-import {Button, Popover} from "@arco-design/web-react";
+import {Popover} from "@arco-design/web-react";
+import Button from "../../components/Button";
 import EmojiPicker from 'emoji-picker-react';
 import {Editor} from "@tiptap/core";
 import {BsEmojiLaughing} from "react-icons/bs"
@@ -32,7 +33,7 @@ const EmojiMenu = React.memo(({editor}: SuperscriptMenuProps) => {
             />}
         >
             <Button
-                type={"outline"}
+                type={"normal"}
             >
                 <BsEmojiLaughing/>
             </Button>

@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {Button} from "@arco-design/web-react";
+import {Button} from "../../components";
 import {BsCode} from "react-icons/bs"
 import {Editor} from "@tiptap/core";
 import {useActive} from "../../hooks/useActive";
@@ -25,7 +25,7 @@ const InlineCodeMenu = React.memo(({editor}: InlineCodeProps) => {
 
     return (
         <Button
-            type={isActive ? "primary" : "outline"}
+            type={isActive ? "primary" : "normal"}
             onClick={() => {
                 toggleActive();
             }}
