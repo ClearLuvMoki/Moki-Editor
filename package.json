@@ -1,11 +1,12 @@
 {
-  "name": "@moki/editor",
-  "private": true,
+  "name": "moki-editor",
   "keywords": [
     "react",
     "editor",
     "moki"
   ],
+  "homepage": "https://github.com/ClearLuvMoki/Moki-Editor",
+  "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
