@@ -1,24 +1,24 @@
 import React, {useCallback} from 'react';
 import {Button} from "@arco-design/web-react";
-import {BsTypeBold} from "react-icons/bs"
+import {BsSuperscript} from "react-icons/bs"
 import {Editor} from "@tiptap/core";
 import {useActive} from "../../hooks/useActive";
-import Bold from "./core"
+import Superscript from "./core"
 import deepEqual from "deep-equal";
 
-type BoldMenuProps = {
+type SuperscriptMenuProps = {
     editor: Editor
 }
 
-const BoldMenu = React.memo(({editor}: BoldMenuProps) => {
-    const isActive = useActive(editor, Bold.name);
+const SuperscriptMenu = React.memo(({editor}: SuperscriptMenuProps) => {
+    const isActive = useActive(editor, Superscript.name);
 
     const toggleActive = useCallback(
         () =>
             editor
                 .chain()
                 .focus()
-                .toggleBold()
+                .toggleSuperscript()
                 .run(),
         [editor]
     );
@@ -30,11 +30,11 @@ const BoldMenu = React.memo(({editor}: BoldMenuProps) => {
                 toggleActive();
             }}
         >
-            <BsTypeBold/>
+            <BsSuperscript/>
         </Button>
     );
 }, (prevProps, nextProps) => {
     return deepEqual(prevProps, nextProps);
 });
 
-export default BoldMenu;
+export default SuperscriptMenu;

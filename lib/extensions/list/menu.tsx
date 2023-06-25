@@ -1,24 +1,24 @@
 import React, {useCallback} from 'react';
 import {Button} from "@arco-design/web-react";
-import {BsTypeBold} from "react-icons/bs"
+import {BsListUl} from "react-icons/bs"
 import {Editor} from "@tiptap/core";
 import {useActive} from "../../hooks/useActive";
-import Bold from "./core"
+import {BulletList} from "./core"
 import deepEqual from "deep-equal";
 
-type BoldMenuProps = {
+type ListMenuProps = {
     editor: Editor
 }
 
-const BoldMenu = React.memo(({editor}: BoldMenuProps) => {
-    const isActive = useActive(editor, Bold.name);
+const ListMenu = React.memo(({editor}: ListMenuProps) => {
+    const isActive = useActive(editor, BulletList.name);
 
     const toggleActive = useCallback(
         () =>
             editor
                 .chain()
                 .focus()
-                .toggleBold()
+                .toggleBulletList()
                 .run(),
         [editor]
     );
@@ -30,11 +30,11 @@ const BoldMenu = React.memo(({editor}: BoldMenuProps) => {
                 toggleActive();
             }}
         >
-            <BsTypeBold/>
+            <BsListUl/>
         </Button>
     );
 }, (prevProps, nextProps) => {
     return deepEqual(prevProps, nextProps);
 });
 
-export default BoldMenu;
+export default ListMenu;

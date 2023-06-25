@@ -1,24 +1,24 @@
 import React, {useCallback} from 'react';
 import {Button} from "@arco-design/web-react";
-import {BsTypeBold} from "react-icons/bs"
+import {BsBlockquoteLeft} from "react-icons/bs"
 import {Editor} from "@tiptap/core";
 import {useActive} from "../../hooks/useActive";
-import Bold from "./core"
+import Blockquote from "./core"
 import deepEqual from "deep-equal";
 
-type BoldMenuProps = {
+type BlockquoteMenuProps = {
     editor: Editor
 }
 
-const BoldMenu = React.memo(({editor}: BoldMenuProps) => {
-    const isActive = useActive(editor, Bold.name);
+const BlockquoteMenu = React.memo(({editor}: BlockquoteMenuProps) => {
+    const isActive = useActive(editor, Blockquote.name);
 
     const toggleActive = useCallback(
         () =>
             editor
                 .chain()
                 .focus()
-                .toggleBold()
+                .toggleBlockquote()
                 .run(),
         [editor]
     );
@@ -30,11 +30,11 @@ const BoldMenu = React.memo(({editor}: BoldMenuProps) => {
                 toggleActive();
             }}
         >
-            <BsTypeBold/>
+            <BsBlockquoteLeft/>
         </Button>
     );
 }, (prevProps, nextProps) => {
     return deepEqual(prevProps, nextProps);
 });
 
-export default BoldMenu;
+export default BlockquoteMenu;

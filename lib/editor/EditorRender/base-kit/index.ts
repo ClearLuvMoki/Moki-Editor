@@ -4,6 +4,7 @@ import {Focus} from "../../../extensions/focus";
 import {Paragraph} from "../../../extensions/paragraph";
 import {Text} from "../../../extensions/text";
 import {HardBreak} from "../../../extensions/hard-break";
+import {Document, Heading} from "../../../extensions";
 
 export interface EditorKit {
     schema: string;
@@ -13,20 +14,13 @@ export interface EditorKit {
 export const resolveEditorKit = (props: EditorKit) => {
     const {schema, extensions} = props;
 
-    const Doc = Node.create({
-        name: "doc",
-        topNode: true,
-        content: schema
-    });
-
-    const runtimeExtensions = [
-        Doc,
+    return [
+        Document,
+        Heading,
         Paragraph,
         Text,
         HardBreak,
         Focus,
         ...(extensions || [])?.flat()
     ];
-
-    return runtimeExtensions;
 };
