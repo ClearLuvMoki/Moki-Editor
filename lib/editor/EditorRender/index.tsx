@@ -1,21 +1,25 @@
 import {useEditor, EditorContent} from '@tiptap/react'
 import {forwardRef, useImperativeHandle} from "react";
-import {Content, AnyExtension, Editor} from "@tiptap/core";
+import {Content, AnyExtension, Editor as TipTapEditor} from "@tiptap/core";
 import {resolveEditorKit} from "./base-kit";
+import { StyledEditor } from "../../styles"
 
 export interface EditorKit {
     schema: string;
     extensions: Array<AnyExtension | AnyExtension[]>;
+    autofocus?: boolean;
 }
 
 export interface EditorRenderProps extends EditorKit {
     content?: Content;
 }
 
-const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
-    const {content, schema, extensions} = props;
 
-    useImperativeHandle(ref, () => editor as Editor);
+
+const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
+    const {content, schema, extensions, autofocus = true} = props;
+
+    useImperativeHandle(ref, () => editor as TipTapEditor);
 
     const editor = useEditor(
         {
@@ -25,11 +29,11 @@ const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
                 attributes: {
                     class: "moki-editor",
                     spellcheck: "false",
-                    suppressContentEditableWarning: "true"
                 },
             },
+            autofocus,
             onCreate(props) {
-                props.editor.view.focus();
+                props?.editor?.view?.focus();
             },
         },
         []
@@ -37,7 +41,9 @@ const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
 
 
     return (
-        <EditorContent editor={editor}/>
+        <StyledEditor>
+            <EditorContent editor={editor}/>
+        </StyledEditor>
     );
 });
 
