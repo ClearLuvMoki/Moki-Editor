@@ -1,11 +1,22 @@
 {
-  "name": "moki-editor",
+  "name": "@moki/editor",
   "private": true,
-  "version": "0.0.0",
+  "keywords": [
+    "react",
+    "editor",
+    "moki"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "version": "0.1.0",
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "build": "tsc && vite build",
+    "build": "vite build && tsc",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -15,6 +26,7 @@
   },
   "devDependencies": {
     "@arco-design/web-react": "^2.49.2",
+    "@rollup/plugin-typescript": "^11.1.1",
     "@tiptap/core": "^2.0.3",
     "@tiptap/extension-blockquote": "^2.0.3",
     "@tiptap/extension-bold": "^2.0.3",
@@ -42,6 +54,7 @@
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",
     "@vitejs/plugin-react": "^4.0.0",
+    "@vitejs/plugin-react-swc": "^3.3.2",
     "deep-equal": "^2.2.1",
     "emoji-picker-react": "^4.4.9",
     "eslint": "^8.38.0",
@@ -52,6 +65,7 @@
     "react-icons": "^4.10.1",
     "styled-components": "^6.0.0-rc.5",
     "typescript": "^5.0.2",
-    "vite": "^4.3.9"
+    "vite": "^4.3.9",
+    "vite-plugin-dts": "^2.3.0"
   }
 }
