@@ -55,7 +55,7 @@ const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
                 props?.editor?.view?.focus();
             },
         },
-        []
+        [content, extensions]
     );
 
 
