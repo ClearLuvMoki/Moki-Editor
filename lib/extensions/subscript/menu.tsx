@@ -3,14 +3,14 @@ import {Button} from "../../components";
 import {BsSubscript} from "react-icons/bs"
 import {Editor} from "@tiptap/core";
 import {useActive} from "../../hooks/useActive";
-import Subscript from "./core"
+import {Subscript} from "./core"
 import deepEqual from "deep-equal";
 
 type SubscriptMenuProps = {
     editor: Editor
 }
 
-const SubscriptMenu = React.memo(({editor}: SubscriptMenuProps) => {
+export const SubscriptMenu = React.memo(({editor}: SubscriptMenuProps) => {
     const isActive = useActive(editor, Subscript.name);
 
     const toggleActive = useCallback(
@@ -37,4 +37,3 @@ const SubscriptMenu = React.memo(({editor}: SubscriptMenuProps) => {
     return deepEqual(prevProps, nextProps);
 });
 
-export default SubscriptMenu;

@@ -1,1 +1,1 @@
-export {default as Paragraph} from "./core";
+export {Paragraph} from "./core";

@@ -1,1 +1,1 @@
-export {default as Heading} from "./core";
+export {Heading} from "./core";

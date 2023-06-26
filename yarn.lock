@@ -4134,6 +4134,11 @@ vite-plugin-dts@^2.3.0:
     magic-string "^0.29.0"
     ts-morph "18.0.0"
 
+vite-plugin-style-inject@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.npmmirror.com/vite-plugin-style-inject/-/vite-plugin-style-inject-0.0.1.tgz#93a93ee472231e35bca120529beb4fb2a6fbb586"
+  integrity sha512-VsaBOb8ozMQn3kpMt4gIcyNt4BRMQ3Cq30eLIBtq1CH8U6iB1FnxVYspwITzJdXbMQA61QhyAx9QnNLwVRbDlg==
+
 vite@^4.3.9:
   version "4.3.9"
   resolved "https://registry.npmmirror.com/vite/-/vite-4.3.9.tgz#db896200c0b1aa13b37cdc35c9e99ee2fdd5f96d"

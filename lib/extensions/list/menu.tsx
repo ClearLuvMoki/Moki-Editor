@@ -10,7 +10,7 @@ type ListMenuProps = {
     editor: Editor
 }
 
-const ListMenu = React.memo(({editor}: ListMenuProps) => {
+export const ListMenu = React.memo(({editor}: ListMenuProps) => {
     const isActive = useActive(editor, BulletList.name);
 
     const toggleActive = useCallback(
@@ -37,4 +37,3 @@ const ListMenu = React.memo(({editor}: ListMenuProps) => {
     return deepEqual(prevProps, nextProps);
 });
 
-export default ListMenu;

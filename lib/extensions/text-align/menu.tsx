@@ -8,7 +8,7 @@ type SuperscriptMenuProps = {
     editor: Editor
 }
 
-const SuperscriptMenu = ({editor}: SuperscriptMenuProps) => {
+export const TextAlignMenu = ({editor}: SuperscriptMenuProps) => {
 
     const toggleActive = useCallback(
         (align: string) =>
@@ -53,4 +53,3 @@ const SuperscriptMenu = ({editor}: SuperscriptMenuProps) => {
     );
 };
 
-export default SuperscriptMenu;

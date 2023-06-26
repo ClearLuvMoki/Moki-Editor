@@ -1,12 +1,12 @@
 import {useState} from 'react'
-import {EditorRender, Editor} from "../lib/editor"
+import {EditorRender, Editor} from "../lib"
 import {
     Bold,
     Italic,
     Underline,
     Strike,
     Blockquote,
-    InLineCode,
+    InlineCode,
     Subscript,
     Superscript,
     TextAlign,
@@ -26,7 +26,7 @@ function App() {
                 Underline,
                 Strike,
                 Blockquote,
-                InLineCode,
+                InlineCode,
                 Subscript,
                 Superscript,
                 TextAlign.configure({

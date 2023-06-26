@@ -3,14 +3,14 @@ import {Button} from "../../components";
 import {BsSuperscript} from "react-icons/bs"
 import {Editor} from "@tiptap/core";
 import {useActive} from "../../hooks/useActive";
-import Superscript from "./core"
+import {Superscript} from "./core"
 import deepEqual from "deep-equal";
 
 type SuperscriptMenuProps = {
     editor: Editor
 }
 
-const SuperscriptMenu = React.memo(({editor}: SuperscriptMenuProps) => {
+export const SuperscriptMenu = React.memo(({editor}: SuperscriptMenuProps) => {
     const isActive = useActive(editor, Superscript.name);
 
     const toggleActive = useCallback(
@@ -37,4 +37,3 @@ const SuperscriptMenu = React.memo(({editor}: SuperscriptMenuProps) => {
     return deepEqual(prevProps, nextProps);
 });
 
-export default SuperscriptMenu;

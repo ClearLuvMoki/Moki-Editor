@@ -1,1 +1,1 @@
-export {default as Focus} from "./core";
+export {Focus} from "./core";

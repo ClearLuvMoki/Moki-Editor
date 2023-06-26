@@ -1,1 +1,1 @@
-export {default as Text} from "./core";
+export {Text} from "./core";

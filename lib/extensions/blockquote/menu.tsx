@@ -3,14 +3,14 @@ import {Button} from "../../components";
 import {BsBlockquoteLeft} from "react-icons/bs"
 import {Editor} from "@tiptap/core";
 import {useActive} from "../../hooks/useActive";
-import Blockquote from "./core"
+import {Blockquote} from "./core"
 import deepEqual from "deep-equal";
 
 type BlockquoteMenuProps = {
     editor: Editor
 }
 
-const BlockquoteMenu = React.memo(({editor}: BlockquoteMenuProps) => {
+export const BlockquoteMenu = React.memo(({editor}: BlockquoteMenuProps) => {
     const isActive = useActive(editor, Blockquote.name);
 
     const toggleActive = useCallback(
@@ -37,4 +37,3 @@ const BlockquoteMenu = React.memo(({editor}: BlockquoteMenuProps) => {
     return deepEqual(prevProps, nextProps);
 });
 
-export default BlockquoteMenu;

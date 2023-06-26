@@ -1,2 +1,2 @@
-export {default as Bold} from "./core";
-export {default as BoldMenu} from "./menu";
+export {Bold} from "./core";
+export {BoldMenu} from "./menu";

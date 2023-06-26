@@ -1,2 +1,2 @@
-export {default as Subscript} from "./core";
-export {default as SubscriptMenu} from "./menu";
+export {Subscript} from "./core";
+export {SubscriptMenu} from "./menu";

@@ -5,4 +5,4 @@ const TextAlign = BuiltInTextAlign.configure({
     types: ["heading", "paragraph"],
 })
 
-export default TextAlign;
+export {TextAlign};

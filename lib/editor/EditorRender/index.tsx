@@ -10,7 +10,7 @@ import {
     UnderlineMenu,
     StrikeMenu,
     BlockquoteMenu,
-    InLineCodeMenu,
+    InlineCodeMenu,
     SubscriptMenu,
     SuperscriptMenu,
     TextAlignMenu,
@@ -67,7 +67,7 @@ const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
                     <UnderlineMenu editor={editor}/>
                     <StrikeMenu editor={editor}/>
                     <BlockquoteMenu editor={editor}/>
-                    <InLineCodeMenu editor={editor}/>
+                    <InlineCodeMenu editor={editor}/>
                     <SubscriptMenu editor={editor}/>
                     <SuperscriptMenu editor={editor}/>
                     <TextAlignMenu editor={editor}/>

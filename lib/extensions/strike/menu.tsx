@@ -3,14 +3,14 @@ import {Button} from "../../components";
 import {BsTypeStrikethrough} from "react-icons/bs"
 import {Editor} from "@tiptap/core";
 import {useActive} from "../../hooks/useActive";
-import Strike from "./core"
+import {Strike} from "./core"
 import deepEqual from "deep-equal";
 
 type StrikeMenuProps = {
     editor: Editor
 }
 
-const StrikeMenu = React.memo(({editor}: StrikeMenuProps) => {
+export const StrikeMenu = React.memo(({editor}: StrikeMenuProps) => {
     const isActive = useActive(editor, Strike.name);
 
     const toggleActive = useCallback(
@@ -37,4 +37,3 @@ const StrikeMenu = React.memo(({editor}: StrikeMenuProps) => {
     return deepEqual(prevProps, nextProps);
 });
 
-export default StrikeMenu;

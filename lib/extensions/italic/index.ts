@@ -1,2 +1,2 @@
-export {default as Italic} from "./core";
-export {default as ItalicMenu} from "./menu";
+export {Italic} from "./core";
+export {ItalicMenu} from "./menu";

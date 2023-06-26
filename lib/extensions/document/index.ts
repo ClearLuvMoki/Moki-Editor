@@ -1,1 +1,1 @@
-export {default as Document} from "./core";
+export {Document} from "./core";

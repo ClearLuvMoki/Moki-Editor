@@ -1,2 +1,2 @@
-export {default as Underline} from "./core";
-export {default as UnderlineMenu} from "./menu";
+export {Underline} from "./core";
+export {UnderlineMenu} from "./menu";

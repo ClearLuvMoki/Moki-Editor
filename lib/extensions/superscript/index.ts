@@ -1,2 +1,2 @@
-export {default as Superscript} from "./core";
-export {default as SuperscriptMenu} from "./menu";
+export {Superscript} from "./core";
+export {SuperscriptMenu} from "./menu";

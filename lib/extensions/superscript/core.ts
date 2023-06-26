@@ -1,3 +1,3 @@
 import {Superscript} from "@tiptap/extension-superscript";
 
-export default Superscript;
+export {Superscript};

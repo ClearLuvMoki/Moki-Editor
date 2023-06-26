@@ -3,14 +3,14 @@ import {Button} from "../../components";
 import {BsTypeUnderline} from "react-icons/bs"
 import {Editor} from "@tiptap/core";
 import {useActive} from "../../hooks/useActive";
-import Underline from "./core"
+import {Underline} from "./core"
 import deepEqual from "deep-equal";
 
 type UnderlineMenuProps = {
     editor: Editor
 }
 
-const UnderlineMenu = React.memo(({editor}: UnderlineMenuProps) => {
+export const UnderlineMenu = React.memo(({editor}: UnderlineMenuProps) => {
     const isActive = useActive(editor, Underline.name);
 
     const toggleItalic = useCallback(
@@ -37,4 +37,3 @@ const UnderlineMenu = React.memo(({editor}: UnderlineMenuProps) => {
     return deepEqual(prevProps, nextProps);
 });
 
-export default UnderlineMenu;

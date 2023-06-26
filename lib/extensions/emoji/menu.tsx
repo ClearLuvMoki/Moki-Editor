@@ -10,7 +10,7 @@ type SuperscriptMenuProps = {
     editor: Editor
 }
 
-const EmojiMenu = React.memo(({editor}: SuperscriptMenuProps) => {
+export const EmojiMenu = React.memo(({editor}: SuperscriptMenuProps) => {
 
 
     return (
@@ -43,4 +43,3 @@ const EmojiMenu = React.memo(({editor}: SuperscriptMenuProps) => {
     return deepEqual(prevProps, nextProps);
 });
 
-export default EmojiMenu;

@@ -1,2 +1,2 @@
-export {default as Blockquote} from "./core";
-export {default as BlockquoteMenu} from "./menu";
+export {Blockquote} from "./core";
+export {BlockquoteMenu} from "./menu";

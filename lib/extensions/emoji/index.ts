@@ -1,1 +1,1 @@
-export {default as EmojiMenu} from "./menu";
+export {EmojiMenu} from "./menu";

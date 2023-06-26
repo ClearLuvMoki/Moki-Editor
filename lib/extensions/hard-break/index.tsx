@@ -1,1 +1,1 @@
-export {default as HardBreak} from "./core";
+export {HardBreak} from "./core";

@@ -3,14 +3,14 @@ import {Button} from "../../components";
 import {BsTypeItalic} from "react-icons/bs"
 import {Editor} from "@tiptap/core";
 import {useActive} from "../../hooks/useActive";
-import Italic from "./core"
+import {Italic} from "./core"
 import deepEqual from "deep-equal";
 
 type ItalicMenuProps = {
     editor: Editor
 }
 
-const ItalicMenu = React.memo(({editor}: ItalicMenuProps) => {
+export const ItalicMenu = React.memo(({editor}: ItalicMenuProps) => {
     const isActive = useActive(editor, Italic.name);
 
     const toggleActive = useCallback(
@@ -37,4 +37,3 @@ const ItalicMenu = React.memo(({editor}: ItalicMenuProps) => {
     return deepEqual(prevProps, nextProps);
 });
 
-export default ItalicMenu;

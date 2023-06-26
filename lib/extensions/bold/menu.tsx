@@ -3,14 +3,14 @@ import {Button} from "../../components";
 import {BsTypeBold} from "react-icons/bs"
 import {Editor} from "@tiptap/core";
 import {useActive} from "../../hooks/useActive";
-import Bold from "./core"
+import {Bold} from "./core"
 import deepEqual from "deep-equal";
 
 type BoldMenuProps = {
     editor: Editor
 }
 
-const BoldMenu = React.memo(({editor}: BoldMenuProps) => {
+export const BoldMenu = React.memo(({editor}: BoldMenuProps) => {
     const isActive = useActive(editor, Bold.name);
 
     const toggleActive = useCallback(
@@ -37,4 +37,3 @@ const BoldMenu = React.memo(({editor}: BoldMenuProps) => {
     return deepEqual(prevProps, nextProps);
 });
 
-export default BoldMenu;
