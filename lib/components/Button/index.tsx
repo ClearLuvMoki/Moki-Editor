@@ -10,7 +10,7 @@ export type ButtonProps = {
 }
 
 const Button = React.memo((
-    {size = 'normal', type = "primary", onClick, children}: ButtonProps
+    {size = 'small', type = "primary", onClick, children}: ButtonProps
 ) => {
     return (
         <StyledButton

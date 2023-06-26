@@ -21,7 +21,7 @@ export const StyledEditor = styled.div`
   > div {
     position: relative;
   }
-  
+
   .ProseMirror {
     position: relative;
     outline: none;
@@ -30,5 +30,15 @@ export const StyledEditor = styled.div`
     white-space: break-spaces;
     -webkit-font-variant-ligatures: none;
     font-variant-ligatures: none;
+  }
+
+  code {
+    padding: 4px;
+    font-family: ${props => props.theme.fontFamilyMono};
+    font-size: 0.875rem;
+    line-height: 1.3;
+    cursor: text;
+    background-color: #f5f6f7;
+    border-radius: 4px;
   }
 `;

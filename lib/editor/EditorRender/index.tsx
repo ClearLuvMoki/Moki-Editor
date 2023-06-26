@@ -17,11 +17,12 @@ import {
     EmojiMenu,
     ListMenu
 } from "../../extensions/index"
+import {ToolBarStyle} from "../../styles/ToolBarStyle.ts";
 
 export {Editor} from "@tiptap/core"
 
 export interface EditorKit {
-    extensions: Array<AnyExtension | AnyExtension[]>;
+    extensions?: Array<AnyExtension | AnyExtension[]>;
     editable?: boolean;
     autofocus?: boolean;
     isToolBar?: boolean;
@@ -42,7 +43,7 @@ const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
         {
             content,
             editable,
-            extensions: resolveEditorKit({extensions}),
+            extensions: resolveEditorKit({extensions, isToolBar}),
             editorProps: {
                 attributes: {
                     class: "moki-editor",
@@ -61,7 +62,7 @@ const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
     return (
         <StyledEditor>
             {children || (editor && isToolBar && (
-                <div>
+                <ToolBarStyle>
                     <BoldMenu editor={editor}/>
                     <ItalicMenu editor={editor}/>
                     <UnderlineMenu editor={editor}/>
@@ -73,7 +74,7 @@ const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
                     <TextAlignMenu editor={editor}/>
                     <EmojiMenu editor={editor}/>
                     <ListMenu editor={editor}/>
-                </div>
+                </ToolBarStyle>
             ))}
             <EditorContent editor={editor}/>
         </StyledEditor>

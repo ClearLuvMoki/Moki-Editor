@@ -15,12 +15,14 @@ type StyledButtonProps = ButtonProps & {
     type: ButtonType;
 };
 export const StyledButton = styled.button<StyledButtonProps>`
+  width: 30px;
+  height: 30px;
   margin: 0px 2px;
 
   display: inline-flex;
   justify-content: center;
   align-items: center;
-
+  
   padding: ${props => (props.size ? SizeMap[props.size] : 6)}px;
 
   background: ${props => props.type !== "normal"
@@ -33,6 +35,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   outline: none;
   user-select: none;
   cursor: pointer;
+  box-sizing: content-box;
 
   color: hsl(214deg 11% 12% / 80%);
   font-size: 18px;

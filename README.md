@@ -1,7 +1,5 @@
 # Moki Editor
 
-(English | [中文](README_zh.md))
-
 ![license](https://img.shields.io/github/license/ClearLuvMoki/Moki-Editor)
 ![npm](https://img.shields.io/badge/npm-v9.7.2-blue)
 ![build](https://img.shields.io/badge/Build-Vite-blue)
@@ -45,4 +43,11 @@ Typescript**;
 - [ ] Font Style
 - [ ] Font Color
 - [ ] Link
+
+# Test
+```shell
+git clone https://github.com/ClearLuvMoki/Moki-Editor.git
+npm install
+npm run dev
+```
 
