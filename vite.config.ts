@@ -13,9 +13,9 @@ export default defineConfig({
         dts(),
         VitePluginStyleInject()
     ],
-    esbuild: {
-        drop: ['console', 'debugger'],
-    },
+    // esbuild: {
+    //     drop: ['console', 'debugger'],
+    // },
     build: {
         lib: {
             entry: resolve(__dirname, './lib/index.ts'),

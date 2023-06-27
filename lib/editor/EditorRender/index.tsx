@@ -15,8 +15,15 @@ import {
     SuperscriptMenu,
     TextAlignMenu,
     EmojiMenu,
-    ListMenu
-} from "../../extensions/index"
+    ListMenu,
+    OrderListMenu,
+    TableMenu,
+    TaskMenu,
+    HeadingMenu,
+    FontFamilyMenu,
+    HighlightMenu,
+    TextColorMenu
+} from "../../extensions"
 import {ToolBarStyle} from "../../styles/ToolBarStyle.ts";
 
 export {Editor} from "@tiptap/core"
@@ -26,6 +33,7 @@ export interface EditorKit {
     editable?: boolean;
     autofocus?: boolean;
     isToolBar?: boolean;
+    onUpdate?: ((props: { editor: TipTapEditor, transaction: any }) => void) | undefined
     children?: React.ReactNode;
 }
 
@@ -35,7 +43,15 @@ export interface EditorRenderProps extends EditorKit {
 
 
 const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
-    const {content = null, editable = true, extensions, isToolBar = true, autofocus = true, children} = props;
+    const {
+        content = null,
+        editable = true,
+        extensions,
+        isToolBar = true,
+        autofocus = true,
+        onUpdate,
+        children
+    } = props;
 
     useImperativeHandle(ref, () => editor as TipTapEditor);
 
@@ -54,8 +70,11 @@ const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
             onCreate(props) {
                 props?.editor?.view?.focus();
             },
+            onUpdate(props) {
+                onUpdate && onUpdate(props);
+            }
         },
-        [content, extensions]
+        []
     );
 
 
@@ -63,6 +82,8 @@ const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
         <StyledEditor>
             {children || (editor && isToolBar && (
                 <ToolBarStyle>
+                    <HeadingMenu editor={editor}/>
+                    <FontFamilyMenu editor={editor}/>
                     <BoldMenu editor={editor}/>
                     <ItalicMenu editor={editor}/>
                     <UnderlineMenu editor={editor}/>
@@ -74,6 +95,11 @@ const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
                     <TextAlignMenu editor={editor}/>
                     <EmojiMenu editor={editor}/>
                     <ListMenu editor={editor}/>
+                    <OrderListMenu editor={editor}/>
+                    <TableMenu editor={editor}/>
+                    <TaskMenu editor={editor}/>
+                    <HighlightMenu editor={editor}/>
+                    <TextColorMenu editor={editor}/>
                 </ToolBarStyle>
             ))}
             <EditorContent editor={editor}/>

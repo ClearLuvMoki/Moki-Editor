@@ -18,6 +18,19 @@ import {
     TextAlign,
     BulletList,
     ListItem,
+    OrderedList,
+    Placeholder,
+    Table,
+    TableHeader,
+    TableRow,
+    TableCell,
+    TaskList,
+    TaskItem,
+    TextStyle,
+    FontFamily,
+    Highlight,
+    TextColor,
+    Gapcursor
 } from "../../../extensions"
 
 export interface EditorKit {
@@ -26,7 +39,7 @@ export interface EditorKit {
 }
 
 export const resolveEditorKit = (props: EditorKit) => {
-    const {extensions = [], isToolBar} = props;
+    const {extensions, isToolBar} = props;
 
     const BaseExtensions = [
         Bold,
@@ -40,6 +53,23 @@ export const resolveEditorKit = (props: EditorKit) => {
         TextAlign,
         BulletList,
         ListItem,
+        OrderedList,
+        Placeholder.configure({
+            placeholder: "请输入..."
+        }),
+        Table,
+        TableHeader,
+        TableRow,
+        TableCell,
+        TaskList,
+        TaskItem.configure({
+            nested: true,
+        }),
+        FontFamily,
+        Highlight.configure({
+            multicolor: true,
+        }),
+        TextColor,
     ]
 
     return [
@@ -49,6 +79,8 @@ export const resolveEditorKit = (props: EditorKit) => {
         Text,
         HardBreak,
         Focus,
+        TextStyle,
+        Gapcursor,
         ...(extensions || [])?.flat()
     ].concat(isToolBar ? BaseExtensions : []);
 };

@@ -1,0 +1,1 @@
+export {Gapcursor} from "./core.ts"
