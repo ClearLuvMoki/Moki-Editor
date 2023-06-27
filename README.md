@@ -48,15 +48,16 @@ Typescript**;
 
 # Props
 
-| 属性         | 描述       | 类型                                   | 默认值  |
-|------------|----------|--------------------------------------|------|
-| ref        | Editor   | `Editor/null`                        | /    |
-| content    | 编辑器内容    | `string/null`                        | null |
-| editable   | 是否可以编辑   | `Boolean`                            | true |
-| extensions | 插件配置     | `Array<AnyExtension/AnyExtension[]>` | []   |
-| isToolBar  | 是否展示工具栏  | `Boolean`                            | true |
-| autofocus  | 是否聚焦     | `Boolean`                            | true |
-| children   | 自定义工具栏内容 | `React.ReactNode`                    | /    |
+| 属性         | 描述       | 类型                                                                        | 默认值  |
+|------------|----------|---------------------------------------------------------------------------|------|
+| ref        | Editor   | `Editor/null`                                                             | /    |
+| content    | 编辑器内容    | `string/null`                                                             | null |
+| editable   | 是否可以编辑   | `Boolean`                                                                 | true |
+| extensions | 插件配置     | `Array<AnyExtension/AnyExtension[]>`                                      | []   |
+| isToolBar  | 是否展示工具栏  | `Boolean`                                                                 | true |
+| autofocus  | 是否聚焦     | `Boolean`                                                                 | true |
+| onUpdate   | 文档修改事件   | `((props: { editor: TipTapEditor, transaction: any }) => void)/undefined` | /    |
+| children   | 自定义工具栏内容 | `React.ReactNode`                                                         | /    |
 
 # Test
 
