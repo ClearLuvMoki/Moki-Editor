@@ -7,7 +7,7 @@ export const ToolBarStyle = styled.div`
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid #ccc;
-  padding: 2px 100px;
+  padding: 2px 80px;
   flex-wrap: wrap;
   
   position: sticky !important;

@@ -1,24 +1,24 @@
 import React, {useCallback} from 'react';
 import {Button} from "../../components";
-import {BsTypeBold} from "react-icons/bs"
+import {BiCodeCurly} from "react-icons/bi"
 import type {Editor} from "@tiptap/core";
 import {useActive} from "../../hooks/useActive";
-import {Bold} from "./core"
+import {BlockCode} from "./core"
 import deepEqual from "deep-equal";
 
-type BoldMenuProps = {
+type BlockCodeMenuProps = {
     editor: Editor
 }
 
-export const BoldMenu = React.memo(({editor}: BoldMenuProps) => {
-    const isActive = useActive(editor, Bold.name);
+export const BlockCodeMenu = React.memo(({editor}: BlockCodeMenuProps) => {
+    const isActive = useActive(editor, BlockCode.name);
 
     const toggleActive = useCallback(
         () =>
             editor
                 .chain()
                 .focus()
-                .toggleBold()
+                .toggleCodeBlock()
                 .run(),
         [editor]
     );
@@ -30,7 +30,7 @@ export const BoldMenu = React.memo(({editor}: BoldMenuProps) => {
                 toggleActive();
             }}
         >
-            <BsTypeBold/>
+            <BiCodeCurly/>
         </Button>
     );
 }, (prevProps, nextProps) => {

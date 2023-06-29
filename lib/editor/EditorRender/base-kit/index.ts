@@ -1,4 +1,5 @@
 import {AnyExtension} from "@tiptap/core";
+import { lowlight } from 'lowlight/lib/core'
 
 import {Focus} from "../../../extensions/focus";
 import {Paragraph} from "../../../extensions/paragraph";
@@ -30,7 +31,8 @@ import {
     FontFamily,
     Highlight,
     TextColor,
-    Gapcursor
+    Gapcursor,
+    BlockCode
 } from "../../../extensions"
 
 export interface EditorKit {
@@ -70,6 +72,9 @@ export const resolveEditorKit = (props: EditorKit) => {
             multicolor: true,
         }),
         TextColor,
+        BlockCode.configure({
+            lowlight,
+        })
     ]
 
     return [

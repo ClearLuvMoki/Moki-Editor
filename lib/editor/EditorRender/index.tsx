@@ -22,11 +22,12 @@ import {
     HeadingMenu,
     FontFamilyMenu,
     HighlightMenu,
-    TextColorMenu
+    TextColorMenu,
+    BlockCodeMenu
 } from "../../extensions"
 import {ToolBarStyle} from "../../styles/ToolBarStyle.ts";
 
-export {Editor} from "@tiptap/core"
+export type {Editor} from "@tiptap/core"
 
 export interface EditorKit {
     extensions?: Array<AnyExtension | AnyExtension[]>;
@@ -100,6 +101,7 @@ const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
                     <TaskMenu editor={editor}/>
                     <HighlightMenu editor={editor}/>
                     <TextColorMenu editor={editor}/>
+                    <BlockCodeMenu editor={editor}/>
                 </ToolBarStyle>
             ))}
             <EditorContent editor={editor}/>
