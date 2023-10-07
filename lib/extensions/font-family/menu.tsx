@@ -8,6 +8,27 @@ type FontFamilyMenuProps = {
     editor: Editor
 }
 
+const SelectList = [
+    {label: (<div style={{fontFamily: "normal"}}>系统默认</div>), value: 'normal'},
+    {label: (<div style={{fontFamily: "Arial"}}>Arial</div>), value: 'Arial'},
+    {label: (<div style={{fontFamily: "cursive"}}>Cursive</div>), value: 'cursive'},
+    {
+        label: (<div style={{fontFamily: "Comic Sans MS, Comic Sans"}}>Comic Sans</div>),
+        value: 'Comic Sans MS, Comic Sans'
+    },
+    {label: (<div style={{fontFamily: "Georgia"}}>Georgia</div>), value: 'Georgia'},
+    {label: (<div style={{fontFamily: "fangsong"}}>仿宋</div>), value: 'fangsong'},
+    {label: (<div style={{fontFamily: "fantasy"}}>Fantasy</div>), value: 'fantasy'},
+    {label: (<div style={{fontFamily: "Impact"}}>Impact</div>), value: 'Impact'},
+    {label: (<div style={{fontFamily: "Inter"}}>Inter</div>), value: 'Inter'},
+    {label: (<div style={{fontFamily: "Lucida Console"}}>Lucida Console</div>), value: 'Lucida Console'},
+    {label: (<div style={{fontFamily: "Monaco"}}>Monaco</div>), value: 'Monaco'},
+    {label: (<div style={{fontFamily: "monospace"}}>Monospace</div>), value: 'monospace'},
+    {label: (<div style={{fontFamily: "Times New Roman"}}>Times New Roman</div>), value: 'Times New Roman'},
+    {label: (<div style={{fontFamily: "Verdana"}}>Verdana</div>), value: 'Verdana'},
+    {label: (<div style={{fontFamily: "serif"}}>Serif</div>), value: 'serif'},
+]
+
 export const FontFamilyMenu = React.memo(({editor}: FontFamilyMenuProps) => {
     const isArial = useActive(editor, 'textStyle', {fontFamily: 'Arial'});
     const isCursive = useActive(editor, 'textStyle', {fontFamily: 'cursive'});
@@ -62,23 +83,7 @@ export const FontFamilyMenu = React.memo(({editor}: FontFamilyMenuProps) => {
         <Select
             value={current}
             style={{width: 150, margin: "0px 4px"}}
-            options={[
-                {label: "系统默认", value: 'normal'},
-                {label: "Arial", value: 'Arial'},
-                {label: "Cursive", value: 'cursive'},
-                {label: "Comic Sans", value: 'Comic Sans MS, Comic Sans'},
-                {label: "Georgia", value: 'Georgia'},
-                {label: "仿宋", value: 'fangsong'},
-                {label: "Fantasy", value: 'fantasy'},
-                {label: "Impact", value: 'Impact'},
-                {label: "Inter", value: 'Inter'},
-                {label: "Lucida Console", value: 'Lucida Console'},
-                {label: "Monaco", value: 'Monaco'},
-                {label: "Monospace", value: 'monospace'},
-                {label: "Times New Roman", value: 'Times New Roman'},
-                {label: "Verdana", value: 'Verdana'},
-                {label: "Serif", value: 'serif'},
-            ]}
+            options={SelectList}
             onChange={(value) => {
                 toggleActive(value)
             }}

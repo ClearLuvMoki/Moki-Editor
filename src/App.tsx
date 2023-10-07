@@ -7,14 +7,14 @@ import {content} from "./content.ts";
 
 
 function App() {
-    const [editor, setEditor] = useState<Editor | null>(null);
-
+    const [editor, setEditor] = useState<Editor>();
 
     return (
         <EditorRender
             ref={setEditor}
             content={content}
-        />
+        >
+        </EditorRender>
     )
 }
 
