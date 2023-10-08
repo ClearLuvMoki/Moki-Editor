@@ -21,7 +21,8 @@ Typescript**;
 - 💌 Free and open source
 
 # TODO
-
+- [✅️] Undo
+- [✅️] Redo
 - [✅️] ToolBar
 - [✅️] Block Quote
 - [✅️] Bold

@@ -1,5 +1,5 @@
 import {AnyExtension} from "@tiptap/core";
-import { lowlight } from 'lowlight/lib/core'
+import {lowlight} from 'lowlight/lib/core'
 
 import {Focus} from "../../../extensions/focus";
 import {Paragraph} from "../../../extensions/paragraph";
@@ -32,13 +32,19 @@ import {
     Highlight,
     TextColor,
     Gapcursor,
-    BlockCode
+    BlockCode,
+    History
 } from "../../../extensions"
 
 export interface EditorKit {
     extensions?: Array<AnyExtension | AnyExtension[]>;
     isToolBar?: boolean
 }
+
+const placeholders = [
+    '输入 / 唤起更多',
+    // '使用 markdown 语法进行输入',
+];
 
 export const resolveEditorKit = (props: EditorKit) => {
     const {extensions, isToolBar} = props;
@@ -57,7 +63,10 @@ export const resolveEditorKit = (props: EditorKit) => {
         ListItem,
         OrderedList,
         Placeholder.configure({
-            placeholder: "请输入..."
+            placeholder: () => {
+                return placeholders[~~(Math.random() * placeholders.length)];
+            },
+            includeChildren: true
         }),
         Table,
         TableHeader,
@@ -74,7 +83,8 @@ export const resolveEditorKit = (props: EditorKit) => {
         TextColor,
         BlockCode.configure({
             lowlight,
-        })
+        }),
+        History
     ]
 
     return [

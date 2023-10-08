@@ -23,7 +23,9 @@ import {
     FontFamilyMenu,
     HighlightMenu,
     TextColorMenu,
-    BlockCodeMenu
+    BlockCodeMenu,
+    RedoMenu,
+    UndoMenu
 } from "../../extensions"
 import {ToolBarStyle} from "../../styles/ToolBarStyle.ts";
 
@@ -83,6 +85,8 @@ const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
         <StyledEditor>
             {children || (editor && isToolBar && (
                 <ToolBarStyle>
+                    <UndoMenu editor={editor}/>
+                    <RedoMenu editor={editor}/>
                     <HeadingMenu editor={editor}/>
                     <FontFamilyMenu editor={editor}/>
                     <BoldMenu editor={editor}/>

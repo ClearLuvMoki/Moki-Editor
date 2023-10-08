@@ -17,8 +17,12 @@ export const EmojiMenu = React.memo(({editor}: SuperscriptMenuProps) => {
         <Popover
             unmountOnExit={false}
             triggerProps={{
+                popupStyle: {
+                    padding: 0
+                },
                 style: {
-                    width: 380
+                    width: 350,
+                    padding: 0
                 }
             }}
             trigger='click'
@@ -26,6 +30,7 @@ export const EmojiMenu = React.memo(({editor}: SuperscriptMenuProps) => {
                 autoFocusSearch={false}
                 lazyLoadEmojis={true}
                 onEmojiClick={(emojiValue) => {
+                    console.log(emojiValue, 'emojiValue')
                     const {selection} = editor.state;
                     const {$anchor} = selection;
                     editor.chain().insertContentAt($anchor.pos, emojiValue?.emoji).run();
