@@ -116,7 +116,7 @@ const EmojiContent = React.memo(({onChange}: EmojiContentProps) => {
                     }
                 </Tabs>
             </StyledHeader>
-            <StyledContent id={"EmojiContent-content"}>
+            <StyledContent>
                 {
                     emojiList.map(emoji => (
                         <StyledEmojiWrapper
