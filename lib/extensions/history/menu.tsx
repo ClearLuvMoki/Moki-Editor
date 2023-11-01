@@ -1,5 +1,4 @@
 import React, {useCallback} from 'react';
-import deepEqual from "deep-equal";
 import {Button} from "../../components";
 import {BiRedo, BiUndo} from "react-icons/bi"
 import {Editor} from "@tiptap/core";
@@ -12,7 +11,8 @@ interface UndoProps {
     editor: Editor
 }
 
-export const RedoMenu = React.memo(({editor}: RedoProps) => {
+export const RedoMenu = ({editor}: RedoProps) => {
+    const disabled = !editor.can().redo()
 
     const toggleActive = useCallback(
         () =>
@@ -27,20 +27,21 @@ export const RedoMenu = React.memo(({editor}: RedoProps) => {
 
     return (
         <Button
+            disabled={!editor.can().redo()}
             type={"normal"}
             onClick={() => {
+                if (disabled) return;
                 toggleActive();
             }}
         >
             <BiRedo/>
         </Button>
     );
-}, (prevProps, nextProps) => {
-    return deepEqual(prevProps, nextProps);
-});
+}
 
 
-export const UndoMenu = React.memo(({editor}: UndoProps) => {
+export const UndoMenu = ({editor}: UndoProps) => {
+    const disabled = !editor.can().undo()
 
     const toggleActive = useCallback(
         () =>
@@ -54,16 +55,16 @@ export const UndoMenu = React.memo(({editor}: UndoProps) => {
 
     return (
         <Button
+            disabled={disabled}
             type={"normal"}
             onClick={() => {
+                if (disabled) return;
                 toggleActive();
             }}
         >
             <BiUndo/>
         </Button>
     );
-}, (prevProps, nextProps) => {
-    return deepEqual(prevProps, nextProps);
-});
+}
 
 

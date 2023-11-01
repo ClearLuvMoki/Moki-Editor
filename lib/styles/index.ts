@@ -37,7 +37,7 @@ export const StyledEditor = styled.div`
 
   // 引用
   blockquote {
-    border-left: 2px solid #ccc;
+    border-left: 4px solid #ccc;
     padding-left: 1rem;
   }
 
@@ -57,7 +57,7 @@ export const StyledEditor = styled.div`
     font-size: 0.875rem;
     line-height: 1.3;
     cursor: text;
-    background-color: #f5f6f7;
+    background-color: #b2b2b2;
     border-radius: 4px;
   }
 

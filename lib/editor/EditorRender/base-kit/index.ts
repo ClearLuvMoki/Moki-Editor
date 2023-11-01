@@ -33,7 +33,8 @@ import {
     TextColor,
     Gapcursor,
     BlockCode,
-    History
+    History,
+    EnSlashExtension
 } from "../../../extensions"
 
 export interface EditorKit {
@@ -84,7 +85,8 @@ export const resolveEditorKit = (props: EditorKit) => {
         BlockCode.configure({
             lowlight,
         }),
-        History
+        History,
+        EnSlashExtension,
     ]
 
     return [

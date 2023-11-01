@@ -1,7 +1,6 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import {ButtonProps} from "./index";
 
-export type ButtonType = "primary" | "normal";
 
 export type ButtonSize = "small" | "normal" | "large";
 
@@ -11,10 +10,7 @@ const SizeMap: Record<ButtonSize, number> = {
     large: 10
 };
 
-type StyledButtonProps = ButtonProps & {
-    type: ButtonType;
-};
-export const StyledButton = styled.button<StyledButtonProps>`
+export const StyledButton = styled.button<ButtonProps>`
   width: 30px;
   height: 30px;
   margin: 0px 2px;
@@ -22,15 +18,14 @@ export const StyledButton = styled.button<StyledButtonProps>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  
+
   padding: ${props => (props.size ? SizeMap[props.size] : 6)}px;
 
-  background: ${props => props.type !== "normal"
+  background: ${props => props.active
           ? "rgb(213,213,213)"
           : "transparent"};
 
   border: 0 solid transparent;
-  border-radius: 2px;
   box-shadow: none;
   outline: none;
   user-select: none;
@@ -38,17 +33,26 @@ export const StyledButton = styled.button<StyledButtonProps>`
   box-sizing: content-box;
 
   color: hsl(214deg 11% 12% / 80%);
-  font-size: 18px;
   font-weight: 600;
   transition: all .3s;
 
   vertical-align: middle;
   white-space: nowrap;
+  border-radius: 8px;
+  font-size: 20px;
 
+  ${(props) => {
+    if (props.disabled) {
+      return css`
+        opacity: .5;
+        cursor: not-allowed;
+      `
+    }
+  }}
   &:hover {
     background-color: ${props =>
-            props.type === "normal"
+            !props.active
                     ? "rgb(46 50 56 / 15%)"
-                    : props.theme[props.type!]};
+                    : "transparent"};
   }
 `;

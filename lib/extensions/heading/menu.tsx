@@ -58,7 +58,7 @@ export const HeadingMenu = React.memo(({editor}: HeadingMenuProps) => {
     return (
         <Select
             value={current}
-            style={{width: 100}}
+            style={{width: 100, borderRadius: 20}}
             options={SelectList}
             onChange={(value) => {
                 toggleActive(value)

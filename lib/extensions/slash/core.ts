@@ -22,9 +22,10 @@ const createSlashExtension = (char: string) => {
                     char: char,
                     pluginKey: extensionPluginKey,
                     command: ({editor, props}) => {
-                        // const {state, dispatch} = editor.view;
-                        // const {$head, $from, $to} = state.selection;
+                        const {state, dispatch} = editor.view;
+                        const {$head, $from, $to} = state.selection;
                         //
+                        console.log(12)
                         // // 删除快捷指令
                         // const end = $from.pos;
                         // const from = $head.nodeBefore
@@ -43,3 +44,5 @@ const createSlashExtension = (char: string) => {
         }
     })
 }
+
+export const EnSlashExtension = createSlashExtension('/');
