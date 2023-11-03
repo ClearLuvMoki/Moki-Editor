@@ -25,7 +25,7 @@ export const BlockCodeMenu = React.memo(({editor}: BlockCodeMenuProps) => {
 
     return (
         <Button
-            type={isActive ? "primary" : "normal"}
+            active={isActive}
             onClick={() => {
                 toggleActive();
             }}

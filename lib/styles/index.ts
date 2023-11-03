@@ -14,7 +14,7 @@ export const StyledEditor = styled.div`
   height: 100%;
 
   .Moki-Editor {
-    padding-bottom: 10px;
+    padding: 10px 0;
   }
 
   *,
@@ -26,7 +26,7 @@ export const StyledEditor = styled.div`
   > div {
     position: relative;
   }
-  
+
   .ProseMirror-gapcursor {
     margin-top: 1em;
   }
@@ -138,7 +138,6 @@ export const StyledEditor = styled.div`
     min-width: 48px;
     margin: 0;
     line-height: 1.3;
-    background-color: #f5f6f7;
     counter-reset: line 0;
 
     code {

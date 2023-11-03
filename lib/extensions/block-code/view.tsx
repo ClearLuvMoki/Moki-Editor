@@ -15,10 +15,12 @@ const StyledToolbar = styled.div`
   padding: 6px 12px;
   border: 1px solid ${props => props.theme.codeBlockBorderColor || '#dee0e3'};
   border-bottom: 0;
+  background-color: rgba(46, 50, 56, .1);
 `;
 
 const StyledContent = styled.div`
   border: 1px solid ${props => props.theme.codeBlockBorderColor || '#dee0e3'};
+  background-color: rgba(46, 50, 56, .1);
 `;
 
 export const BlockCodeView = React.memo((
@@ -37,7 +39,7 @@ export const BlockCodeView = React.memo((
 
 
     return (
-        <NodeViewWrapper style={{position: "relative"}}>
+        <NodeViewWrapper style={{position: "relative", borderRadius: 8, overflow: "hidden"}}>
             <StyledToolbar>
                 <Select
                     style={{width: 200}}
