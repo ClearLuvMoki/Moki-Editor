@@ -11,6 +11,11 @@ export const StyledEditor = styled.div`
   line-height: 1.7em;
   width: 100%;
   padding: 0 12px;
+  height: 100%;
+
+  .Moki-Editor {
+    padding-bottom: 10px;
+  }
 
   *,
   *::before,
@@ -18,22 +23,14 @@ export const StyledEditor = styled.div`
     box-sizing: border-box;
   }
 
-
-  .ProseMirror {
+  > div {
     position: relative;
-    outline: none;
-    word-wrap: break-word;
-    white-space: break-spaces;
-    -webkit-font-variant-ligatures: none;
-    font-variant-ligatures: none;
-    margin-top: 10px;
+  }
+  
+  .ProseMirror-gapcursor {
+    margin-top: 1em;
   }
 
-  .ProseMirror {
-    > * + * {
-      margin-top: 0.75em;
-    }
-  }
 
   // 引用
   blockquote {
@@ -41,14 +38,6 @@ export const StyledEditor = styled.div`
     padding-left: 1rem;
   }
 
-  //  占位符
-  .ProseMirror p.is-editor-empty:first-child::before {
-    color: #adb5bd;
-    content: attr(data-placeholder);
-    float: left;
-    height: 0;
-    pointer-events: none;
-  }
 
   //  行内代码
   code {
@@ -274,5 +263,7 @@ export const StyledEditor = styled.div`
       background-color: #ffeef0;
     }
   }
+
+
 
 `;

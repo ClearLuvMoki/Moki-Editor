@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {AnyExtension} from "@tiptap/core";
 import {lowlight} from 'lowlight/lib/core'
 
@@ -64,6 +65,7 @@ export const resolveEditorKit = (props: EditorKit) => {
         ListItem,
         OrderedList,
         Placeholder.configure({
+            showOnlyCurrent: false,
             placeholder: () => {
                 return placeholders[~~(Math.random() * placeholders.length)];
             },

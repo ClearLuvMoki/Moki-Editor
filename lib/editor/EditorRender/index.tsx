@@ -65,7 +65,7 @@ const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
             extensions: resolveEditorKit({extensions, isToolBar}),
             editorProps: {
                 attributes: {
-                    class: "moki-editor",
+                    class: "Moki-Editor",
                     spellcheck: "false",
                 },
             },
@@ -83,32 +83,36 @@ const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
 
     return (
         <StyledEditor>
-            {children || (editor && isToolBar && (
-                <ToolBarStyle>
-                    <UndoMenu editor={editor}/>
-                    <RedoMenu editor={editor}/>
-                    <HeadingMenu editor={editor}/>
-                    <FontFamilyMenu editor={editor}/>
-                    <BoldMenu editor={editor}/>
-                    <ItalicMenu editor={editor}/>
-                    <UnderlineMenu editor={editor}/>
-                    <StrikeMenu editor={editor}/>
-                    <BlockquoteMenu editor={editor}/>
-                    <InlineCodeMenu editor={editor}/>
-                    <SubscriptMenu editor={editor}/>
-                    <SuperscriptMenu editor={editor}/>
-                    <TextAlignMenu editor={editor}/>
-                    <EmojiMenu editor={editor}/>
-                    <ListMenu editor={editor}/>
-                    <OrderListMenu editor={editor}/>
-                    <TableMenu editor={editor}/>
-                    <TaskMenu editor={editor}/>
-                    <HighlightMenu editor={editor}/>
-                    <TextColorMenu editor={editor}/>
-                    <BlockCodeMenu editor={editor}/>
-                </ToolBarStyle>
-            ))}
-            <EditorContent editor={editor}/>
+            <div>
+                {children || (editor && isToolBar && (
+                    <ToolBarStyle>
+                        <UndoMenu editor={editor}/>
+                        <RedoMenu editor={editor}/>
+                        <HeadingMenu editor={editor}/>
+                        <FontFamilyMenu editor={editor}/>
+                        <BoldMenu editor={editor}/>
+                        <ItalicMenu editor={editor}/>
+                        <UnderlineMenu editor={editor}/>
+                        <StrikeMenu editor={editor}/>
+                        <BlockquoteMenu editor={editor}/>
+                        <InlineCodeMenu editor={editor}/>
+                        <SubscriptMenu editor={editor}/>
+                        <SuperscriptMenu editor={editor}/>
+                        <TextAlignMenu editor={editor}/>
+                        <EmojiMenu editor={editor}/>
+                        <ListMenu editor={editor}/>
+                        <OrderListMenu editor={editor}/>
+                        <TableMenu editor={editor}/>
+                        <TaskMenu editor={editor}/>
+                        <HighlightMenu editor={editor}/>
+                        <TextColorMenu editor={editor}/>
+                        <BlockCodeMenu editor={editor}/>
+                    </ToolBarStyle>
+                ))}
+            </div>
+            <EditorContent
+                editor={editor}
+            />
         </StyledEditor>
     );
 });
