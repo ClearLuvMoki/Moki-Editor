@@ -1,14 +1,14 @@
 import React from 'react';
 import {StyledColorSpan, StyledColorWrapper} from "./StyledColorWrapper.ts";
 
-type ColorWrapperProps = {
+type ColorIconWrapperProps = {
     color?: string
     children: React.ReactNode
 }
 
 
-const ColorWrapper = (
-    {color = "#fff", children}: ColorWrapperProps
+const ColorIconWrapper = (
+    {color = "#fff", children}: ColorIconWrapperProps
 ) => {
     return (
         <StyledColorWrapper>
@@ -18,4 +18,4 @@ const ColorWrapper = (
     );
 };
 
-export default ColorWrapper;
+export default ColorIconWrapper;
