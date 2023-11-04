@@ -35,8 +35,9 @@ import {
     Gapcursor,
     BlockCode,
     History,
-    EnSlashExtension
+    createSlashExtension
 } from "../../../extensions"
+import {SlashCommands} from "./slash-commands.tsx";
 
 export interface EditorKit {
     extensions?: Array<AnyExtension | AnyExtension[]>;
@@ -88,7 +89,10 @@ export const resolveEditorKit = (props: EditorKit) => {
             lowlight,
         }),
         History,
-        EnSlashExtension,
+        createSlashExtension({
+            char: "/",
+            items: SlashCommands
+        })
     ]
 
     return [
