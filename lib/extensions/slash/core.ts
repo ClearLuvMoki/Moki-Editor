@@ -63,7 +63,7 @@ const createSlashExtension = ({char, items = []}: SlashOptions) => {
                         const filter: any[] = this.options.items.filter((item: any) => {
                             if ("divider" in item) return true;
 
-                            return item.text.includes(query) || item.slash.includes(query);
+                            return item.title.includes(query) || item.slash.includes(query);
                         });
 
                         if (filter.every((item: any) => "divider" in item)) return [];

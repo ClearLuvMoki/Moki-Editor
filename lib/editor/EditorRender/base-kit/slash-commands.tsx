@@ -3,6 +3,7 @@ import {LuHeading1, LuHeading2, LuHeading3, LuHeading4} from "react-icons/lu"
 import {IconBaseProps} from "react-icons/lib/cjs/iconBase";
 import {BiCodeCurly} from "react-icons/bi";
 import {CiViewTable} from "react-icons/ci";
+import {BsPaintBucket} from "react-icons/bs";
 
 export type SlashMenuItem = {
     divider?: boolean;
@@ -20,7 +21,7 @@ const IconConfig: IconBaseProps = {
 export const SlashCommands: SlashMenuItem[] = [
     {
         divider: true,
-        title: "标题"
+        title: "标题",
     },
     {
         icon: <LuHeading1 {...IconConfig}/>,
@@ -89,6 +90,17 @@ export const SlashCommands: SlashMenuItem[] = [
         icon: <CiViewTable {...IconConfig}/>,
         title: "表格",
         slash: "/table",
+        action: editor =>
+            editor
+                .chain()
+                .insertTable({rows: 3, cols: 4, withHeaderRow: true})
+                .focus()
+                .run()
+    },
+    {
+        icon: <BsPaintBucket {...IconConfig}/>,
+        title: "绘图",
+        slash: "/draw",
         action: editor =>
             editor
                 .chain()

@@ -16,6 +16,9 @@ devDependencies:
   '@arco-design/web-react':
     specifier: ^2.55.0
     version: 2.55.0(@types/react@18.2.34)(react-dom@18.2.0)(react@18.2.0)
+  '@excalidraw/excalidraw':
+    specifier: ^0.16.1
+    version: 0.16.1(react-dom@18.2.0)(react@18.2.0)
   '@rollup/plugin-typescript':
     specifier: ^11.1.5
     version: 11.1.5(typescript@5.2.2)
@@ -190,6 +193,9 @@ devDependencies:
   react-icons:
     specifier: ^4.11.0
     version: 4.11.0(react@18.2.0)
+  scroll-into-view-if-needed:
+    specifier: ^3.1.0
+    version: 3.1.0
   styled-components:
     specifier: ^6.1.0
     version: 6.1.0(react-dom@18.2.0)(react@18.2.0)
@@ -490,6 +496,7 @@ packages:
 
   /@emotion/memoize@0.7.4:
     resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -734,6 +741,16 @@ packages:
   /@eslint/js@8.52.0:
     resolution: {integrity: sha512-mjZVbpaeMZludF2fsWLD0Z9gCref1Tk4i9+wddjRvpUNqqcndPkBD09N/Mapey0b3jaXbLm2kICwFv2E64QinA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    dev: true
+
+  /@excalidraw/excalidraw@0.16.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-4zirHk7dNx6SVq2jQmYOLliqAa1h3WPVqHM5qtJyhD769VsOqwlkopAcnZMb3G1PeIMm6cf2F31quS5MVqvoOQ==}
+    peerDependencies:
+      react: ^17.0.2 || ^18.2.0
+      react-dom: ^17.0.2 || ^18.2.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: true
 
   /@humanwhocodes/config-array@0.11.13:
@@ -2509,6 +2526,10 @@ packages:
 
   /compute-scroll-into-view@1.0.20:
     resolution: {integrity: sha512-UCB0ioiyj8CRjtrvaceBLqqhZCVP+1B8+NWQhmdsm0VXOJtobBCf1dBQmebCCo34qZmUwZfIH2MZLqNHazrfjg==}
+    dev: true
+
+  /compute-scroll-into-view@3.1.0:
+    resolution: {integrity: sha512-rj8l8pD4bJ1nx+dAkMhV1xB5RuZEyVysfxJqB1pRchh1KVvwOv9b7CGB8ZfjTImVv2oF+sYMUkMZq6Na5Ftmbg==}
     dev: true
 
   /concat-map@0.0.1:
@@ -4691,6 +4712,12 @@ packages:
     resolution: {integrity: sha512-P9kYMrhi9f6dvWwTGpO5I3HgjSU/8Mts7xL3lkoH5xlewK7O9Obdc5WmMCzppln7bCVGNmf3qfoZXrpCeyNJXw==}
     dependencies:
       compute-scroll-into-view: 1.0.11
+    dev: true
+
+  /scroll-into-view-if-needed@3.1.0:
+    resolution: {integrity: sha512-49oNpRjWRvnU8NyGVmUaYG4jtTkNonFZI86MmGRDqBphEK2EXT9gdEUoQPZhuBM8yWHxCWbobltqYO5M4XrUvQ==}
+    dependencies:
+      compute-scroll-into-view: 3.1.0
     dev: true
 
   /select-hose@2.0.0:

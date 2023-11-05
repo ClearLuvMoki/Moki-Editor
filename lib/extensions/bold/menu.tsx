@@ -25,7 +25,7 @@ export const BoldMenu = React.memo(({editor}: BoldMenuProps) => {
 
     return (
         <Button
-            type={isActive ? "primary" : "normal"}
+            active={isActive}
             onClick={() => {
                 toggleActive();
             }}

@@ -1,8 +1,9 @@
-import React, {forwardRef, useEffect, useImperativeHandle, useState} from 'react';
+import React, {forwardRef, useEffect, useImperativeHandle, useRef, useState} from 'react';
 import styled, {css} from "styled-components";
 import {SlashMenuItem} from "../../editor/EditorRender/base-kit/slash-commands.tsx";
 import {motion} from "framer-motion"
 import {Editor} from "@tiptap/core";
+import scrollIntoView from "scroll-into-view-if-needed";
 
 const StyledContainer = styled(motion.div)`
   width: 180px;
@@ -11,6 +12,21 @@ const StyledContainer = styled(motion.div)`
   box-shadow: 0px 0px 10px rgb(0 0 0 / 0.25);
   border-radius: 8px;
   background-color: #fff;
+
+  &::-webkit-scrollbar {
+    width: 6px !important;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: #BBBFC4;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 4px;
+    background: transparent;
+  }
 `
 
 const StyledTitle = styled.div`
@@ -48,6 +64,8 @@ const StyledItem = styled.div<{ active?: boolean }>`
 
 const SlashMenuView = forwardRef((props: { items: SlashMenuItem[], editor: Editor, command: any }, ref) => {
     const [selectAction, setSelectAction] = useState<string | undefined>();
+    const $container = useRef<HTMLDivElement>(null);
+
 
     useEffect(() => {
         if (props?.items?.length) {
@@ -55,15 +73,27 @@ const SlashMenuView = forwardRef((props: { items: SlashMenuItem[], editor: Edito
         }
     }, [props?.items])
 
+    useEffect(() => {
+        if (selectAction) {
+            const el = $container?.current?.querySelector(
+                `.SlashMenuView-${selectAction?.replace("/", "")}`
+            );
+            el && scrollIntoView(el, {behavior: "smooth", scrollMode: "if-needed"});
+        }
+
+    }, [selectAction]);
+
+
     const upHandler = () => {
         let lastAction;
         const selectActionIndex = props.items?.findIndex(action => action.slash === selectAction);
+        const firstActionIndex = props.items?.findIndex(action => !action.divider);
         for (let i = selectActionIndex; i > 0; i--) {
-            if (i < 0) {
+            if (i === firstActionIndex) {
                 lastAction = props.items[props.items.length - 1]?.divider ? props.items.findLast(d => !d.divider)?.slash : props.items[props.items.length - 1]?.slash
                 break;
             } else {
-                lastAction = props.items[i - 1]?.divider ? props.items.findLast(d => !d.divider)?.slash : props.items[i - 1]?.slash
+                lastAction = props.items[i - 1]?.divider ? props.items.slice(0, selectActionIndex).findLast(d => !d.divider)?.slash : props.items[i - 1]?.slash
                 break;
             }
         }
@@ -78,7 +108,7 @@ const SlashMenuView = forwardRef((props: { items: SlashMenuItem[], editor: Edito
                 nextAction = props.items[0]?.divider ? props.items.find(d => !d.divider)?.slash : props.items[0]?.slash
                 break;
             } else {
-                nextAction = props.items[i + 1]?.divider ? props.items.find(d => !d.divider)?.slash : props.items[i + 1]?.slash
+                nextAction = props.items[i + 1]?.divider ? props.items.slice(i + 1, props.items.length - 1).find(d => !d.divider)?.slash : props.items[i + 1]?.slash
                 break;
             }
         }
@@ -124,6 +154,7 @@ const SlashMenuView = forwardRef((props: { items: SlashMenuItem[], editor: Edito
         <StyledContainer
             initial={{opacity: 0, y: -10}}
             animate={{opacity: 1, y: 0}}
+            ref={$container}
         >
             {
                 props.items?.length > 0 && props.items?.map((item, index) => {
@@ -131,6 +162,7 @@ const SlashMenuView = forwardRef((props: { items: SlashMenuItem[], editor: Edito
                         <StyledTitle key={index}>{item.title}</StyledTitle>
                     ) : (<StyledItem
                         key={index}
+                        className={`SlashMenuView-${item.slash?.replace("/", "")}`}
                         active={selectAction === item.slash}
                         onClick={() => {
                             if (item.slash) {
