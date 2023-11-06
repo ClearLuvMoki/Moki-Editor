@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import deepEqual from "deep-equal";
 import {ButtonSize, StyledButton} from "./StyledButton";
 
@@ -8,13 +8,15 @@ export type ButtonProps = {
     children: React.ReactNode
     disabled?: boolean;
     active?: boolean;
+    className?: string;
 }
 
 const Button = React.memo((
-    {size = 'small',  onClick, children, disabled, active}: ButtonProps
+    {size = 'small', onClick, children, disabled, active, className = ""}: ButtonProps
 ) => {
     return (
         <StyledButton
+            className={className}
             disabled={disabled}
             active={active}
             size={size}

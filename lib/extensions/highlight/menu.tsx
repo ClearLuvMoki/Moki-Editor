@@ -5,7 +5,7 @@ import {Editor} from "@tiptap/core";
 import {useActive} from "../../hooks/useActive";
 import {Highlight} from "./core"
 import deepEqual from "deep-equal";
-import {Popover} from "@arco-design/web-react"
+import {Popover} from "antd"
 import ColorIconWrapper from "../../components/ColorWrapper";
 import ColorContent from "../../components/ColorContent";
 
@@ -28,7 +28,6 @@ export const HighlightMenu = React.memo(({editor}: HighlightMenuProps) => {
 
     return (
         <Popover
-            trigger={"click"}
             content={<ColorContent
                 defaultColor={"transparent"}
                 onColorChange={(color) => {
@@ -36,13 +35,15 @@ export const HighlightMenu = React.memo(({editor}: HighlightMenuProps) => {
                 }}
             />}
         >
-            <Button
-                active={isActive}
-            >
-                <ColorIconWrapper color={color}>
-                    <LuHighlighter/>
-                </ColorIconWrapper>
-            </Button>
+            <div style={{display: "inline-flex", justifyContent: 'center', alignItems: "center"}}>
+                <Button
+                    active={isActive}
+                >
+                    <ColorIconWrapper color={color}>
+                        <LuHighlighter/>
+                    </ColorIconWrapper>
+                </Button>
+            </div>
         </Popover>
     );
 }, (prevProps, nextProps) => {

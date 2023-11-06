@@ -3,7 +3,7 @@ import {NodeViewProps} from "@tiptap/core";
 import deepEqual from "deep-equal";
 import {NodeViewContent, NodeViewWrapper} from "@tiptap/react";
 import styled from "styled-components";
-import {Select} from "@arco-design/web-react";
+import { Select } from "antd"
 import {lowlight} from 'lowlight'
 
 

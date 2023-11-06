@@ -24,7 +24,6 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@arco-design/web-react": "^2.55.0",
     "@excalidraw/excalidraw": "^0.16.1",
     "@rollup/plugin-typescript": "^11.1.5",
     "@rspack/cli": "latest",
@@ -72,6 +71,7 @@
     "@typescript-eslint/parser": "^5.62.0",
     "@vitejs/plugin-react": "^4.1.0",
     "@vitejs/plugin-react-swc": "^3.4.1",
+    "antd": "^5.11.0",
     "deep-equal": "^2.2.2",
     "eslint": "^8.52.0",
     "eslint-plugin-react-hooks": "^4.6.0",

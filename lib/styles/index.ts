@@ -1,4 +1,3 @@
-import "@arco-design/web-react/dist/css/arco.css";
 import styled from "styled-components";
 
 export const StyledEditor = styled.div`
@@ -15,6 +14,7 @@ export const StyledEditor = styled.div`
 
   .Moki-Editor {
     padding: 10px 0;
+    outline: none;
   }
 
   *,

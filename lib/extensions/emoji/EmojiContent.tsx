@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import deepEqual from "deep-equal";
-import {Tabs} from '@arco-design/web-react';
+import {Tabs} from "antd";
 import styled from "styled-components";
 import {ACTIVITIES, EXPRESSIONES, GESTURES, OBJECTS, SKY_WEATHER, SYMBOLS} from "./constants.ts";
 import {motion} from "framer-motion";
@@ -19,8 +19,8 @@ const StyledContainer = styled.div`
 `
 const StyledHeader = styled.div`
   width: 100%;
+  padding: 0px 20px;
   height: 45px;
-  padding: 4px;
   box-sizing: border-box;
 `
 
@@ -104,14 +104,15 @@ const EmojiContent = React.memo(({onChange}: EmojiContentProps) => {
         <StyledContainer>
             <StyledHeader>
                 <Tabs
-                    defaultActiveTab='emoji'
+                    centered
+                    defaultValue={"emoji"}
                     onChange={(key) => {
                         handleChangeKeys(key)
                     }}
                 >
                     {
                         TabList.map(item => (
-                            <TabPane key={item.key} title={item.title}/>
+                            <TabPane key={item.key} tab={item.title}/>
                         ))
                     }
                 </Tabs>

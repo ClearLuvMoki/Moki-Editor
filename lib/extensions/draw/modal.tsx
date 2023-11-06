@@ -1,18 +1,124 @@
-import React from 'react';
+import React, {useCallback, useState} from 'react';
 import deepEqual from "deep-equal";
-import {Modal} from "@arco-design/web-react"
+import {Modal, Space, Button} from "antd"
 import {Excalidraw} from "@excalidraw/excalidraw";
+import styled from "styled-components";
+import {findNodeByBlockId} from "../../utils";
+import {Editor} from "@tiptap/core";
+import {Draw} from "./core.ts";
 
-const DrawModal = React.memo(() => {
+interface DrawModalProps {
+    editor: Editor;
+    blockId: string;
+    onCancel: () => void;
+}
+
+const StyleModal = styled(Modal)`
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  top: 0 !important;
+  padding: 0;
+
+  .ant-modal-content {
+    width: 100%;
+    height: 100%;
+  }
+
+  .ant-modal-body {
+    height: calc(100% - 25px - 45px);
+  }
+
+  .layer-ui__wrapper__top-right {
+    display: none;
+  }
+`
+
+const DrawModal = React.memo((
+    {
+        editor,
+        onCancel,
+        blockId
+    }: DrawModalProps
+) => {
+    const [data, setData] = useState({});
+
+    const onChange = (elements: any) => {
+        setTimeout(() => {
+            setData({
+                elements,
+                appState: {isLoading: false},
+            })
+        }, 0)
+    }
+
+    const onSave = () => {
+        let done = false;
+        if (blockId) {
+            const drawViewNode = findNodeByBlockId(
+                editor.state,
+                Draw.name,
+                blockId
+            );
+
+            if (drawViewNode) {
+                editor.commands.command(({tr}) => {
+                    tr.setNodeMarkup(drawViewNode.pos, undefined, {
+                        ...drawViewNode.node.attrs,
+                        data: JSON.stringify(data)
+                    });
+                    return true;
+                });
+                done = true;
+            }
+        }
+        if (!done) {
+            editor
+                .chain()
+                .focus()
+                .insertDraw({data: JSON.stringify(data)})
+                .run();
+            onCancel && onCancel();
+        }
+    }
+
     return (
-        <Modal
-            style={{
-                width: 500,
-                height: 500
+        <StyleModal
+            title='绘图'
+            open={true}
+            destroyOnClose={true}
+            onCancel={() => {
+                onCancel && onCancel()
             }}
+            footer={<Space>
+                <Button
+                    onClick={() => {
+                        onCancel && onCancel()
+                    }}
+                >退出</Button>
+                <Button
+                    type='primary'
+                    onClick={() => {
+                        onSave()
+                    }}
+                >保存并退出</Button>
+            </Space>}
         >
-            <Excalidraw/>
-        </Modal>
+            <Excalidraw
+                UIOptions={{
+                    canvasActions: {
+                        saveAsImage: false,
+                        saveToActiveFile: false,
+                        export: false,
+                        toggleTheme: false
+                    }
+                }}
+                onChange={(elements) => {
+                    onChange(elements)
+                }}
+            />
+        </StyleModal>
     );
 }, (prevProps, nextProps) => {
     return deepEqual(prevProps, nextProps);

@@ -3,7 +3,7 @@ import {Editor} from "@tiptap/core";
 import {useActive} from "../../hooks/useActive";
 import {Heading} from "./core"
 import deepEqual from "deep-equal";
-import {Select} from "@arco-design/web-react"
+import {Select} from "antd"
 import {Level} from "@tiptap/extension-heading";
 
 type HeadingOrParagraph = Level | 'paragraph';
@@ -62,9 +62,6 @@ export const HeadingMenu = React.memo(({editor}: HeadingMenuProps) => {
             options={SelectList}
             onChange={(value) => {
                 toggleActive(value)
-            }}
-            renderFormat={(option) => {
-                return SelectList.find(d => d?.value === option?.value)?.title
             }}
         />
     );

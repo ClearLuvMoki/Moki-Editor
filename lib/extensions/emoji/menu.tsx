@@ -1,5 +1,5 @@
 import React from 'react';
-import {Popover} from "@arco-design/web-react";
+import {Popover} from "antd";
 import Button from "../../components/Button";
 import {Editor} from "@tiptap/core";
 import {BsEmojiLaughing} from "react-icons/bs"
@@ -15,17 +15,6 @@ export const EmojiMenu = React.memo(({editor}: SuperscriptMenuProps) => {
 
     return (
         <Popover
-            unmountOnExit={false}
-            triggerProps={{
-                popupStyle: {
-                    padding: 0
-                },
-                style: {
-                    width: 350,
-                    padding: 0
-                }
-            }}
-            trigger='click'
             content={<EmojiContent
                 onChange={(emojiValue) => {
                     const {selection} = editor.state;
@@ -33,11 +22,17 @@ export const EmojiMenu = React.memo(({editor}: SuperscriptMenuProps) => {
                     editor.chain().insertContentAt($anchor.pos, emojiValue).run();
                 }}
             />}
+            overlayStyle={{
+                padding: 0,
+                width: 350,
+            }}
+            overlayInnerStyle={{padding: 0}}
         >
-            <Button
-            >
-                <BsEmojiLaughing/>
-            </Button>
+            <div style={{display: "inline-flex", justifyContent: 'center', alignItems: "center"}}>
+                <Button>
+                    <BsEmojiLaughing/>
+                </Button>
+            </div>
         </Popover>
     );
 }, (prevProps, nextProps) => {

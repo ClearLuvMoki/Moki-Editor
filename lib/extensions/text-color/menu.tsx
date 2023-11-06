@@ -5,7 +5,7 @@ import {Editor} from "@tiptap/core";
 import {useActive} from "../../hooks/useActive";
 import {TextColor} from "./core"
 import deepEqual from "deep-equal";
-import {Popover} from "@arco-design/web-react"
+import {Popover} from "antd"
 import ColorContent from "../../components/ColorContent";
 import ColorIconWrapper from "../../components/ColorWrapper";
 
@@ -28,20 +28,21 @@ export const TextColorMenu = React.memo(({editor}: TextColorMenuProps) => {
 
     return (
         <Popover
-            trigger={"click"}
             content={<ColorContent
                 onColorChange={(color) => {
                     toggleActive(color)
                 }}
             />}
         >
-            <Button
-                active={isActive}
-            >
-                <ColorIconWrapper color={color}>
-                    <ImTextColor/>
-                </ColorIconWrapper>
-            </Button>
+            <div style={{display: "inline-flex", justifyContent: 'center', alignItems: "center"}}>
+                <Button
+                    active={isActive}
+                >
+                    <ColorIconWrapper color={color}>
+                        <ImTextColor/>
+                    </ColorIconWrapper>
+                </Button>
+            </div>
         </Popover>
     );
 }, (prevProps, nextProps) => {

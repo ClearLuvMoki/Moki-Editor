@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {Popover, Space} from "@arco-design/web-react";
+import {Popover, Space} from "antd";
 import {Button} from "../../components"
 import {BiAlignLeft, BiAlignMiddle, BiAlignRight} from "react-icons/bi"
 import {Editor} from "@tiptap/core";
@@ -42,8 +42,7 @@ export const TextAlignMenu = ({editor}: SuperscriptMenuProps) => {
 
     return (
         <StyledPopover
-            trigger='click'
-            content={<Space size={"mini"}>
+            content={<Space>
                 <Button
                     active={isAlignLeft}
                     onClick={() => {
@@ -64,11 +63,13 @@ export const TextAlignMenu = ({editor}: SuperscriptMenuProps) => {
                 ><BiAlignRight/></Button>
             </Space>}
         >
-            <Button
-                active={isAlignRight || isAlignCenter}
-            >
-                {$Icon}
-            </Button>
+            <div style={{display: "inline-flex", justifyContent: 'center', alignItems: "center"}}>
+                <Button
+                    active={isAlignRight || isAlignCenter}
+                >
+                    {$Icon}
+                </Button>
+            </div>
         </StyledPopover>
     );
 };

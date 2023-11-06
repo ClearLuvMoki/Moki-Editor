@@ -2,7 +2,7 @@ import React, {useCallback, useMemo} from 'react';
 import {Editor} from "@tiptap/core";
 import {useActive} from "../../hooks/useActive";
 import deepEqual from "deep-equal";
-import {Select} from "@arco-design/web-react";
+import {Select} from "antd";
 
 type FontFamilyMenuProps = {
     editor: Editor
