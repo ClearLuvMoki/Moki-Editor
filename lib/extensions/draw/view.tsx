@@ -4,6 +4,7 @@ import styled from "styled-components";
 import React, {useEffect, useState} from "react";
 import {exportToSvg} from "@excalidraw/excalidraw";
 import {svgToDataURI} from "../../utils";
+import ResizableBox from "../../components/ResizableBox";
 
 const StyledContainer = styled.div`
   width: 100%;
@@ -23,7 +24,7 @@ const DrawView = React.memo((
     {
         node,
     }: NodeViewProps) => {
-    const {data} = node.attrs;
+    const {data, width, height} = node.attrs;
     const [svg, setSvg] = useState<any>(null);
 
 
@@ -39,10 +40,18 @@ const DrawView = React.memo((
 
     return (
         <NodeViewWrapper>
-            <StyledContainer
+            <ResizableBox
+                width={width}
+                height={height}
+                onResizeStop={() => {
+                    
+                }}
             >
-                <img src={svg}/>
-            </StyledContainer>
+                <StyledContainer
+                >
+                    <img src={svg}/>
+                </StyledContainer>
+            </ResizableBox>
         </NodeViewWrapper>
     )
 }, (prevProps, nextProps) => {
