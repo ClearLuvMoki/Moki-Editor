@@ -82,6 +82,7 @@
     "prosemirror-model": "^1.19.3",
     "prosemirror-state": "^1.4.3",
     "prosemirror-view": "^1.32.3",
+    "re-resizable": "^6.9.11",
     "react-i18next": "^13.3.1",
     "react-icons": "^4.11.0",
     "scroll-into-view-if-needed": "^3.1.0",
