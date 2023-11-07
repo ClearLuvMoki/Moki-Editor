@@ -1,16 +1,17 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import Button from "../../components/Button";
-import {Editor} from "@tiptap/core";
-import {BsPaintBucket} from "react-icons/bs"
+import {Editor, isNodeActive} from "@tiptap/core";
 import deepEqual from "deep-equal";
+import {Flow} from "./core.ts";
 import {handleDrawAction} from "./edit.tsx";
+import {TiFlowMerge} from "react-icons/ti";
 
-type DrawMenuProps = {
+type FlowMenuProps = {
     editor: Editor
 }
 
 
-export const DrawMenu = React.memo(({editor}: DrawMenuProps) => {
+export const FlowMenu = React.memo(({editor}: FlowMenuProps) => {
 
 
     return (
@@ -19,7 +20,7 @@ export const DrawMenu = React.memo(({editor}: DrawMenuProps) => {
                 handleDrawAction(editor)
             }}
         >
-            <BsPaintBucket size={20}/>
+            <TiFlowMerge size={20}/>
         </Button>
     );
 }, (prevProps, nextProps) => {

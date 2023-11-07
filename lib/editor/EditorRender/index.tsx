@@ -26,7 +26,8 @@ import {
     BlockCodeMenu,
     RedoMenu,
     UndoMenu,
-    DrawMenu
+    DrawMenu,
+    FlowMenu
 } from "../../extensions"
 import {ToolBarStyle} from "../../styles/ToolBarStyle.ts";
 
@@ -109,6 +110,7 @@ const EditorRender = forwardRef((props: EditorRenderProps, ref) => {
                         <TextColorMenu editor={editor}/>
                         <BlockCodeMenu editor={editor}/>
                         <DrawMenu editor={editor}/>
+                        <FlowMenu editor={editor}/>
                     </ToolBarStyle>
                 ))}
             </div>

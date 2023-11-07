@@ -85,6 +85,7 @@
     "re-resizable": "^6.9.11",
     "react-i18next": "^13.3.1",
     "react-icons": "^4.11.0",
+    "reactflow": "^11.9.4",
     "scroll-into-view-if-needed": "^3.1.0",
     "styled-components": "^6.1.0",
     "tippy.js": "^6.3.7",

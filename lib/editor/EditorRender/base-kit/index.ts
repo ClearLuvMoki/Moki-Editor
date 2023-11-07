@@ -37,6 +37,7 @@ import {
     History,
     createSlashExtension,
     Draw,
+    Flow
 } from "../../../extensions"
 import {SlashCommands} from "./slash-commands.tsx";
 
@@ -94,7 +95,8 @@ export const resolveEditorKit = (props: EditorKit) => {
             char: "/",
             items: SlashCommands
         }),
-        Draw
+        Flow,
+        Draw,
     ]
 
     return [
