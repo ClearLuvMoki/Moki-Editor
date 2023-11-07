@@ -17,11 +17,11 @@ interface ResizableBoxProps {
 }
 
 const StyledResizableBox = styled(Resizable)`
-  transition: all .2s;
-  z-index: 100;
+  border-radius: 10px;
+  border: 3px solid transparent;
 
   &:hover {
-    border: 1px solid #0065ff;
+    border: 3px solid #0065ff;
   }
 `
 

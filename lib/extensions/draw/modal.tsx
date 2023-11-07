@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react';
 import deepEqual from "deep-equal";
 import {Modal, Space, Button} from "antd"
 import {Excalidraw} from "@excalidraw/excalidraw";
@@ -6,10 +6,15 @@ import styled from "styled-components";
 import {findNodeByBlockId} from "../../utils";
 import {Editor} from "@tiptap/core";
 import {Draw} from "./core.ts";
+import {ExcalidrawAPIRefValue} from "@excalidraw/excalidraw/types/types";
 
 interface DrawModalProps {
     editor: Editor;
     blockId: string;
+    data: {
+        elements: unknown[];
+        appState: { isLoading: false };
+    } | null;
     onCancel: () => void;
 }
 
@@ -39,19 +44,31 @@ const DrawModal = React.memo((
     {
         editor,
         onCancel,
-        blockId
+        blockId,
+        data: outInData
     }: DrawModalProps
 ) => {
-    const [data, setData] = useState({});
+    const [drawApi, setDrawApi] = useState<ExcalidrawAPIRefValue | null>(null);
+    const [data, setData] = useState<any>({});
 
-    const onChange = (elements: any) => {
-        setTimeout(() => {
-            setData({
-                elements,
-                appState: {isLoading: false},
-            })
-        }, 0)
-    }
+
+    useEffect(() => {
+        if (outInData) {
+            drawApi?.readyPromise?.then(
+                (api) => {
+                    api.updateScene(outInData as any)
+                }
+            )
+        }
+    }, [outInData, drawApi]);
+
+
+    const onChange = useCallback((elements: any) => {
+        setData({
+            elements,
+            appState: {isLoading: false},
+        })
+    }, [])
 
     const onSave = () => {
         let done = false;
@@ -106,6 +123,7 @@ const DrawModal = React.memo((
             </Space>}
         >
             <Excalidraw
+                ref={(api: ExcalidrawAPIRefValue) => setDrawApi(api)}
                 UIOptions={{
                     canvasActions: {
                         saveAsImage: false,
@@ -115,7 +133,9 @@ const DrawModal = React.memo((
                     }
                 }}
                 onChange={(elements) => {
-                    onChange(elements)
+                    if (JSON.stringify(elements) !== JSON.stringify(data?.elements)) {
+                        onChange(elements)
+                    }
                 }}
             />
         </StyleModal>

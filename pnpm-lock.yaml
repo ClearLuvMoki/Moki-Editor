@@ -205,6 +205,9 @@ devDependencies:
   tippy.js:
     specifier: ^6.3.7
     version: 6.3.7
+  toggle-selection:
+    specifier: ^1.0.6
+    version: 1.0.6
   typescript:
     specifier: ^5.2.2
     version: 5.2.2

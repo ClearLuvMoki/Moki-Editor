@@ -2,14 +2,6 @@ import styled, {css} from "styled-components";
 import {ButtonProps} from "./index";
 
 
-export type ButtonSize = "small" | "normal" | "large";
-
-const SizeMap: Record<ButtonSize, number> = {
-    small: 4,
-    normal: 6,
-    large: 10
-};
-
 export const StyledButton = styled.button<ButtonProps>`
   width: 30px;
   height: 30px;
@@ -19,7 +11,7 @@ export const StyledButton = styled.button<ButtonProps>`
   justify-content: center;
   align-items: center;
 
-  padding: ${props => (props.size ? SizeMap[props.size] : 6)}px;
+  padding: 4px;
 
   background: ${props => props.active
           ? "rgb(213,213,213)"
