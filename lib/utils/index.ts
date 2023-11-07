@@ -57,3 +57,19 @@ export const findNodeByBlockId = (
 
     return target ? {node: target, pos} : null;
 };
+
+export function throttle(fn: any, wait: number) {
+    let inThrottle = false
+    return (...args: any) => {
+        // @ts-ignore
+        const context = this
+        if (!inThrottle) {
+            inThrottle = true
+            fn.apply(context, args)
+            setTimeout(() => {
+                inThrottle = false
+            }, wait)
+        }
+    }
+}
+
