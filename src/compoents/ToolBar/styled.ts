@@ -6,4 +6,12 @@ export const StyledContainer = styled.div`
     border-bottom: 1px solid #ccc;
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
+`
+
+export const StyledActions = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
 `

@@ -16,6 +16,7 @@
     "@nextui-org/react": "^2.2.10",
     "@rsbuild/core": "^0.6.0",
     "@rsbuild/plugin-react": "^0.6.0",
+    "@tiptap/extension-bold": "^2.3.0",
     "@tiptap/extension-document": "^2.3.0",
     "@tiptap/extension-paragraph": "^2.3.0",
     "@tiptap/extension-text": "^2.3.0",
@@ -24,6 +25,7 @@
     "@types/react-dom": "^18.2.24",
     "autoprefixer": "^10.4.19",
     "framer-motion": "^11.0.25",
+    "lucide-react": "^0.367.0",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.2"

@@ -1,6 +1,7 @@
-import { EditorContent, useEditor } from '@tiptap/react'
-import { Document, Paragraph, Text } from "../../extensions"
-import {StyledContainer} from "./styled"
+import {EditorContent, useEditor} from '@tiptap/react'
+import {Bold, Document, Paragraph, Text} from "../../extensions"
+import {StyledContainer, StyledEditor} from "./styled"
+import ToolBar from "../../compoents/ToolBar";
 
 
 const FullEditorRender = () => {
@@ -9,16 +10,21 @@ const FullEditorRender = () => {
             Document,
             Paragraph,
             Text,
+            Bold
         ],
     })
 
 
-    return <StyledContainer>
-        <EditorContent
-            editor={editor}
-        />
-        
-    </StyledContainer>
+    return <GlobalContextProvider>
+        <StyledContainer>
+            <ToolBar/>
+            <StyledEditor>
+                <EditorContent
+                    editor={editor}
+                />
+            </StyledEditor>
+        </StyledContainer>
+    </GlobalContextProvider>
 }
 
 export default FullEditorRender;

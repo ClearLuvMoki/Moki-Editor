@@ -28,6 +28,9 @@ devDependencies:
   '@rsbuild/plugin-react':
     specifier: ^0.6.0
     version: 0.6.0(@rsbuild/core@0.6.0)
+  '@tiptap/extension-bold':
+    specifier: ^2.3.0
+    version: 2.3.0(@tiptap/core@2.3.0)
   '@tiptap/extension-document':
     specifier: ^2.3.0
     version: 2.3.0(@tiptap/core@2.3.0)
@@ -52,6 +55,9 @@ devDependencies:
   framer-motion:
     specifier: ^11.0.25
     version: 11.0.25(react-dom@18.2.0)(react@18.2.0)
+  lucide-react:
+    specifier: ^0.367.0
+    version: 0.367.0(react@18.2.0)
   postcss:
     specifier: ^8.4.38
     version: 8.4.38
@@ -2773,6 +2779,14 @@ packages:
       '@tiptap/pm': 2.3.0
     dev: true
 
+  /@tiptap/extension-bold@2.3.0(@tiptap/core@2.3.0):
+    resolution: {integrity: sha512-SzkbJibHXFNU7TRaAebTtwbXUEhGZ8+MhlBn12aQ4QhdjNtFpQwKXQPyYeDyZGcyiOFgtFTb+WIfCGm8ZX0Fpw==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.3.0(@tiptap/pm@2.3.0)
+    dev: true
+
   /@tiptap/extension-bubble-menu@2.3.0(@tiptap/core@2.3.0)(@tiptap/pm@2.3.0):
     resolution: {integrity: sha512-dqyfQ8idTlhapvt0fxCGvkyjw92pBEwPqmkJ01h3EE8wTh53j0ytOHyMSf1KBuzardxpd8Yya3zlrAcR0Z3DlQ==}
     peerDependencies:
@@ -3494,6 +3508,14 @@ packages:
   /lru-cache@10.2.0:
     resolution: {integrity: sha512-2bIM8x+VAf6JT4bKAljS1qUWgMsqZRPGJS6FSahIMPVvctcNhyVp7AJu7quxOW9jwkryBReKZY5tY5JYv2n/7Q==}
     engines: {node: 14 || >=16.14}
+    dev: true
+
+  /lucide-react@0.367.0(react@18.2.0):
+    resolution: {integrity: sha512-3FWiBaJiqMrx5a1sjH3CVdPqWnw/Z/PTVeeTDmOeILSs+8Ah+VhCd4FQMeHo6Z0WxHcm9piIOtilQwvceiCCKQ==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
     dev: true
 
   /markdown-it@14.1.0:
