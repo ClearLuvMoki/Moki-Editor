@@ -18,3 +18,6 @@ export type Tools =
     | "strike"
     | "bulletList"
     | "orderedList"
+    | "textStyle"
+    | "undo"
+    | "redo"

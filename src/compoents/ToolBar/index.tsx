@@ -12,33 +12,39 @@ import {
     ListMinus,
     ListOrdered,
     List,
-    Quote
+    TextQuote, Undo2, Redo2, Pilcrow
 } from "lucide-react"
 import ActionButton from "./components/ActiveButton";
 import React, {useContext} from "react";
 import {Tools} from "../../constants/tools";
 import {Context} from "../../render/FullEditorRender/context";
-import {Popover, PopoverContent, PopoverTrigger} from "@nextui-org/react";
-import ColorSelect from "./components/ColorSelect";
+import ColorSelect, {handleGetActiveColor} from "./components/ColorSelect";
+import ActionPopover from "./components/ActionPopover";
+import {isDarkColor} from "../../utils/tool";
+import TextAlignSelect, {handleActiveTextAlign} from "./components/TextAlignSelect";
+import HeadingSelect, {handleGetActiveHeading} from "./components/HeadingSelect";
 
-const IconProps = {
+export const ToolbarIconProps = {
     size: 16
 }
 
-const ActionsArr: { icon: React.ReactNode, type?: Tools, popover?: React.ReactNode }[] = [
-    {icon: <Bold {...IconProps}/>, type: "bold",},
-    {icon: <Italic {...IconProps}/>, type: "italic"},
-    {icon: <Underline {...IconProps}/>, type: "underline"},
-    {icon: <Strikethrough {...IconProps}/>, type: "strike"},
-    {icon: <CodeXml {...IconProps}/>, type: "code"},
-    {icon: <Subscript {...IconProps}/>, type: "subscript"},
-    {icon: <Superscript {...IconProps}/>, type: "superscript"},
-    {icon: <Baseline {...IconProps}/>, popover: <ColorSelect/>},
-    {icon: <PaintRoller {...IconProps}/>},
-    {icon: <ListMinus {...IconProps}/>},
-    {icon: <ListOrdered {...IconProps}/>, type: "bulletList"},
-    {icon: <List {...IconProps}/>, type: "orderedList"},
-    {icon: <Quote {...IconProps}/>, type: "blockquote"},
+const ActionsArr: { icon: React.ReactNode, type: Tools, popover?: React.ReactNode }[] = [
+    {icon: <Undo2 {...ToolbarIconProps}/>, type: "undo",},
+    {icon: <Redo2 {...ToolbarIconProps}/>, type: "redo",},
+    {icon: <Pilcrow {...ToolbarIconProps}/>, type: "heading", popover: <HeadingSelect/>},
+    {icon: <Bold {...ToolbarIconProps}/>, type: "bold",},
+    {icon: <Italic {...ToolbarIconProps}/>, type: "italic"},
+    {icon: <Underline {...ToolbarIconProps}/>, type: "underline"},
+    {icon: <Strikethrough {...ToolbarIconProps}/>, type: "strike"},
+    {icon: <CodeXml {...ToolbarIconProps}/>, type: "code"},
+    {icon: <Subscript {...ToolbarIconProps}/>, type: "subscript"},
+    {icon: <Superscript {...ToolbarIconProps}/>, type: "superscript"},
+    {icon: <Baseline {...ToolbarIconProps}/>, type: "textStyle", popover: <ColorSelect type={"color"}/>},
+    {icon: <PaintRoller {...ToolbarIconProps}/>, type: "highlight", popover: <ColorSelect type={"highlight"}/>},
+    {icon: <ListMinus {...ToolbarIconProps}/>, type: "textAlign", popover: <TextAlignSelect/>},
+    {icon: <ListOrdered {...ToolbarIconProps}/>, type: "bulletList"},
+    {icon: <List {...ToolbarIconProps}/>, type: "orderedList"},
+    {icon: <TextQuote {...ToolbarIconProps}/>, type: "blockquote"}
 ]
 
 const ToolBar = () => {
@@ -74,35 +80,83 @@ const ToolBar = () => {
             case "orderedList": {
                 return editor?.chain()?.focus()?.toggleOrderedList()?.run();
             }
+            case "blockquote": {
+                return editor?.chain()?.focus()?.toggleBlockquote()?.run();
+            }
+            case "redo": {
+                return editor?.chain().focus().redo().run()
+            }
+            case "undo": {
+                return editor?.chain().focus().undo().run()
+            }
+        }
+    }
+
+    const handleRenderIcon = (type: Tools, icon: React.ReactNode) => {
+        switch (type) {
+            case "textAlign": {
+                return handleActiveTextAlign(editor)?.icon
+            }
+            case "heading": {
+                return handleGetActiveHeading(editor)?.icon
+            }
+            default: {
+                return icon
+            }
+        }
+    }
+
+    const handleDisabled = (type: Tools) => {
+        switch (type) {
+            case "redo": {
+                return !editor?.can().redo()
+            }
+            case "undo": {
+                return !editor?.can().undo()
+            }
+
         }
     }
 
     return <StyledContainer>
         <StyledActions>
             {
-                ActionsArr.map((item, index) => (
-                    <Popover
+                ActionsArr.map((item, index) => {
+                    const isPopover = !!item?.popover;
+                    const activeColor = handleGetActiveColor(editor, item?.type as any);
+                    const isActive = item?.type === "textAlign" || editor?.isActive(item?.type);
+                    return isPopover ? <ActionPopover
                         key={index}
-                        placement="bottom"
-                        showArrow={true}
-                    >
-                        <PopoverTrigger>
-                            <ActionButton
-                                isActive={item?.type ? editor?.isActive(item?.type) : false}
-                                onPress={() => {
-                                    if (item?.type) {
-                                        handleAction(item?.type)
-                                    }
-                                }}
-                            >
-                                {item.icon}
-                            </ActionButton>
-                        </PopoverTrigger>
-                        <PopoverContent style={{padding: 0}}>
-                            {item?.popover}
-                        </PopoverContent>
-                    </Popover>
-                ))
+                        action={<ActionButton
+                            isActive={isActive}
+                            style={["textStyle", "highlight"].includes(item?.type) && activeColor ? {
+                                backgroundColor: activeColor,
+                                color: isDarkColor(activeColor) ? "#fff" : "#000"
+                            } : {}}
+                            onPress={() => {
+                                if (item?.type) {
+                                    handleAction(item?.type)
+                                }
+                            }}
+                        >
+                            {handleRenderIcon(item?.type, item.icon)}
+                        </ActionButton>}
+                        popover={item.popover}
+                    /> : (
+                        <ActionButton
+                            key={index}
+                            disabled={handleDisabled(item.type)}
+                            isActive={isActive}
+                            onPress={() => {
+                                if (item?.type) {
+                                    handleAction(item?.type)
+                                }
+                            }}
+                        >
+                            {handleRenderIcon(item?.type, item.icon)}
+                        </ActionButton>
+                    )
+                })
             }
         </StyledActions>
     </StyledContainer>

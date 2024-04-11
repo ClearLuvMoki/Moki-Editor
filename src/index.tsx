@@ -5,7 +5,7 @@ import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
-  <NextUIProvider className="w-full h-full">
-    <App />
-  </NextUIProvider>,
+    <NextUIProvider className="w-full h-full">
+        <App/>
+    </NextUIProvider>,
 );

@@ -1,6 +1,6 @@
 export const Colors = [
     [
-        "#E6F1FE",
+        // "#E6F1FE",
         "#CCE3FD",
         "#99C7FB",
         "#66AAF9",
@@ -9,9 +9,9 @@ export const Colors = [
         "#005BC4",
         "#004493",
         "#002E62",
-        "#001731",
+        // "#001731"
     ], [
-        "#F2EAFA",
+        // "#F2EAFA",
         "#E4D4F4",
         "#C9A9E9",
         "#AE7EDE",
@@ -20,9 +20,9 @@ export const Colors = [
         "#6020A0",
         "#481878",
         "#301050",
-        "#180828",
+        // "#180828",
     ], [
-        "#E8FAF0",
+        // "#E8FAF0",
         "#D1F4E0",
         "#A2E9C1",
         "#74DFA2",
@@ -31,9 +31,9 @@ export const Colors = [
         "#12A150",
         "#0E793C",
         "#095028",
-        "#052814",
+        // "#052814",
     ], [
-        "#FEE7EF",
+        // "#FEE7EF",
         "#FDD0DF",
         "#FAA0BF",
         "#F871A0",
@@ -42,9 +42,9 @@ export const Colors = [
         "#C20E4D",
         "#920B3A",
         "#610726",
-        "#310413",
+        // "#310413",
     ], [
-        "#FFEDFA",
+        // "#FFEDFA",
         "#FFDCF5",
         "#FFB8EB",
         "#FF95E1",
@@ -53,9 +53,9 @@ export const Colors = [
         "#CC3EA4",
         "#992F7B",
         "#661F52",
-        "#331029",
+        // "#331029",
     ], [
-        "#FEFCE8",
+        // "#FEFCE8",
         "#FDEDD3",
         "#FBDBA7",
         "#F9C97C",
@@ -64,9 +64,9 @@ export const Colors = [
         "#C4841D",
         "#936316",
         "#62420E",
-        "#312107",
+        // "#312107",
     ], [
-        "#F0FCFF",
+        // "#F0FCFF",
         "#E6FAFE",
         "#D7F8FE",
         "#C3F4FD",
@@ -75,9 +75,9 @@ export const Colors = [
         "#06B7DB",
         "#09AACD",
         "#0E8AAA",
-        "#053B48",
+        // "#053B48",
     ], [
-        "#FAFAFA",
+        // "#FAFAFA",
         "#F4F4F5",
         "#E4E4E7",
         "#D4D4D8",
@@ -86,6 +86,6 @@ export const Colors = [
         "#52525B",
         "#3F3F46",
         "#27272A",
-        "#18181B",
+        // "#18181B",
     ]
 ]

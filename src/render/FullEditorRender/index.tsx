@@ -13,7 +13,13 @@ import {
     TextAlign,
     OrderedList,
     ListItem,
-    BulletList
+    BulletList,
+    TextStyle,
+    Color,
+    Highlight,
+    Heading,
+    Blockquote,
+    History
 } from "../../extensions"
 import {StyledContainer, StyledEditor} from "./styled"
 import ToolBar from "../../compoents/ToolBar";
@@ -24,8 +30,10 @@ const FullEditorRender = () => {
     const editor = useEditor({
         extensions: [
             Document,
+            Heading,
             Paragraph,
             Text,
+            TextStyle,
             Bold,
             Italic,
             Underline,
@@ -33,10 +41,21 @@ const FullEditorRender = () => {
             Strike,
             Subscript,
             Superscript,
-            TextAlign,
+            TextAlign.configure({
+                types: ['heading', 'paragraph'],
+                alignments: ['left', 'right', 'center'],
+            }),
             OrderedList,
             BulletList,
             ListItem,
+            Color,
+            Highlight.configure({
+                multicolor: true,
+            }),
+            Blockquote,
+            History.configure({
+                depth: 50,
+            })
         ],
     })
 
