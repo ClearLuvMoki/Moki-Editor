@@ -14,6 +14,10 @@ export const StyledEditor = styled.div`
         height: 100%;
 
         .ProseMirror {
+            > * + * {
+                margin-top: 0.75em;
+            }
+
             padding: 4rem 2rem 4rem 5rem;
             outline-width: 0;
             width: 100%;
@@ -21,6 +25,12 @@ export const StyledEditor = styled.div`
             word-wrap: break-word;
             white-space: break-spaces;
             position: relative;
+
+            ul,
+            ol {
+                list-style: revert;
+                padding: 0 1rem;
+            }
         }
     }
 `

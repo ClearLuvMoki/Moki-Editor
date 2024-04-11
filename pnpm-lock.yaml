@@ -31,13 +31,49 @@ devDependencies:
   '@tiptap/extension-bold':
     specifier: ^2.3.0
     version: 2.3.0(@tiptap/core@2.3.0)
+  '@tiptap/extension-bullet-list':
+    specifier: ^2.3.0
+    version: 2.3.0(@tiptap/core@2.3.0)
+  '@tiptap/extension-code':
+    specifier: ^2.3.0
+    version: 2.3.0(@tiptap/core@2.3.0)
   '@tiptap/extension-document':
+    specifier: ^2.3.0
+    version: 2.3.0(@tiptap/core@2.3.0)
+  '@tiptap/extension-highlight':
+    specifier: ^2.3.0
+    version: 2.3.0(@tiptap/core@2.3.0)
+  '@tiptap/extension-italic':
+    specifier: ^2.3.0
+    version: 2.3.0(@tiptap/core@2.3.0)
+  '@tiptap/extension-list-item':
+    specifier: ^2.3.0
+    version: 2.3.0(@tiptap/core@2.3.0)
+  '@tiptap/extension-ordered-list':
     specifier: ^2.3.0
     version: 2.3.0(@tiptap/core@2.3.0)
   '@tiptap/extension-paragraph':
     specifier: ^2.3.0
     version: 2.3.0(@tiptap/core@2.3.0)
+  '@tiptap/extension-strike':
+    specifier: ^2.3.0
+    version: 2.3.0(@tiptap/core@2.3.0)
+  '@tiptap/extension-subscript':
+    specifier: ^2.3.0
+    version: 2.3.0(@tiptap/core@2.3.0)
+  '@tiptap/extension-superscript':
+    specifier: ^2.3.0
+    version: 2.3.0(@tiptap/core@2.3.0)
   '@tiptap/extension-text':
+    specifier: ^2.3.0
+    version: 2.3.0(@tiptap/core@2.3.0)
+  '@tiptap/extension-text-align':
+    specifier: ^2.3.0
+    version: 2.3.0(@tiptap/core@2.3.0)
+  '@tiptap/extension-text-style':
+    specifier: ^2.3.0
+    version: 2.3.0(@tiptap/core@2.3.0)
+  '@tiptap/extension-underline':
     specifier: ^2.3.0
     version: 2.3.0(@tiptap/core@2.3.0)
   '@tiptap/react':
@@ -2798,6 +2834,22 @@ packages:
       tippy.js: 6.3.7
     dev: true
 
+  /@tiptap/extension-bullet-list@2.3.0(@tiptap/core@2.3.0):
+    resolution: {integrity: sha512-4nU4vJ5FjRDLqHm085vYAkuo68UK84Wl6CDSjm7sPVcu0FvQX02Okqt65azoSYQeS1SSSd5qq9YZuGWcYdp4Cw==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.3.0(@tiptap/pm@2.3.0)
+    dev: true
+
+  /@tiptap/extension-code@2.3.0(@tiptap/core@2.3.0):
+    resolution: {integrity: sha512-O2FZmosiIRoVbW82fZy8xW4h4gb2xAzxWzHEcsHPlwCbE3vYvcBMmbkQ5p+33eRtuRQInzl3Q/cwupv9ctIepQ==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.3.0(@tiptap/pm@2.3.0)
+    dev: true
+
   /@tiptap/extension-document@2.3.0(@tiptap/core@2.3.0):
     resolution: {integrity: sha512-WC55SMrtlsNOnHXpzbXDzJOp7eKmZV0rXooKmvCDqoiLO/DKpyQXyF+0UHfcRPmUAi2GWFPaer7+p1H9xzcjXg==}
     peerDependencies:
@@ -2817,6 +2869,38 @@ packages:
       tippy.js: 6.3.7
     dev: true
 
+  /@tiptap/extension-highlight@2.3.0(@tiptap/core@2.3.0):
+    resolution: {integrity: sha512-An/tzoCMbugdaU02ORJeJ74DZI5pf9oqwX9RoYPQ5K81Ia3jG52BBVtFjGq/j10Tr4iOuCmOuE+PzNtnzz3UIw==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.3.0(@tiptap/pm@2.3.0)
+    dev: true
+
+  /@tiptap/extension-italic@2.3.0(@tiptap/core@2.3.0):
+    resolution: {integrity: sha512-jdFjLjdt5JtPlGMpoS6TEq5rznjbAYVlPwcw5VkYENVIYIGIR1ylIw2JwK1nUEsQ+OgYwVxHLejcUXWG1dCi2g==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.3.0(@tiptap/pm@2.3.0)
+    dev: true
+
+  /@tiptap/extension-list-item@2.3.0(@tiptap/core@2.3.0):
+    resolution: {integrity: sha512-mHU+IuRa56OT6YCtxf5Z7OSUrbWdKhGCEX7RTrteDVs5oMB6W3oF9j88M5qQmZ1WDcxvQhAOoXctnMt6eX9zcA==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.3.0(@tiptap/pm@2.3.0)
+    dev: true
+
+  /@tiptap/extension-ordered-list@2.3.0(@tiptap/core@2.3.0):
+    resolution: {integrity: sha512-gkf0tltXjlUj0cqyfDV2r7xy9YPKtcVSWwlCPun6OOi0KzKFiAMqQpA9hy2W6gJ+KCp8+KNRMClZOfH4TnnBfg==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.3.0(@tiptap/pm@2.3.0)
+    dev: true
+
   /@tiptap/extension-paragraph@2.3.0(@tiptap/core@2.3.0):
     resolution: {integrity: sha512-peCpA7DFqkd0cHb+cHv4YHNoMsXG8tKFNJlCHpLmsZWl2hWmpKgKmUrXAUfzjcFSvkZxn0xYc5oWbqUgg+2LzA==}
     peerDependencies:
@@ -2825,8 +2909,56 @@ packages:
       '@tiptap/core': 2.3.0(@tiptap/pm@2.3.0)
     dev: true
 
+  /@tiptap/extension-strike@2.3.0(@tiptap/core@2.3.0):
+    resolution: {integrity: sha512-gOW4ALeH8gkJiUGGXVy/AOd5lAPTX0bzoOW1+sCLcTA7t8dluBW7M2ngNYxTEtlKqyv7aLfrgsYSiqucmmfSLw==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.3.0(@tiptap/pm@2.3.0)
+    dev: true
+
+  /@tiptap/extension-subscript@2.3.0(@tiptap/core@2.3.0):
+    resolution: {integrity: sha512-yABeLpyx0nuSraGBaOoD4yayJM/7zy/LT1NGFsxwf4mNsCvjnUjSKg7vYljmiAHLDyxABwZQerWnpdwmN4Rnzg==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.3.0(@tiptap/pm@2.3.0)
+    dev: true
+
+  /@tiptap/extension-superscript@2.3.0(@tiptap/core@2.3.0):
+    resolution: {integrity: sha512-M6ZIacIBPEJ01F3WsumoqzaccOPd4EIEQhZX3jD/2GYvWNn/2Is3ZdDvftcoOwup4D0ybM7GzbVesQMvht1vpg==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.3.0(@tiptap/pm@2.3.0)
+    dev: true
+
+  /@tiptap/extension-text-align@2.3.0(@tiptap/core@2.3.0):
+    resolution: {integrity: sha512-Pj+Yuk8xpYLGxNKGRUwvjlrOQP66ZyzjpJN5xqjJ7anzb2OKrluWMBco3xhjd/h03viA+wYeJKfnEpk/SbzHTQ==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.3.0(@tiptap/pm@2.3.0)
+    dev: true
+
+  /@tiptap/extension-text-style@2.3.0(@tiptap/core@2.3.0):
+    resolution: {integrity: sha512-S+sQZqd+QtJjbZ0LOp0Krf0dlrdMx7BQL0sUNKPq8XXRMcfW0pEEFGIU/0VDFQCldLIuyd7lZ8zo5cjaAgskIA==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.3.0(@tiptap/pm@2.3.0)
+    dev: true
+
   /@tiptap/extension-text@2.3.0(@tiptap/core@2.3.0):
     resolution: {integrity: sha512-zkudl0TyKRy/8vHtyo5dMzjBRD0HEUnsS8YOsjR4xwQq5EYUXleRgM1s6lb6Yms2sLUAZRWdDddoQ686iq4zQg==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.3.0(@tiptap/pm@2.3.0)
+    dev: true
+
+  /@tiptap/extension-underline@2.3.0(@tiptap/core@2.3.0):
+    resolution: {integrity: sha512-vmmcwCPmWqGKYHZevz50+bxrpHyiu5y6YZweAE476hn8Mud6vYg7RpkXgW8bjkCOky6UA51uelslSc0XrLE6uw==}
     peerDependencies:
       '@tiptap/core': ^2.0.0
     dependencies:

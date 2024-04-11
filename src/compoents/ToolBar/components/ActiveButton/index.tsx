@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import {StyledActionButton} from "./styled";
 
 interface Props {
@@ -7,9 +7,11 @@ interface Props {
     children: React.ReactNode;
 }
 
-const ActionButton = ({isActive = false, onPress, children}: Props) => {
+const ActionButton = forwardRef<HTMLButtonElement, Props>(({isActive = false, onPress, children, ...props}: Props, ref) => {
     return (
         <StyledActionButton
+            {...props}
+            ref={ref}
             isIconOnly={true}
             size={"sm"}
             variant={isActive ? "shadow" : "light"}
@@ -18,6 +20,6 @@ const ActionButton = ({isActive = false, onPress, children}: Props) => {
             {children}
         </StyledActionButton>
     );
-};
+});
 
 export default ActionButton;

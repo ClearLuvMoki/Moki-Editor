@@ -1,7 +1,23 @@
 import {EditorContent, useEditor} from '@tiptap/react'
-import {Bold, Document, Paragraph, Text} from "../../extensions"
+import {
+    Bold,
+    Document,
+    Italic,
+    Paragraph,
+    Text,
+    Underline,
+    Code,
+    Strike,
+    Subscript,
+    Superscript,
+    TextAlign,
+    OrderedList,
+    ListItem,
+    BulletList
+} from "../../extensions"
 import {StyledContainer, StyledEditor} from "./styled"
 import ToolBar from "../../compoents/ToolBar";
+import GlobalContextProvider from "./context";
 
 
 const FullEditorRender = () => {
@@ -10,12 +26,24 @@ const FullEditorRender = () => {
             Document,
             Paragraph,
             Text,
-            Bold
+            Bold,
+            Italic,
+            Underline,
+            Code,
+            Strike,
+            Subscript,
+            Superscript,
+            TextAlign,
+            OrderedList,
+            BulletList,
+            ListItem,
         ],
     })
 
 
-    return <GlobalContextProvider>
+    return <GlobalContextProvider
+        editor={editor}
+    >
         <StyledContainer>
             <ToolBar/>
             <StyledEditor>

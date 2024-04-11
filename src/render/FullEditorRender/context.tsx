@@ -7,10 +7,12 @@ interface Props {
 }
 
 interface ContextState {
-    editor: Editor;
+    editor: Editor | null;
 }
 
-const Context = createContext<ContextState>(null);
+export const Context = createContext<ContextState>({
+    editor: null
+});
 
 const GlobalContextProvider = ({editor, children}: ContextState & Props) => {
     return <Context.Provider
