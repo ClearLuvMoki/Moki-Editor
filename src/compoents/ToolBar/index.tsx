@@ -4,7 +4,6 @@ import {
     Italic,
     Underline,
     Strikethrough,
-    CodeXml,
     Subscript,
     Superscript,
     Baseline,
@@ -12,7 +11,7 @@ import {
     ListMinus,
     ListOrdered,
     List,
-    TextQuote, Undo2, Redo2, Pilcrow
+    TextQuote, Undo2, Redo2, Pilcrow, Braces
 } from "lucide-react"
 import ActionButton from "./components/ActiveButton";
 import React, {useContext} from "react";
@@ -36,7 +35,7 @@ const ActionsArr: { icon: React.ReactNode, type: Tools, popover?: React.ReactNod
     {icon: <Italic {...ToolbarIconProps}/>, type: "italic"},
     {icon: <Underline {...ToolbarIconProps}/>, type: "underline"},
     {icon: <Strikethrough {...ToolbarIconProps}/>, type: "strike"},
-    {icon: <CodeXml {...ToolbarIconProps}/>, type: "code"},
+    {icon: <Braces {...ToolbarIconProps}/>, type: "code"},
     {icon: <Subscript {...ToolbarIconProps}/>, type: "subscript"},
     {icon: <Superscript {...ToolbarIconProps}/>, type: "superscript"},
     {icon: <Baseline {...ToolbarIconProps}/>, type: "textStyle", popover: <ColorSelect type={"color"}/>},
@@ -66,7 +65,7 @@ const ToolBar = () => {
                 return editor?.chain()?.focus()?.toggleStrike()?.run();
             }
             case "code": {
-                return editor?.chain()?.focus()?.toggleCode()?.run();
+                return editor?.chain()?.focus()?.toggleCodeBlock()?.run();
             }
             case "subscript": {
                 return editor?.chain()?.focus()?.toggleSubscript()?.run();

@@ -19,7 +19,8 @@ import {
     Highlight,
     Heading,
     Blockquote,
-    History
+    History,
+    CodeBlockLowlight, Placeholder, Slash
 } from "../../extensions"
 import {StyledContainer, StyledEditor} from "./styled"
 import ToolBar from "../../compoents/ToolBar";
@@ -55,7 +56,10 @@ const FullEditorRender = () => {
             Blockquote,
             History.configure({
                 depth: 50,
-            })
+            }),
+            CodeBlockLowlight,
+            Placeholder,
+            Slash
         ],
     })
 

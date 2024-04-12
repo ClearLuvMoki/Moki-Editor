@@ -19,6 +19,7 @@ export const handleActiveTextAlign = (editor: Editor | null) => {
                 return AlignArr[i]
             }
         }
+        return AlignArr[0]
     }
 }
 
