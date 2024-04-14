@@ -20,7 +20,17 @@ import {
     Heading,
     Blockquote,
     History,
-    CodeBlockLowlight, Placeholder, Slash
+    CodeBlockLowlight,
+    Placeholder,
+    Slash,
+    TableRow,
+    Table,
+    TableHeader,
+    TableCell,
+    Gapursor,
+    TaskList,
+    TaskItem,
+    ListKeymap,
 } from "../../extensions"
 import {StyledContainer, StyledEditor} from "./styled"
 import ToolBar from "../../compoents/ToolBar";
@@ -59,7 +69,15 @@ const FullEditorRender = () => {
             }),
             CodeBlockLowlight,
             Placeholder,
-            Slash
+            Slash,
+            Table,
+            TableHeader,
+            TableCell,
+            TableRow,
+            Gapursor,
+            TaskList,
+            TaskItem,
+            ListKeymap
         ],
     })
 
