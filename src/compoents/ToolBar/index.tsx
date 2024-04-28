@@ -11,7 +11,7 @@ import {
     ListMinus,
     ListOrdered,
     List,
-    TextQuote, Undo2, Redo2, Pilcrow, Braces
+    TextQuote, Undo2, Redo2, Pilcrow, Braces, Sheet
 } from "lucide-react"
 import ActionButton from "./components/ActiveButton";
 import React, {useContext} from "react";
@@ -38,6 +38,7 @@ const ActionsArr: { icon: React.ReactNode, type: Tools, popover?: React.ReactNod
     {icon: <Braces {...ToolbarIconProps}/>, type: "code"},
     {icon: <Subscript {...ToolbarIconProps}/>, type: "subscript"},
     {icon: <Superscript {...ToolbarIconProps}/>, type: "superscript"},
+    {icon: <Sheet {...ToolbarIconProps}/>, type: "table"},
     {icon: <Baseline {...ToolbarIconProps}/>, type: "textStyle", popover: <ColorSelect type={"color"}/>},
     {icon: <PaintRoller {...ToolbarIconProps}/>, type: "highlight", popover: <ColorSelect type={"highlight"}/>},
     {icon: <ListMinus {...ToolbarIconProps}/>, type: "textAlign", popover: <TextAlignSelect/>},
@@ -87,6 +88,9 @@ const ToolBar = () => {
             }
             case "undo": {
                 return editor?.chain().focus().undo().run()
+            }
+            case "table": {
+                return editor?.chain().focus().insertTable({rows: 3, cols: 3, withHeaderRow: true}).run()
             }
         }
     }
