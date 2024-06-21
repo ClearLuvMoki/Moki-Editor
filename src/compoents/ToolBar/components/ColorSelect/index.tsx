@@ -36,7 +36,6 @@ const ColorSelect = ({type}: Props) => {
                 return editor?.chain().focus()?.setColor(color).run()
             }
             case "highlight": {
-                console.log(color)
                 return editor?.chain().focus()?.setHighlight({color})?.run()
             }
         }
