@@ -1,5 +1,5 @@
 import {mergeAttributes, Node, ReactNodeViewRenderer} from '@tiptap/react'
-import DrawNode from "../Node/DrawNode";
+import DrawNode from "../nodes/DrawNode";
 
 
 export default Node.create({

@@ -1,6 +1,6 @@
 import {Editor, ReactRenderer} from "@tiptap/react";
 import {Range} from "@tiptap/core";
-import SlashNode, {SlashNodeRef} from "../Node/SlashNode";
+import SlashNode, {SlashNodeRef} from "../nodes/SlashNode";
 import tippy, {Instance, Props} from "tippy.js"
 import Commands from "./commands";
 // @ts-ignore

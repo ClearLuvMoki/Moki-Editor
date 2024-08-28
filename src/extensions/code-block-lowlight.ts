@@ -1,7 +1,7 @@
 import {CodeBlockLowlight as _Code} from '@tiptap/extension-code-block-lowlight'
 import {ReactNodeViewRenderer} from "@tiptap/react";
 import {createLowlight, all} from 'lowlight'
-import CodeBlockNode from "../Node/CodeBlockNode";
+import CodeBlockNode from "../nodes/CodeBlockNode";
 
 const lowlight = createLowlight(all);
 

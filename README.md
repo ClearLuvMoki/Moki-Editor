@@ -1,19 +1,29 @@
-# Moki Editor
+# Rsbuild Project
 
+## Setup
 
-> tiptap + nextui
- 
+Install the dependencies:
 
-## Function
-+ Heading
-+ Code Block
-+ Text Style
-+ Slash
-+ Table
-+ Task List
-+ Bullet List
-+ Order List
-+ History
-+ Placeholder
+```bash
+pnpm install
+```
 
+## Get Started
 
+Start the dev server:
+
+```bash
+pnpm dev
+```
+
+Build the app for production:
+
+```bash
+pnpm build
+```
+
+Preview the production build locally:
+
+```bash
+pnpm preview
+```
