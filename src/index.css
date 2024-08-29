@@ -8,6 +8,7 @@
 @import "./styles/blocks.css";
 @import "./styles/placeholder.css";
 @import "./styles/horizontal-rule.css";
+@import "./styles/excalidraw.css";
 
 
 @layer base {

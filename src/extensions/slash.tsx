@@ -15,7 +15,8 @@ import {
     Sheet,
     SquareCheckBig,
     ImageUp,
-    Minus
+    Minus,
+    PencilRuler,
 } from "lucide-react";
 
 const IconProps = {
@@ -95,6 +96,30 @@ const SlashItems = {
                         .deleteRange(range)
                         .setColumns()
                         .focus(editor.state.selection.head - 1)
+                        .run()
+                },
+            },
+            {
+                title: 'Draw',
+                icon: <PencilRuler {...IconProps}/>,
+                command: ({editor, range}: { editor: Editor, range: Range }) => {
+                    editor
+                        ?.chain()
+                        .focus()
+                        .deleteRange(range)
+                        .insertExcalidraw()
+                        .run()
+                },
+            },
+            {
+                title: 'Flow',
+                icon: <PencilRuler {...IconProps}/>,
+                command: ({editor, range}: { editor: Editor, range: Range }) => {
+                    editor
+                        ?.chain()
+                        .focus()
+                        .deleteRange(range)
+                        .insertFlow()
                         .run()
                 },
             },

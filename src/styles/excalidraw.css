@@ -1,0 +1,14 @@
+.excalidraw-container {
+
+    label[title="Library"] {
+        display: none !important;
+    }
+
+    .help-icon {
+        display: none !important;
+    }
+
+    .main-menu-trigger {
+        display: none !important;
+    }
+}

@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import {EditorContent, useEditor} from '@tiptap/react'
+import { useRef, useState } from 'react';
+import { EditorContent, useEditor } from '@tiptap/react'
 import {
     Bold,
     Document,
@@ -32,15 +32,24 @@ import {
     TaskList,
     TaskItem,
     ListKeymap, MultiColumn, MultiColumns, Focus,
-    Image, ImageBlock, ImageUpload,HorizontalRule
+    Image, ImageBlock, ImageUpload, HorizontalRule, Excalidraw, Flow
 } from "../../extensions"
 import ToolBar from "../../components/tool-bar";
-import GlobalContextProvider from "./context";
-import {TableRowMenu,TableColumnMenu,ColumnsBubbleMenu, ImageBlockMenu} from "../../bubble-menu";
+import GlobalContextProvider, { ExcalidrawModalState, FlowModalState } from "./context";
+import { TableRowMenu, TableColumnMenu, ColumnsBubbleMenu, ImageBlockMenu, ExcalidrawBubbleMenu, FlowBubbleMnu } from "../../bubble-menu";
+import { ExcalidrawModal, FlowModal } from '../../modal';
 
 
 const FullEditorRender = () => {
     const containerRef = useRef<HTMLDivElement>(null)
+    const [excalidrawModalState, setExcalidrawModalState] = useState<ExcalidrawModalState>({
+        open: false,
+        data: null
+    })
+    const [flowModalState, setFlowModalState] = useState<FlowModalState>({
+        open: false,
+        data: ""
+    })
     const editor = useEditor({
         extensions: [
             Document,
@@ -89,28 +98,38 @@ const FullEditorRender = () => {
             ListKeymap,
             Focus,
             Image,
-            ImageBlock, 
+            ImageBlock,
             ImageUpload,
-            HorizontalRule
+            HorizontalRule,
+            Excalidraw,
+            Flow
         ],
     })
 
 
     return <GlobalContextProvider
         editor={editor}
+        excalidrawModalState={excalidrawModalState}
+        flowModalState={flowModalState}
+        setFlowModalState={setFlowModalState}
+        setExcalidrawModalState={setExcalidrawModalState}
     >
         <div className="w-full h-full">
-            <ToolBar/>
+            <ToolBar />
             <div className="moki-editor-container" ref={containerRef}>
                 <EditorContent
                     editor={editor}
                 />
-                <TableRowMenu editor={editor} appendTo={containerRef}/>
-                <TableColumnMenu editor={editor} appendTo={containerRef}/>
-                <ColumnsBubbleMenu editor={editor} appendTo={containerRef}/>
-                <ImageBlockMenu editor={editor} appendTo={containerRef}/>
+                <TableRowMenu editor={editor} appendTo={containerRef} />
+                <TableColumnMenu editor={editor} appendTo={containerRef} />
+                <ColumnsBubbleMenu editor={editor} appendTo={containerRef} />
+                <ImageBlockMenu editor={editor} appendTo={containerRef} />
+                <ExcalidrawBubbleMenu editor={editor} appendTo={containerRef} />
+                <FlowBubbleMnu editor={editor} appendTo={containerRef} />
             </div>
         </div>
+        <ExcalidrawModal editor={editor} />
+        <FlowModal editor={editor} />
     </GlobalContextProvider>
 }
 

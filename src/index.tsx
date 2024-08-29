@@ -1,5 +1,4 @@
 import "./index.css"
-import React from 'react';
 import {NextUIProvider} from "@nextui-org/react";
 import ReactDOM from 'react-dom/client';
 import {ThemeProvider as NextThemesProvider} from "next-themes";

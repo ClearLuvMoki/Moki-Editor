@@ -14,7 +14,7 @@ interface ImageBlockViewProps {
   updateAttributes: (attrs: Record<string, string>) => void
 }
 
-export const ImageBlockView = (props: ImageBlockViewProps) => {
+const ImageBlockNode = (props: ImageBlockViewProps) => {
   const { editor, getPos, node } = props
   const imageWrapperRef = useRef<HTMLDivElement>(null)
   const { src } = node.attrs
@@ -40,4 +40,4 @@ export const ImageBlockView = (props: ImageBlockViewProps) => {
   )
 }
 
-export default ImageBlockView
+export default ImageBlockNode

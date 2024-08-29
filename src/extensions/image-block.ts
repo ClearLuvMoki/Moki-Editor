@@ -1,6 +1,6 @@
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { mergeAttributes, Range } from '@tiptap/core'
-import { ImageBlockView } from "../nodes/ImageBlockNode"
+import ImageBlockNode from "../nodes/ImageBlockNode"
 import Image from './image'
 
 declare module '@tiptap/core' {
@@ -95,7 +95,7 @@ const ImageBlock = Image.extend({
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer(ImageBlockView)
+    return ReactNodeViewRenderer(ImageBlockNode)
   },
 })
 
