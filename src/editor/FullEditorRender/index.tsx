@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import {EditorContent, useEditor, BubbleMenu} from '@tiptap/react'
+import {EditorContent, useEditor} from '@tiptap/react'
 import {
     Bold,
     Document,
@@ -31,11 +31,12 @@ import {
     Gapursor,
     TaskList,
     TaskItem,
-    ListKeymap,
+    ListKeymap, MultiColumn, MultiColumns, Focus,
+    Image, ImageBlock, ImageUpload,HorizontalRule
 } from "../../extensions"
 import ToolBar from "../../components/tool-bar";
 import GlobalContextProvider from "./context";
-import {TableRowMenu,TableColumnMenu} from "../../bubble-menu";
+import {TableRowMenu,TableColumnMenu,ColumnsBubbleMenu, ImageBlockMenu} from "../../bubble-menu";
 
 
 const FullEditorRender = () => {
@@ -43,6 +44,8 @@ const FullEditorRender = () => {
     const editor = useEditor({
         extensions: [
             Document,
+            MultiColumn,
+            MultiColumns,
             Heading,
             Paragraph,
             Text,
@@ -70,7 +73,11 @@ const FullEditorRender = () => {
                 depth: 50,
             }),
             CodeBlockLowlight,
-            Placeholder,
+            Placeholder.configure({
+                includeChildren: true,
+                showOnlyCurrent: false,
+                placeholder: () => '',
+            }),
             Slash,
             Table,
             TableHeader,
@@ -79,7 +86,12 @@ const FullEditorRender = () => {
             Gapursor,
             TaskList,
             TaskItem,
-            ListKeymap
+            ListKeymap,
+            Focus,
+            Image,
+            ImageBlock, 
+            ImageUpload,
+            HorizontalRule
         ],
     })
 
@@ -95,6 +107,8 @@ const FullEditorRender = () => {
                 />
                 <TableRowMenu editor={editor} appendTo={containerRef}/>
                 <TableColumnMenu editor={editor} appendTo={containerRef}/>
+                <ColumnsBubbleMenu editor={editor} appendTo={containerRef}/>
+                <ImageBlockMenu editor={editor} appendTo={containerRef}/>
             </div>
         </div>
     </GlobalContextProvider>

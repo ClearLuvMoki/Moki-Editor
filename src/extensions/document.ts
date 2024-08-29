@@ -1,3 +1,7 @@
-import { Document } from "@tiptap/extension-document"
+import { Document as _Document } from '@tiptap/extension-document'
 
-export default Document;
+export const Document = _Document.extend({
+    content: '(block|columns)+',
+})
+
+export default Document

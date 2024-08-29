@@ -5,14 +5,29 @@ import tippy, {Instance, Props} from "tippy.js"
 import Commands from "./commands";
 // @ts-ignore
 import {SuggestionKeyDownProps, SuggestionProps} from "@tiptap/suggestion/dist/packages/suggestion/src/suggestion";
-import {Braces, Heading1, Heading2, Heading3, Heading4, Sheet, SquareCheck, SquareCheckBig} from "lucide-react";
+import {
+    Braces,
+    Columns2,
+    Heading1,
+    Heading2,
+    Heading3,
+    Heading4,
+    Sheet,
+    SquareCheckBig,
+    ImageUp,
+    Minus
+} from "lucide-react";
+
+const IconProps = {
+    size: 16
+}
 
 const SlashItems = {
     items: () => {
         return [
             {
                 title: 'Heading1',
-                icon: <Heading1/>,
+                icon: <Heading1 {...IconProps}/>,
                 command: ({editor, range}: { editor: Editor, range: Range }) => {
                     editor
                         ?.chain()
@@ -24,7 +39,7 @@ const SlashItems = {
             },
             {
                 title: 'Heading2',
-                icon: <Heading2/>,
+                icon: <Heading2 {...IconProps}/>,
                 command: ({editor, range}: { editor: Editor, range: Range }) => {
                     editor
                         ?.chain()
@@ -36,7 +51,7 @@ const SlashItems = {
             },
             {
                 title: 'Heading3',
-                icon: <Heading3/>,
+                icon: <Heading3 {...IconProps}/>,
                 command: ({editor, range}: { editor: Editor, range: Range }) => {
                     editor
                         ?.chain()
@@ -48,7 +63,7 @@ const SlashItems = {
             },
             {
                 title: 'Heading4',
-                icon: <Heading4/>,
+                icon: <Heading4 {...IconProps}/>,
                 command: ({editor, range}: { editor: Editor, range: Range }) => {
                     editor
                         ?.chain()
@@ -60,7 +75,7 @@ const SlashItems = {
             },
             {
                 title: 'CodeBlock',
-                icon: <Braces/>,
+                icon: <Braces {...IconProps}/>,
                 command: ({editor, range}: { editor: Editor, range: Range }) => {
                     editor
                         ?.chain()
@@ -71,8 +86,33 @@ const SlashItems = {
                 },
             },
             {
+                title: 'Multi Columns',
+                icon: <Columns2 {...IconProps}/>,
+                command: ({editor, range}: { editor: Editor, range: Range }) => {
+                    editor
+                        .chain()
+                        .focus()
+                        .deleteRange(range)
+                        .setColumns()
+                        .focus(editor.state.selection.head - 1)
+                        .run()
+                },
+            },
+            {
+                title: 'Image',
+                icon: <ImageUp {...IconProps}/>,
+                command: ({editor, range}: { editor: Editor, range: Range }) => {
+                    editor
+                        ?.chain()
+                        .focus()
+                        .deleteRange(range)
+                        .setImageUpload()
+                        .run()
+                },
+            },
+            {
                 title: 'Table',
-                icon: <Sheet/>,
+                icon: <Sheet {...IconProps}/>,
                 command: ({editor, range}: { editor: Editor, range: Range }) => {
                     editor
                         ?.chain()
@@ -83,8 +123,20 @@ const SlashItems = {
                 },
             },
             {
+                title: 'HorizontalRule',
+                icon: <Minus {...IconProps}/>,
+                command: ({editor, range}: { editor: Editor, range: Range }) => {
+                    editor
+                        ?.chain()
+                        .focus()
+                        .deleteRange(range)
+                        .setHorizontalRule()
+                        .run()
+                },
+            },
+            {
                 title: 'Task',
-                icon: <SquareCheckBig/>,
+                icon: <SquareCheckBig {...IconProps}/>,
                 command: ({editor, range}: { editor: Editor, range: Range }) => {
                     editor
                         ?.chain()

@@ -1,5 +1,7 @@
+import 'mac-scrollbar/dist/mac-scrollbar.css';
 import React, {forwardRef, useImperativeHandle, useState} from 'react';
-import {Listbox, ListboxItem} from "@nextui-org/react";
+import {cn, Listbox, ListboxItem} from "@nextui-org/react";
+import {MacScrollbar} from "mac-scrollbar"
 // @ts-ignore
 import {SuggestionProps} from "@tiptap/suggestion/src/suggestion";
 // @ts-ignore
@@ -11,7 +13,7 @@ export interface SlashNodeRef {
 }
 
 const SlashNode = forwardRef<SlashNodeRef, SuggestionProps>((props, ref) => {
-    const {items, command} = props;
+    const {items} = props;
     const [selectIndex, setSelectIndex] = useState(0);
 
     useImperativeHandle(ref, () => {
@@ -42,12 +44,16 @@ const SlashNode = forwardRef<SlashNodeRef, SuggestionProps>((props, ref) => {
     })
 
     const handleArrowUp = () => {
-        setSelectIndex((selectIndex + (items || []).length - 1) % (items || [])?.length)
+        const index = (selectIndex + (items || []).length - 1) % (items || [])?.length
+        setSelectIndex(index)
+        scrollTo(index)
     }
 
 
     const handleArrowDown = () => {
-        setSelectIndex((selectIndex + 1) % (items || []).length)
+        const index = (selectIndex + 1) % (items || []).length
+        setSelectIndex(index)
+        scrollTo(index)
     }
 
     const handleSelect = () => {
@@ -60,8 +66,15 @@ const SlashNode = forwardRef<SlashNodeRef, SuggestionProps>((props, ref) => {
         item?.command(props);
     }
 
+    const scrollTo = (idx: number) => {
+        document.querySelectorAll('.extensions-item')[idx].scrollIntoView({behavior: 'smooth'});
+    }
+
     return (
-        <div className="w-[150px] bg-white relative rounded-xl overflow-hidden text-sm shadow-xl">
+        <MacScrollbar
+            suppressScrollX={false}
+            className="w-[150px] max-h-[200px] bg-white relative rounded-xl overflow-hidden text-sm shadow-xl border-1"
+        >
             <Listbox
                 selectionMode="single"
                 selectedKeys={[items?.[selectIndex]?.title]}
@@ -70,6 +83,7 @@ const SlashNode = forwardRef<SlashNodeRef, SuggestionProps>((props, ref) => {
                     (items || []).map((item: any, index: number) => (
                         <ListboxItem
                             key={item?.title}
+                            className={cn("extensions-item", selectIndex === index && "bg-zinc-300")}
                             startContent={item.icon}
                             onPress={() => {
                                 handleSelectSlash(index)
@@ -80,7 +94,7 @@ const SlashNode = forwardRef<SlashNodeRef, SuggestionProps>((props, ref) => {
                     ))
                 }
             </Listbox>
-        </div>
+        </MacScrollbar>
     );
 });
 
