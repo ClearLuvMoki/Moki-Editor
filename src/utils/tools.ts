@@ -2,6 +2,15 @@ import { Editor } from "@tiptap/react";
 import { EditorState, } from "@tiptap/pm/state"
 import { Node as PMNode } from "@tiptap/pm/model"
 
+export const jsonToStr = (json: Record<string, unknown>) => {
+    try {
+        return JSON.stringify(json);
+    } catch (e) {
+        return JSON.stringify({});
+    }
+};
+
+
 export const isDarkColor = (hexColor: string) => {
     if (!hexColor) return false;
     if (hexColor.startsWith('#')) {
@@ -94,23 +103,91 @@ export const findNodeByBlockId = (
     state: EditorState,
     nodeType: string,
     blockId: string
-  ): { node: PMNode; pos: number } | null => {
+): { node: PMNode; pos: number } | null => {
     let target: PMNode | null = null;
     let pos = -1;
-  
+
     state.doc.nodesBetween(0, state.doc.content.size, (node, p) => {
-      if (node.type.name === nodeType) {
-        if (node.attrs.blockId === blockId) {
-          target = node;
-          pos = p;
-          return true;
+        if (node.type.name === nodeType) {
+            if (node.attrs.blockId === blockId) {
+                target = node;
+                pos = p;
+                return true;
+            }
+
+            return false;
+        } else {
+            return false;
         }
-  
-        return false;
-      } else {
-        return false;
-      }
     });
-  
+
     return target ? { node: target, pos } : null;
-  };
+};
+
+export const nodeAttrsToDataset = (node: PMNode) => {
+    const { attrs } = node;
+
+    return Object.keys(attrs).reduce((accu, key) => {
+        const value = attrs[key];
+
+        if (value == null) {
+            return accu;
+        }
+
+        let encodeValue = '';
+
+        if (typeof value === 'object') {
+            encodeValue = jsonToStr(value);
+        } else {
+            encodeValue = value;
+        }
+
+        accu[key] = encodeValue;
+
+        return accu;
+    }, Object.create(null));
+};
+
+export const getDatasetAttribute =
+    (attribute: string, transformToJSON = false) =>
+        (element: HTMLElement) => {
+            const dataKey = attribute.startsWith('data-') ? attribute : `data-${attribute}`;
+            let value = decodeURIComponent(element.getAttribute(dataKey) as any);
+
+            if (value == null || (typeof value === 'string' && value === 'null')) {
+                try {
+                    const html = element.outerHTML;
+                    // eslint-disable-next-line no-useless-escape
+                    const texts = html.match(/(.|\s)+?\="(.|\s)+?"/gi);
+                    if (texts && texts.length) {
+                        const params = texts
+                            .map((str) => str.trim())
+                            .reduce((accu: any, item) => {
+                                const i = item.indexOf('=');
+                                const arr = [item.slice(0, i), item.slice(i + 1).slice(1, -1)];
+                                accu[arr[0]] = arr[1];
+                                return accu;
+                            }, {});
+
+                        value = (params[attribute.toLowerCase()] || '').replaceAll('&quot;', '"');
+                    }
+                } catch (e: any) {
+                    console.error('解析 element 失败！', e.message, element);
+                }
+            }
+
+            if (transformToJSON) {
+                try {
+                    return JSON.parse(value);
+                } catch (e) {
+                    return {};
+                }
+            }
+
+            if (value.includes('%') || value.includes('auto')) {
+                return value;
+            }
+
+            const toNumber = parseInt(value);
+            return toNumber !== toNumber ? value : toNumber; // 避免 NaN
+        };

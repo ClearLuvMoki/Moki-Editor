@@ -69,7 +69,6 @@ const Flow = Node.create<IFlowOptions>({
       HTMLAttributes: {
         class: "flow"
       },
-      getCreateUserId: () => null
     };
   },
 

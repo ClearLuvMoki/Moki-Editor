@@ -15,7 +15,7 @@ const ContextMenu = memo(({ id, top, left, onClick }: ContextMenuProps) => {
 
     return (<div
         style={{ top, left }}
-        className="w-[150px] border-1 border-zinc-300 rounded-xl p-1 z-10 absolute bg-white flex flex-col gap-2"
+        className="w-[120px] border-1 border-zinc-300 rounded-xl p-1 z-10 absolute bg-white flex flex-col gap-2"
     >
         <Button onPress={() => onClick?.("add-child-node", id)} className="flex justify-start" color="default" variant="light" size="sm" startContent={<Blocks size={16} />}>新增下级</Button>
         <Button onPress={() => onClick?.("add-same-level-node", id)} className="flex justify-start" color="default" variant="light" size="sm" startContent={<CopyPlus size={16} />}>新增同级</Button>

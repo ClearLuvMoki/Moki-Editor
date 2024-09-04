@@ -7,7 +7,7 @@ import { Button, ButtonProps, Slider } from '@nextui-org/react'
 import { AlignHorizontalDistributeCenter, AlignHorizontalDistributeEnd, AlignHorizontalDistributeStart, PencilRuler } from 'lucide-react'
 import { getRenderContainer } from '../../utils/tools'
 import { Context } from '../../editor/FullEditorRender/context'
-import Excalidraw from '../../extensions/excalidraw'
+import MindExtension from '../../extensions/mind'
 
 export interface MenuProps {
     editor: Editor | null;
@@ -21,62 +21,63 @@ const DefaultButtonProps: ButtonProps = {
     size: 'sm'
 }
 
-const ExcalidrawBubbleMenu = ({ editor, appendTo }: MenuProps) => {
+const MindBubbleMenu = ({ editor, appendTo }: MenuProps) => {
     if (!editor) return;
-    const { setExcalidrawModalState } = useContext(Context);
+    const { setMindModalState } = useContext(Context);
     const tippyInstance = useRef<Instance | null>(null)
-    const attrs = editor.getAttributes(Excalidraw.name);
-    const data = JSON.parse(attrs.data || "{}");
+    const attrs = editor.getAttributes(MindExtension.name);
+    const mindData = attrs.data || {};
+    const blockId = attrs.blockId;
 
     const getReferenceClientRect = useCallback(() => {
-        const renderContainer = getRenderContainer(editor, 'node-excalidraw')
+        const renderContainer = getRenderContainer(editor, 'node-mind')
         const rect = renderContainer?.getBoundingClientRect() || new DOMRect(-1000, -1000, 0, 0)
 
         return rect
     }, [editor])
 
     const shouldShow = useCallback(() => {
-        const isActive = editor.isActive('excalidraw')
+        const isActive = editor.isActive('mind')
 
         return isActive
     }, [editor])
 
     const onAlignImageLeft = useCallback(() => {
-        editor.chain().focus(undefined, { scrollIntoView: false }).setExcalidrawBlockAlign('left').run()
+        editor.chain().focus(undefined, { scrollIntoView: false }).setMindBlockAlign('left').run()
     }, [editor])
 
     const onAlignImageCenter = useCallback(() => {
-        editor.chain().focus(undefined, { scrollIntoView: false }).setExcalidrawBlockAlign('center').run()
+        editor.chain().focus(undefined, { scrollIntoView: false }).setMindBlockAlign('center').run()
     }, [editor])
 
     const onAlignImageRight = useCallback(() => {
-        editor.chain().focus(undefined, { scrollIntoView: false }).setExcalidrawBlockAlign('right').run()
+        editor.chain().focus(undefined, { scrollIntoView: false }).setMindBlockAlign('right').run()
     }, [editor])
 
     const onWidthChange = useCallback(
         (value: number) => {
-            editor.chain().focus(undefined, { scrollIntoView: false }).setExcalidrawBlockWidth(value).run()
+            editor.chain().focus(undefined, { scrollIntoView: false }).setMindBlockWidth(value).run()
         },
         [editor],
     )
 
     const onEdit = useCallback(
         () => {
-            setExcalidrawModalState?.({
+            setMindModalState?.({
                 open: true,
                 data: {
-                    blockId: attrs.blockId,
-                    excalidrawData: data || null
+                    mindData,
+                    blockId
                 }
             })
         },
-        [editor, data],
+        [editor, mindData, blockId],
     )
 
     return (
         <BubbleMenu
             editor={editor}
-            pluginKey={`excalidrawBubbleMenu-${uuid()}`}
+            pluginKey={`mindBubbleMenu-${uuid()}`}
             shouldShow={shouldShow}
             updateDelay={0}
             tippyOptions={{
@@ -101,31 +102,31 @@ const ExcalidrawBubbleMenu = ({ editor, appendTo }: MenuProps) => {
                     startContent={<PencilRuler size={16} />}
                     onPress={onEdit}
                     isIconOnly
-                    aria-label='Edit excalidraw'
+                    aria-label='Edit mind'
                 />
                 <Button
                     {...DefaultButtonProps}
                     startContent={<AlignHorizontalDistributeStart size={16} />}
                     onPress={onAlignImageLeft}
-                    variant={editor.isActive('excalidraw', { align: 'left' }) ? "solid" : "light"}
+                    variant={editor.isActive('mind', { align: 'left' }) ? "solid" : "light"}
                     isIconOnly
-                    aria-label='Align excalidraw left'
+                    aria-label='Align mind left'
                 />
                 <Button
                     {...DefaultButtonProps}
                     startContent={<AlignHorizontalDistributeCenter size={16} />}
                     onPress={onAlignImageCenter}
-                    variant={editor.isActive('excalidraw', { align: 'center' }) ? "solid" : "light"}
+                    variant={editor.isActive('mind', { align: 'center' }) ? "solid" : "light"}
                     isIconOnly
-                    aria-label='Align excalidraw center'
+                    aria-label='Align mind center'
                 />
                 <Button
                     {...DefaultButtonProps}
                     startContent={<AlignHorizontalDistributeEnd size={16} />}
                     onPress={onAlignImageRight}
-                    variant={editor.isActive('excalidraw', { align: 'right' }) ? "solid" : "light"}
+                    variant={editor.isActive('mind', { align: 'right' }) ? "solid" : "light"}
                     isIconOnly
-                    aria-label='Align excalidraw right'
+                    aria-label='Align mind right'
                 />
                 <Slider
                     size='sm'
@@ -133,7 +134,7 @@ const ExcalidrawBubbleMenu = ({ editor, appendTo }: MenuProps) => {
                     className='w-[150px] mx-2'
                     color="foreground"
                     showTooltip={true}
-                    value={editor?.getAttributes('excalidraw')?.width ? parseInt(editor?.getAttributes('excalidraw')?.width) : 100}
+                    value={editor?.getAttributes('mind')?.width ? parseInt(editor?.getAttributes('mind')?.width) : 100}
                     onChange={(value: any) => {
                         onWidthChange(value)
                     }}
@@ -143,4 +144,4 @@ const ExcalidrawBubbleMenu = ({ editor, appendTo }: MenuProps) => {
     )
 }
 
-export default ExcalidrawBubbleMenu
+export default MindBubbleMenu

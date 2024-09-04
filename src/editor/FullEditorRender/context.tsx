@@ -22,18 +22,29 @@ export interface FlowModalState {
     } | null
 }
 
+
+export interface MindModalState {
+    open: boolean;
+    data: {
+        blockId: string;
+        mindData: string
+    } | null
+}
+
 interface ContextState {
     editor: Editor | null;
     excalidrawModalState: ExcalidrawModalState | null;
     setExcalidrawModalState: React.Dispatch<ExcalidrawModalState> | null;
     flowModalState: FlowModalState | null;
     setFlowModalState: React.Dispatch<FlowModalState> | null;
+    mindModalState: MindModalState | null;
+    setMindModalState: React.Dispatch<MindModalState> | null;
 }
 
 // @ts-ignore
 export const Context = createContext<ContextState>(null);
 
-const GlobalContextProvider = ({ editor, excalidrawModalState, setExcalidrawModalState, flowModalState, setFlowModalState, children }: ContextState & Props) => {
+const GlobalContextProvider = ({ editor, excalidrawModalState, setExcalidrawModalState, flowModalState, setFlowModalState, mindModalState, setMindModalState, children }: ContextState & Props) => {
 
     return <Context.Provider
         value={{
@@ -41,7 +52,9 @@ const GlobalContextProvider = ({ editor, excalidrawModalState, setExcalidrawModa
             excalidrawModalState,
             setExcalidrawModalState,
             flowModalState,
-            setFlowModalState
+            setFlowModalState,
+            mindModalState,
+            setMindModalState
         }}
     >
         {children}

@@ -6,7 +6,7 @@ import { EditorState } from '@tiptap/pm/state'
 import { EditorView } from '@tiptap/pm/view'
 import { sticky } from 'tippy.js'
 import { v4 as uuid } from 'uuid'
-import ToolbarWrapper from "../../components/toolbar-wrapper";
+import ToolbarWrapper from "../../components/ToolbarWrapper";
 import {Button, ButtonProps} from "@nextui-org/react";
 import {Columns, PanelLeft, PanelRight} from 'lucide-react'
 import { getRenderContainer } from '../../utils/tools'

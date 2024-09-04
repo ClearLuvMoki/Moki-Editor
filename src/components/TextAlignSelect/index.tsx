@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {Editor} from "@tiptap/react";
-import ActionButton from "../active-button";
+import ActionButton from "../ActiveButton";
 import {AlignCenter, AlignLeft, AlignRight} from "lucide-react";
 import {Context} from "../../editor/FullEditorRender/context";
 

@@ -32,12 +32,12 @@ import {
     TaskList,
     TaskItem,
     ListKeymap, MultiColumn, MultiColumns, Focus,
-    Image, ImageBlock, ImageUpload, HorizontalRule, Excalidraw, Flow
+    Image, ImageBlock, ImageUpload, HorizontalRule, Excalidraw, Flow, Mind
 } from "../../extensions"
-import ToolBar from "../../components/tool-bar";
-import GlobalContextProvider, { ExcalidrawModalState, FlowModalState } from "./context";
-import { TableRowMenu, TableColumnMenu, ColumnsBubbleMenu, ImageBlockMenu, ExcalidrawBubbleMenu, FlowBubbleMnu } from "../../bubble-menu";
-import { ExcalidrawModal, FlowModal } from '../../modal';
+import ToolBar from "../../components/Toolbar";
+import GlobalContextProvider, { ExcalidrawModalState, FlowModalState, MindModalState } from "./context";
+import { TableRowMenu, TableColumnMenu, ColumnsBubbleMenu, ImageBlockMenu, ExcalidrawBubbleMenu, FlowBubbleMnu, MindBubbleMenu } from "../../bubble-menu";
+import { ExcalidrawModal, FlowModal, MindModal } from '../../modal';
 
 
 const FullEditorRender = () => {
@@ -48,7 +48,11 @@ const FullEditorRender = () => {
     })
     const [flowModalState, setFlowModalState] = useState<FlowModalState>({
         open: false,
-        data: ""
+        data: null
+    })
+    const [mindModalState, setMindModalState] = useState<MindModalState>({
+        open: false,
+        data: null
     })
     const editor = useEditor({
         extensions: [
@@ -102,7 +106,8 @@ const FullEditorRender = () => {
             ImageUpload,
             HorizontalRule,
             Excalidraw,
-            Flow
+            Flow,
+            Mind
         ],
     })
 
@@ -111,6 +116,8 @@ const FullEditorRender = () => {
         editor={editor}
         excalidrawModalState={excalidrawModalState}
         flowModalState={flowModalState}
+        mindModalState={mindModalState}
+        setMindModalState={setMindModalState}
         setFlowModalState={setFlowModalState}
         setExcalidrawModalState={setExcalidrawModalState}
     >
@@ -126,10 +133,12 @@ const FullEditorRender = () => {
                 <ImageBlockMenu editor={editor} appendTo={containerRef} />
                 <ExcalidrawBubbleMenu editor={editor} appendTo={containerRef} />
                 <FlowBubbleMnu editor={editor} appendTo={containerRef} />
+                <MindBubbleMenu editor={editor} appendTo={containerRef} />
             </div>
         </div>
         <ExcalidrawModal editor={editor} />
         <FlowModal editor={editor} />
+        <MindModal editor={editor} />
     </GlobalContextProvider>
 }
 

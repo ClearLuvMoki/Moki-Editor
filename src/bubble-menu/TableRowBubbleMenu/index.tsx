@@ -4,7 +4,7 @@ import { Editor } from '@tiptap/react'
 import { Editor as CoreEditor } from '@tiptap/core'
 import { EditorState } from '@tiptap/pm/state'
 import { EditorView } from '@tiptap/pm/view'
-import ToolbarWrapper from "../../components/toolbar-wrapper";
+import ToolbarWrapper from "../../components/ToolbarWrapper";
 import {Button, ButtonProps} from "@nextui-org/react";
 import {ArrowDownToLine, ArrowUpToLine, Trash } from 'lucide-react'
 import {isRowGripSelected} from "../../utils/table-tools";

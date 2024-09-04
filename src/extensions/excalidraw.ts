@@ -7,7 +7,6 @@ import ExcalidrawNode from "../nodes/ExcalidrawNode";
 export const DEFAULT_EXCALIDRAW_DATA = JSON.stringify({ elements: [] });
 
 export interface IExcalidrawAttrs {
-  createUserId?: string | number;
   showPickerOnCreate?: boolean;
   width?: number | string;
   height?: number;
@@ -43,9 +42,6 @@ const Excalidraw = Node.create({
 
   addAttributes() {
     return {
-      createUserId: {
-        default: null
-      },
       showPickerOnCreate: {
         default: false
       },

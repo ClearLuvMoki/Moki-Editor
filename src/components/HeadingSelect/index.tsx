@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {Heading1, Heading2, Heading3, Heading4, Heading5, Heading6, Pilcrow} from "lucide-react";
-import ActionButton from "../active-button";
+import ActionButton from "../ActiveButton";
 import {Context} from "../../editor/FullEditorRender/context";
 import {Level} from "@tiptap/extension-heading";
 import {Editor} from "@tiptap/react";

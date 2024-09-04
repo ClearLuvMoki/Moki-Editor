@@ -12,15 +12,15 @@ import {
     List,
     TextQuote, Undo2, Redo2, Pilcrow, Braces, Sheet
 } from "lucide-react"
-import ActionButton from "../active-button";
+import ActionButton from "../ActiveButton";
 import React, {useContext} from "react";
 import {Tools} from "../../constants/tools";
 import {Context} from "../../editor/FullEditorRender/context";
-import ColorSelect, {handleGetActiveColor} from "../color-select";
-import ActionPopover from "../action-popover";
+import ColorSelect, {handleGetActiveColor} from "../ColorSelect";
+import ActionPopover from "../ActionPopover";
 import {isDarkColor} from "../../utils/tools";
-import TextAlignSelect, {handleActiveTextAlign} from "../text-align-select";
-import HeadingSelect, {handleGetActiveHeading} from "../heading-select";
+import TextAlignSelect, {handleActiveTextAlign} from "../TextAlignSelect";
+import HeadingSelect, {handleGetActiveHeading} from "../HeadingSelect";
 
 export const ToolbarIconProps = {
     size: 16

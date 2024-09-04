@@ -1,10 +1,10 @@
-import {Editor, ReactRenderer} from "@tiptap/react";
-import {Range} from "@tiptap/core";
-import SlashNode, {SlashNodeRef} from "../nodes/SlashNode";
-import tippy, {Instance, Props} from "tippy.js"
+import { Editor, ReactRenderer } from "@tiptap/react";
+import { Range } from "@tiptap/core";
+import SlashNode, { SlashNodeRef } from "../nodes/SlashNode";
+import tippy, { Instance, Props } from "tippy.js"
 import Commands from "./commands";
 // @ts-ignore
-import {SuggestionKeyDownProps, SuggestionProps} from "@tiptap/suggestion/dist/packages/suggestion/src/suggestion";
+import { SuggestionKeyDownProps, SuggestionProps } from "@tiptap/suggestion/dist/packages/suggestion/src/suggestion";
 import {
     Braces,
     Columns2,
@@ -17,6 +17,8 @@ import {
     ImageUp,
     Minus,
     PencilRuler,
+    BrainCircuit,
+    Workflow,
 } from "lucide-react";
 
 const IconProps = {
@@ -28,56 +30,56 @@ const SlashItems = {
         return [
             {
                 title: 'Heading1',
-                icon: <Heading1 {...IconProps}/>,
-                command: ({editor, range}: { editor: Editor, range: Range }) => {
+                icon: <Heading1 {...IconProps} />,
+                command: ({ editor, range }: { editor: Editor, range: Range }) => {
                     editor
                         ?.chain()
                         .focus()
                         .deleteRange(range)
-                        .setNode('heading', {level: 1})
+                        .setNode('heading', { level: 1 })
                         .run()
                 },
             },
             {
                 title: 'Heading2',
-                icon: <Heading2 {...IconProps}/>,
-                command: ({editor, range}: { editor: Editor, range: Range }) => {
+                icon: <Heading2 {...IconProps} />,
+                command: ({ editor, range }: { editor: Editor, range: Range }) => {
                     editor
                         ?.chain()
                         .focus()
                         .deleteRange(range)
-                        .setNode('heading', {level: 2})
+                        .setNode('heading', { level: 2 })
                         .run()
                 },
             },
             {
                 title: 'Heading3',
-                icon: <Heading3 {...IconProps}/>,
-                command: ({editor, range}: { editor: Editor, range: Range }) => {
+                icon: <Heading3 {...IconProps} />,
+                command: ({ editor, range }: { editor: Editor, range: Range }) => {
                     editor
                         ?.chain()
                         .focus()
                         .deleteRange(range)
-                        .setNode('heading', {level: 3})
+                        .setNode('heading', { level: 3 })
                         .run()
                 },
             },
             {
                 title: 'Heading4',
-                icon: <Heading4 {...IconProps}/>,
-                command: ({editor, range}: { editor: Editor, range: Range }) => {
+                icon: <Heading4 {...IconProps} />,
+                command: ({ editor, range }: { editor: Editor, range: Range }) => {
                     editor
                         ?.chain()
                         .focus()
                         .deleteRange(range)
-                        .setNode('heading', {level: 4})
+                        .setNode('heading', { level: 4 })
                         .run()
                 },
             },
             {
                 title: 'CodeBlock',
-                icon: <Braces {...IconProps}/>,
-                command: ({editor, range}: { editor: Editor, range: Range }) => {
+                icon: <Braces {...IconProps} />,
+                command: ({ editor, range }: { editor: Editor, range: Range }) => {
                     editor
                         ?.chain()
                         .focus()
@@ -88,8 +90,8 @@ const SlashItems = {
             },
             {
                 title: 'Multi Columns',
-                icon: <Columns2 {...IconProps}/>,
-                command: ({editor, range}: { editor: Editor, range: Range }) => {
+                icon: <Columns2 {...IconProps} />,
+                command: ({ editor, range }: { editor: Editor, range: Range }) => {
                     editor
                         .chain()
                         .focus()
@@ -101,8 +103,8 @@ const SlashItems = {
             },
             {
                 title: 'Draw',
-                icon: <PencilRuler {...IconProps}/>,
-                command: ({editor, range}: { editor: Editor, range: Range }) => {
+                icon: <PencilRuler {...IconProps} />,
+                command: ({ editor, range }: { editor: Editor, range: Range }) => {
                     editor
                         ?.chain()
                         .focus()
@@ -113,8 +115,8 @@ const SlashItems = {
             },
             {
                 title: 'Flow',
-                icon: <PencilRuler {...IconProps}/>,
-                command: ({editor, range}: { editor: Editor, range: Range }) => {
+                icon: <Workflow {...IconProps} />,
+                command: ({ editor, range }: { editor: Editor, range: Range }) => {
                     editor
                         ?.chain()
                         .focus()
@@ -124,9 +126,21 @@ const SlashItems = {
                 },
             },
             {
+                title: 'Mind',
+                icon: <BrainCircuit {...IconProps} />,
+                command: ({ editor, range }: { editor: Editor, range: Range }) => {
+                    editor
+                        ?.chain()
+                        .focus()
+                        .deleteRange(range)
+                        .setMind()
+                        .run()
+                },
+            },
+            {
                 title: 'Image',
-                icon: <ImageUp {...IconProps}/>,
-                command: ({editor, range}: { editor: Editor, range: Range }) => {
+                icon: <ImageUp {...IconProps} />,
+                command: ({ editor, range }: { editor: Editor, range: Range }) => {
                     editor
                         ?.chain()
                         .focus()
@@ -137,20 +151,20 @@ const SlashItems = {
             },
             {
                 title: 'Table',
-                icon: <Sheet {...IconProps}/>,
-                command: ({editor, range}: { editor: Editor, range: Range }) => {
+                icon: <Sheet {...IconProps} />,
+                command: ({ editor, range }: { editor: Editor, range: Range }) => {
                     editor
                         ?.chain()
                         .focus()
                         .deleteRange(range)
-                        .insertTable({rows: 3, cols: 2, withHeaderRow: true})
+                        .insertTable({ rows: 3, cols: 2, withHeaderRow: true })
                         .run()
                 },
             },
             {
                 title: 'HorizontalRule',
-                icon: <Minus {...IconProps}/>,
-                command: ({editor, range}: { editor: Editor, range: Range }) => {
+                icon: <Minus {...IconProps} />,
+                command: ({ editor, range }: { editor: Editor, range: Range }) => {
                     editor
                         ?.chain()
                         .focus()
@@ -161,8 +175,8 @@ const SlashItems = {
             },
             {
                 title: 'Task',
-                icon: <SquareCheckBig {...IconProps}/>,
-                command: ({editor, range}: { editor: Editor, range: Range }) => {
+                icon: <SquareCheckBig {...IconProps} />,
+                command: ({ editor, range }: { editor: Editor, range: Range }) => {
                     editor
                         ?.chain()
                         .focus()
