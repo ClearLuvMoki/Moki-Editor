@@ -87,9 +87,9 @@ const FullEditorRender = () => {
             }),
             CodeBlockLowlight,
             Placeholder.configure({
-                includeChildren: true,
+                includeChildren: false,
                 showOnlyCurrent: false,
-                placeholder: () => '',
+                placeholder: () => 'Write some for self...',
             }),
             Slash,
             Table,
@@ -107,7 +107,7 @@ const FullEditorRender = () => {
             HorizontalRule,
             Excalidraw,
             Flow,
-            Mind
+            // Mind
         ],
     })
 

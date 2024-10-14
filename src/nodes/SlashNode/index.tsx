@@ -73,7 +73,7 @@ const SlashNode = forwardRef<SlashNodeRef, SuggestionProps>((props, ref) => {
     return (
         <MacScrollbar
             suppressScrollX={false}
-            className="w-[150px] max-h-[200px] bg-white relative rounded-xl overflow-hidden text-sm shadow-xl border-1"
+            className="w-[150px] max-h-[200px] bg-white relative rounded-xl overflow-hidden text-sm shadow-xl border-1 p-1"
         >
             <Listbox
                 selectionMode="single"
