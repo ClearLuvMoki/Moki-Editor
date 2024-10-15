@@ -73,7 +73,7 @@ const SlashNode = forwardRef<SlashNodeRef, SuggestionProps>((props, ref) => {
     return (
         <MacScrollbar
             suppressScrollX={false}
-            className="w-[150px] max-h-[200px] bg-white relative rounded-xl overflow-hidden text-sm shadow-xl border-1 p-1"
+            className="dark:bg-zinc-800 dark:border-zinc-600 w-[150px] max-h-[200px] bg-white relative rounded-xl overflow-hidden text-sm shadow-xl border-1 p-1"
         >
             <Listbox
                 selectionMode="single"
@@ -83,7 +83,7 @@ const SlashNode = forwardRef<SlashNodeRef, SuggestionProps>((props, ref) => {
                     (items || []).map((item: any, index: number) => (
                         <ListboxItem
                             key={item?.title}
-                            className={cn("extensions-item", selectIndex === index && "bg-zinc-300")}
+                            className={cn("extensions-item", selectIndex === index && "bg-zinc-300 dark:bg-zinc-600")}
                             startContent={item.icon}
                             onPress={() => {
                                 handleSelectSlash(index)

@@ -2,6 +2,7 @@
         width: 70%;
         height: calc(100% - 40px);
         margin: auto;
+        outline: none;
 
         > div:first-child{
             width: 100%;
