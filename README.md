@@ -1,1 +1,1 @@
-> add workspace after install
+# @moki/editor
