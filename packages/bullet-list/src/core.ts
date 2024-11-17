@@ -1,1 +1,1 @@
-export {BulletList} from '@tiptap/extension-bullet-list'
+export { BulletList } from "@tiptap/extension-bullet-list";

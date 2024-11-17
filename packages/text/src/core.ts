@@ -1,2 +1,1 @@
-export { Text } from "@tiptap/extension-text"
-
+export { Text } from "@tiptap/extension-text";

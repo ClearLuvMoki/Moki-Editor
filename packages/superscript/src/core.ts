@@ -1,1 +1,1 @@
-export {Superscript} from "@tiptap/extension-superscript"
+export { Superscript } from "@tiptap/extension-superscript";

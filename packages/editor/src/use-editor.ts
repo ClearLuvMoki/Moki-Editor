@@ -1,1 +1,1 @@
-export {useEditor} from "@tiptap/react"
+export { useEditor } from "@tiptap/react";

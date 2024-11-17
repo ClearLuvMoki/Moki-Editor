@@ -1,12 +1,12 @@
+import { MokiEditor } from "@moki-editor/editor";
 import styled from "styled-components";
-import {MokiEditor} from "@moki-editor/editor";
 
 export const StyledRoot = styled.div`
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
-`
+`;
 
 export const StyledToolbar = styled.div`
     display: flex;
@@ -15,7 +15,7 @@ export const StyledToolbar = styled.div`
     border-bottom: 1px solid #ececec;
     padding: 8px 10px;
     gap: 10px;
-`
+`;
 
 export const StyledEditor = styled(MokiEditor)`
     width: 100%;
@@ -65,4 +65,4 @@ export const StyledEditor = styled(MokiEditor)`
         }
 
     }
-`
+`;

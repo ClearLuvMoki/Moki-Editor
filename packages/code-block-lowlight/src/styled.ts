@@ -13,7 +13,7 @@ export const StyledBlockNodeHeader = styled.div`
     .language-listbox {
         max-height: 500px;
     }
-`
+`;
 
 export const StyledCode = styled.pre`
     background: #0d0d0d;
@@ -80,4 +80,4 @@ export const StyledCode = styled.pre`
     .hljs-strong {
         font-weight: 700;
     }
-`
+`;

@@ -1,1 +1,1 @@
-export {EditorContent as MokiEditor} from "@tiptap/react"
+export { EditorContent as MokiEditor } from "@tiptap/react";

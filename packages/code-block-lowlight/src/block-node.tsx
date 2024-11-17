@@ -1,5 +1,3 @@
-import React from "react";
-import { NodeViewWrapper, NodeViewContent } from "@moki-editor/editor";
 import {
   Combobox,
   type ComboboxProps,
@@ -7,8 +5,9 @@ import {
   teamsDarkTheme,
   useComboboxFilter,
 } from "@fluentui/react-components";
+import { NodeViewContent, NodeViewWrapper } from "@moki-editor/editor";
+import React from "react";
 import { StyledBlockNodeHeader, StyledCode } from "./styled";
-
 
 const CodeBlockBlockNode = ({
   node: {

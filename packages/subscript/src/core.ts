@@ -1,1 +1,1 @@
-export {Subscript} from "@tiptap/extension-subscript"
+export { Subscript } from "@tiptap/extension-subscript";

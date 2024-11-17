@@ -1,3 +1,3 @@
-export {MokiEditor} from "./editor"
-export {useEditor} from "./use-editor"
-export * from "./type"
+export { MokiEditor } from "./editor";
+export { useEditor } from "./use-editor";
+export * from "./type";

@@ -1,2 +1,2 @@
-export * from "@tiptap/react"
-export * from "@tiptap/core"
+export * from "@tiptap/react";
+export * from "@tiptap/core";
