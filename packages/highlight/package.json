@@ -1,0 +1,26 @@
+{
+    "name": "@moki-editor/highlight",
+    "version": "0.0.1",
+    "description": "highlight",
+    "keywords": [
+        "highlight"
+    ],
+    "author": "Moki <clearluvmoki@gmail.com>",
+    "homepage": "http://http://moonquakes.online",
+    "license": "MIT",
+    "main": "src/index.ts",
+    "sideEffects": false,
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsup src"
+    },
+    "peerDependencies": {
+        "react": ">=18",
+        "react-dom": ">=18"
+    },
+    "devDependencies": {
+        "@tiptap/extension-highlight": "^2.8.0"
+    }
+}

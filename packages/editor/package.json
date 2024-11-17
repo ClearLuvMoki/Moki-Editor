@@ -1,0 +1,27 @@
+{
+  "name": "@moki-editor/editor",
+  "version": "0.0.1",
+  "description": "editor",
+  "keywords": [
+    "editor"
+  ],
+  "author": "Moki <clearluvmoki@gmail.com>",
+  "homepage": "http://http://moonquakes.online",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src"
+  },
+  "devDependencies": {
+    "@tiptap/core": "^2.8.0",
+    "@tiptap/react": "^2.8.0"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  }
+}

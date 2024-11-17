@@ -1,0 +1,42 @@
+{
+    "name": "@moki-editor/full-editor",
+    "version": "0.0.1",
+    "description": "full-editor",
+    "keywords": [
+        "full-editor"
+    ],
+    "author": "Moki <clearluvmoki@gmail.com>",
+    "homepage": "http://http://moonquakes.online",
+    "license": "MIT",
+    "main": "src/index.ts",
+    "sideEffects": false,
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsup src"
+    },
+    "devDependencies": {
+        "@moki-editor/document": "workspace:^",
+        "@moki-editor/editor": "workspace:^",
+        "@moki-editor/placeholder": "workspace:^",
+        "@moki-editor/text": "workspace:^",
+        "@moki-editor/paragraph": "workspace:^",
+        "@moki-editor/bold": "workspace:^",
+        "@moki-editor/italic": "workspace:^",
+        "@moki-editor/underline": "workspace:^",
+        "@moki-editor/strike": "workspace:^",
+        "@moki-editor/subscript": "workspace:^",
+        "@moki-editor/superscript": "workspace:^",
+        "@moki-editor/bullet-list": "workspace:^",
+        "@moki-editor/ordered-list": "workspace:^",
+        "@moki-editor/quote": "workspace:^",
+        "@moki-editor/code": "workspace:^",
+        "@moki-editor/code-block-lowlight": "workspace:^",
+        "lucide-react": "^0.453.0"
+    },
+    "peerDependencies": {
+        "react": ">=18",
+        "react-dom": ">=18"
+    }
+}

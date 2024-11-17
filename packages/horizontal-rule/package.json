@@ -1,0 +1,26 @@
+{
+    "name": "@moki-editor/horizontal-rule",
+    "version": "0.0.1",
+    "description": "horizontal-rule",
+    "keywords": [
+        "horizontal-rule"
+    ],
+    "author": "Moki <clearluvmoki@gmail.com>",
+    "homepage": "http://http://moonquakes.online",
+    "license": "MIT",
+    "main": "src/index.ts",
+    "sideEffects": false,
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsup src"
+    },
+    "peerDependencies": {
+        "react": ">=18",
+        "react-dom": ">=18"
+    },
+    "devDependencies": {
+        "@tiptap/extension-horizontal-rule": "^2.8.0"
+    }
+}
