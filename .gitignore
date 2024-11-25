@@ -3,3 +3,5 @@ node_modules
 .idea
 *-lock.yaml
 ./**/*/dist/
+.DS_Store
+./**/*/.DS_Store
