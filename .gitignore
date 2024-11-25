@@ -1,7 +1,7 @@
 node_modules
-./**/*/node_modules
 .idea
+.DS_Store
+
 *-lock.yaml
 ./**/*/dist/
-.DS_Store
-./**/*/.DS_Store
+./**/*/node_modules
