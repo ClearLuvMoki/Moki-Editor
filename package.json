@@ -1,0 +1,14 @@
+{
+  "name": "@moki/editor-monorepo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "nodemon": "^3.1.7",
+  },
+  "devDependencies": {},
+  "author": "Moki <2893096286@qq.com>",
+  "license": "MIT"
+}
