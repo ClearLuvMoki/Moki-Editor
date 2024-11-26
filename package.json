@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "pnpm -r --filter=./apps/preview/ run dev",
+    "dev": "pnpm -r --filter=./apps/preview/ run dev ",
     "build:cmp": "nodemon"
   },
   "author": "Moki <2893096286@qq.com>",

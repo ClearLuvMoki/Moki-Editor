@@ -1,4 +1,4 @@
-import React, {memo, useContext} from 'react';
+import React, {memo, useCallback, useContext} from 'react';
 import {isEqualReact} from "@react-hookz/deep-equal";
 import {
     Baseline,
@@ -22,8 +22,8 @@ export const ToolbarIconProps = {
 }
 
 const ActionsArr: { icon: JSX.Element, type: Tools, popover?: React.ReactNode }[] = [
-    // {icon: <Undo2 {...ToolbarIconProps}/>, type: "undo",},
-    // {icon: <Redo2 {...ToolbarIconProps}/>, type: "redo",},
+    {icon: <Undo2 {...ToolbarIconProps}/>, type: "undo",},
+    {icon: <Redo2 {...ToolbarIconProps}/>, type: "redo",},
     // {icon: <Pilcrow {...ToolbarIconProps}/>, type: "heading",},
     {icon: <Bold {...ToolbarIconProps}/>, type: "bold",},
     {icon: <Italic {...ToolbarIconProps}/>, type: "italic"},
@@ -73,20 +73,37 @@ const Toolbar = memo(() => {
             case "orderedList": {
                 return editor?.chain()?.focus()?.toggleOrderedList()?.run();
             }
-            case "blockquote": {
-                return editor?.chain()?.focus()?.toggleBlockquote()?.run();
+            // case "blockquote": {
+            //     return editor?.chain()?.focus()?.setBlockquote()?.run();
+            // }
+            case "redo": {
+                return editor?.chain().focus().redo().run()
             }
-            // case "redo": {
-            //     return editor?.chain().focus().redo().run()
-            // }
-            // case "undo": {
-            //     return editor?.chain().focus().undo().run()
-            // }
+            case "undo": {
+                return editor?.chain().focus().undo().run()
+            }
             // case "table": {
             //     return editor?.chain().focus().insertTable({rows: 3, cols: 3, withHeaderRow: true}).run()
             // }
         }
     }
+
+    const isDisabled  = useCallback((type: Tools) => {
+        switch (type) {
+            case "undo": {
+                return !editor?.can().undo()
+            }
+            case "redo": {
+                return !editor?.can().redo()
+            }
+            default: {
+                return false
+            }
+        }
+    }, [editor])
+
+
+
     return (
         <div className="w-full h-[50px] px-10 flex gap-2 justify-center items-center border-b border-zinc-200">
             {
@@ -96,6 +113,7 @@ const Toolbar = memo(() => {
                         key={index}
                         isIconOnly
                         variant={isActive ? "solid" : "light"}
+                        isDisabled={isDisabled(item.type)}
                         onClick={() => onAction(item.type)}
                     >{item.icon}</Button>
                 })

@@ -12,7 +12,8 @@ import {
     OrderedList,
     BulletList,
     Code,
-    Blockquote
+    BlockquoteFigure,
+    History
 } from "../../extensions"
 
 export const FullExtensions = [
@@ -33,5 +34,6 @@ export const FullExtensions = [
     // OrderedList,
     // BulletList,
     Code,
-    Blockquote
+    BlockquoteFigure,
+    History
 ]
