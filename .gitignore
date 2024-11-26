@@ -1,7 +1,6 @@
-node_modules
 .idea
-.DS_Store
 
 *-lock.yaml
-./**/*/dist/
-./**/*/node_modules
+**/.DS_Store
+**/dist/
+**/node_modules/
