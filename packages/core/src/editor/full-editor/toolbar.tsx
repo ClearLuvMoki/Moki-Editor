@@ -22,23 +22,23 @@ export const ToolbarIconProps = {
 }
 
 const ActionsArr: { icon: JSX.Element, type: Tools, popover?: React.ReactNode }[] = [
-    {icon: <Undo2 {...ToolbarIconProps}/>, type: "undo",},
-    {icon: <Redo2 {...ToolbarIconProps}/>, type: "redo",},
-    {icon: <Pilcrow {...ToolbarIconProps}/>, type: "heading",},
+    // {icon: <Undo2 {...ToolbarIconProps}/>, type: "undo",},
+    // {icon: <Redo2 {...ToolbarIconProps}/>, type: "redo",},
+    // {icon: <Pilcrow {...ToolbarIconProps}/>, type: "heading",},
     {icon: <Bold {...ToolbarIconProps}/>, type: "bold",},
     {icon: <Italic {...ToolbarIconProps}/>, type: "italic"},
     {icon: <Underline {...ToolbarIconProps}/>, type: "underline"},
     {icon: <Strikethrough {...ToolbarIconProps}/>, type: "strike"},
-    {icon: <Braces {...ToolbarIconProps}/>, type: "code"},
+    // {icon: <Braces {...ToolbarIconProps}/>, type: "code"},
     {icon: <Subscript {...ToolbarIconProps}/>, type: "subscript"},
     {icon: <Superscript {...ToolbarIconProps}/>, type: "superscript"},
-    {icon: <Sheet {...ToolbarIconProps}/>, type: "table"},
-    {icon: <Baseline {...ToolbarIconProps}/>, type: "textStyle",},
-    {icon: <PaintRoller {...ToolbarIconProps}/>, type: "highlight",},
-    {icon: <ListMinus {...ToolbarIconProps}/>, type: "textAlign"},
-    {icon: <ListOrdered {...ToolbarIconProps}/>, type: "bulletList"},
-    {icon: <List {...ToolbarIconProps}/>, type: "orderedList"},
-    {icon: <TextQuote {...ToolbarIconProps}/>, type: "blockquote"}
+    // {icon: <Sheet {...ToolbarIconProps}/>, type: "table"},
+    // {icon: <Baseline {...ToolbarIconProps}/>, type: "textStyle",},
+    // {icon: <PaintRoller {...ToolbarIconProps}/>, type: "highlight",},
+    // {icon: <ListMinus {...ToolbarIconProps}/>, type: "textAlign"},
+    // {icon: <ListOrdered {...ToolbarIconProps}/>, type: "bulletList"},
+    // {icon: <List {...ToolbarIconProps}/>, type: "orderedList"},
+    // {icon: <TextQuote {...ToolbarIconProps}/>, type: "blockquote"}
 ]
 
 const Toolbar = memo(() => {
