@@ -14,7 +14,8 @@ import {
     Code,
     CodeBlock,
     Blockquote,
-    History
+    History,
+    Heading
 } from "../../extensions"
 
 export const FullExtensions = [
@@ -26,7 +27,7 @@ export const FullExtensions = [
         includeChildren: false,
         showOnlyCurrent: false,
         placeholder: ({node}) => {
-            if(["codeBlock"].includes(node.type.name)) {
+            if (["codeBlock"].includes(node.type.name)) {
                 return ""
             }
             return 'Write some for self...'
@@ -42,5 +43,8 @@ export const FullExtensions = [
     // BulletList,
     Code,
     CodeBlock,
-    History
+    History,
+    Heading.configure({
+        levels: [1, 2, 3, 4, 5],
+    }),
 ]

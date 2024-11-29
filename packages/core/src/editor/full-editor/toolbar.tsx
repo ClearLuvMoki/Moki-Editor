@@ -1,8 +1,8 @@
-import React, {memo, useCallback, useContext} from 'react';
+import React, {memo, useCallback, useContext, useEffect, useMemo, useState} from 'react';
 import {isEqualReact} from "@react-hookz/deep-equal";
 import {
     Baseline,
-    Bold, Braces,
+    Bold, Braces, Heading1, Heading2, Heading3, Heading4, Heading5,
     Italic, List, ListMinus, ListOrdered, PaintRoller,
     Pilcrow,
     Redo2,
@@ -15,16 +15,15 @@ import {
 } from "lucide-react";
 import {Tools} from "../../modals/types/tools";
 import {Context} from "./context";
-import {Button} from "@nextui-org/react";
+import {Button, Select, SelectItem} from "@nextui-org/react";
+import {Level} from "@tiptap/extension-heading";
+import {useActive} from "../../hooks/use-active";
 
 export const ToolbarIconProps = {
     size: 16
 }
 
 const ActionsArr: { icon: JSX.Element, type: Tools, popover?: React.ReactNode }[] = [
-    {icon: <Undo2 {...ToolbarIconProps}/>, type: "undo",},
-    {icon: <Redo2 {...ToolbarIconProps}/>, type: "redo",},
-    // {icon: <Pilcrow {...ToolbarIconProps}/>, type: "heading",},
     {icon: <Bold {...ToolbarIconProps}/>, type: "bold",},
     {icon: <Italic {...ToolbarIconProps}/>, type: "italic"},
     {icon: <Underline {...ToolbarIconProps}/>, type: "underline"},
@@ -43,6 +42,20 @@ const ActionsArr: { icon: JSX.Element, type: Tools, popover?: React.ReactNode }[
 
 const Toolbar = memo(() => {
     const {editor} = useContext(Context);
+    const isH1 = useActive(editor, 'heading', {level: 1});
+    const isH2 = useActive(editor, 'heading', {level: 2});
+    const isH3 = useActive(editor, 'heading', {level: 3});
+    const isH4 = useActive(editor, 'heading', {level: 4});
+    const isH5 = useActive(editor, 'heading', {level: 5});
+
+    const currentHeader = useMemo(() => {
+        if (isH1) return '1';
+        if (isH2) return '2';
+        if (isH3) return '3';
+        if (isH4) return '4';
+        if (isH5) return '5';
+        return 'paragraph';
+    }, [isH1, isH2, isH3, isH4, isH5]);
 
     const onAction = (type: Tools) => {
         switch (type) {
@@ -88,7 +101,7 @@ const Toolbar = memo(() => {
         }
     }
 
-    const isDisabled  = useCallback((type: Tools) => {
+    const isDisabled = useCallback((type: Tools) => {
         switch (type) {
             case "undo": {
                 return !editor?.can().undo()
@@ -102,10 +115,57 @@ const Toolbar = memo(() => {
         }
     }, [editor])
 
+    const toggle = useCallback(
+        (level: string) => {
+            if (level === 'paragraph') {
+                editor?.chain().focus().setParagraph().run();
+            } else {
+                editor?.chain().focus().toggleHeading({ level: Number(level) as Level }).run();
+            }
+        },
+        [editor]
+    );
 
 
     return (
         <div className="w-full h-[50px] px-10 flex gap-2 justify-center items-center border-b border-zinc-200">
+            <Button
+                isIconOnly
+                variant={"light"}
+                isDisabled={isDisabled("undo")}
+                onClick={() => onAction("undo")}
+            ><Undo2 {...ToolbarIconProps}/></Button>
+            <Button
+                isIconOnly
+                variant={"light"}
+                isDisabled={isDisabled("redo")}
+                onClick={() => onAction("redo")}
+            ><Redo2 {...ToolbarIconProps}/></Button>
+            <Select
+                className="w-[120px]"
+                selectedKeys={[currentHeader]}
+                onChange={(event) => {
+                    toggle(event?.target.value);
+                }}
+            >
+                {
+                    Array.from({length: 5}).map((_, index) => {
+                        return {
+                            label: `Heading${index + 1}`,
+                            key: String(index + 1)
+                        }
+                    }).concat([{
+                        label: "正文",
+                        key: "paragraph"
+                    }]).map(item => {
+                        return <SelectItem
+                            key={item.key}
+                        >
+                            {item.label}
+                        </SelectItem>
+                    })
+                }
+            </Select>
             {
                 ActionsArr.map((item, index) => {
                     const isActive = Boolean(item?.type === "textAlign" || editor?.isActive(item?.type));

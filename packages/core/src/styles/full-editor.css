@@ -1,6 +1,7 @@
 @import './block-quote.css';
 @import './placeholder.css';
 @import './code.css';
+@import './heading.css';
 
 @tailwind base;
 @tailwind components;
