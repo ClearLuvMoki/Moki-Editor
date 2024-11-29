@@ -1,11 +1,12 @@
 @import './block-quote.css';
+@import './placeholder.css';
+@import './code.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-
     .moki-full-editor-root {
         width: 100%;
         height: 100%;
@@ -19,26 +20,6 @@
                     margin: 0;
                 }
 
-                /* Placeholder Styles */
-
-                .is-empty::before {
-                    color: rgba(0, 0, 0, 0.4);
-                    content: attr(data-placeholder);
-                    float: left;
-                    height: 0;
-                    pointer-events: none;
-                    width: 100%;
-                }
-
-                &.ProseMirror-focused {
-                    > p.has-focus.is-empty::before {
-                        content: 'Type  /  to browse options';
-                    }
-
-                    > [data-type='columns'] > [data-type='column'] > p.is-empty.has-focus::before {
-                        content: 'Type  /  to browse options';
-                    }
-                }
             }
         }
     }

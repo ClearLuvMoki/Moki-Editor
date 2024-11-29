@@ -29,7 +29,7 @@ const ActionsArr: { icon: JSX.Element, type: Tools, popover?: React.ReactNode }[
     {icon: <Italic {...ToolbarIconProps}/>, type: "italic"},
     {icon: <Underline {...ToolbarIconProps}/>, type: "underline"},
     {icon: <Strikethrough {...ToolbarIconProps}/>, type: "strike"},
-    // {icon: <Braces {...ToolbarIconProps}/>, type: "code"},
+    {icon: <Braces {...ToolbarIconProps}/>, type: "code"},
     {icon: <Subscript {...ToolbarIconProps}/>, type: "subscript"},
     {icon: <Superscript {...ToolbarIconProps}/>, type: "superscript"},
     // {icon: <Sheet {...ToolbarIconProps}/>, type: "table"},
@@ -38,7 +38,7 @@ const ActionsArr: { icon: JSX.Element, type: Tools, popover?: React.ReactNode }[
     // {icon: <ListMinus {...ToolbarIconProps}/>, type: "textAlign"},
     // {icon: <ListOrdered {...ToolbarIconProps}/>, type: "bulletList"},
     // {icon: <List {...ToolbarIconProps}/>, type: "orderedList"},
-    // {icon: <TextQuote {...ToolbarIconProps}/>, type: "blockquote"}
+    {icon: <TextQuote {...ToolbarIconProps}/>, type: "blockquote"}
 ]
 
 const Toolbar = memo(() => {
@@ -58,9 +58,9 @@ const Toolbar = memo(() => {
             case "strike": {
                 return editor?.chain()?.focus()?.toggleStrike()?.run();
             }
-            // case "code": {
-            //     return editor?.chain()?.focus()?.toggleCodeBlock()?.run();
-            // }
+            case "code": {
+                return editor?.chain()?.focus()?.toggleCodeBlock()?.run();
+            }
             case "subscript": {
                 return editor?.chain()?.focus()?.toggleSubscript()?.run();
             }
@@ -73,9 +73,9 @@ const Toolbar = memo(() => {
             case "orderedList": {
                 return editor?.chain()?.focus()?.toggleOrderedList()?.run();
             }
-            // case "blockquote": {
-            //     return editor?.chain()?.focus()?.setBlockquote()?.run();
-            // }
+            case "blockquote": {
+                return editor?.chain()?.focus()?.setBlockquote()?.run();
+            }
             case "redo": {
                 return editor?.chain().focus().redo().run()
             }

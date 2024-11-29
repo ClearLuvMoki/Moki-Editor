@@ -12,7 +12,8 @@ import {
     OrderedList,
     BulletList,
     Code,
-    BlockquoteFigure,
+    CodeBlock,
+    Blockquote,
     History
 } from "../../extensions"
 
@@ -20,10 +21,16 @@ export const FullExtensions = [
     Document,
     Paragraph,
     Text,
+    Blockquote,
     Placeholder.configure({
         includeChildren: false,
         showOnlyCurrent: false,
-        placeholder: () => 'Write some for self...',
+        placeholder: ({node}) => {
+            if(["codeBlock"].includes(node.type.name)) {
+                return ""
+            }
+            return 'Write some for self...'
+        },
     }),
     Bold,
     Italic,
@@ -34,6 +41,6 @@ export const FullExtensions = [
     // OrderedList,
     // BulletList,
     Code,
-    BlockquoteFigure,
+    CodeBlock,
     History
 ]
