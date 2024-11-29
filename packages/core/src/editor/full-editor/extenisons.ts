@@ -15,7 +15,8 @@ import {
     CodeBlock,
     Blockquote,
     History,
-    Heading
+    Heading,
+    Highlight
 } from "../../extensions"
 
 export const FullExtensions = [
@@ -47,4 +48,5 @@ export const FullExtensions = [
     Heading.configure({
         levels: [1, 2, 3, 4, 5],
     }),
+    Highlight.configure({ multicolor: true })
 ]

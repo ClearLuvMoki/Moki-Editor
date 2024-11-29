@@ -15,9 +15,10 @@ import {
 } from "lucide-react";
 import {Tools} from "../../modals/types/tools";
 import {Context} from "./context";
-import {Button, Select, SelectItem} from "@nextui-org/react";
+import {Button, Select, SelectItem, Popover, PopoverTrigger, PopoverContent} from "@nextui-org/react";
 import {Level} from "@tiptap/extension-heading";
 import {useActive} from "../../hooks/use-active";
+import ColorPicker from "../../components/color-picker";
 
 export const ToolbarIconProps = {
     size: 16
@@ -33,7 +34,6 @@ const ActionsArr: { icon: JSX.Element, type: Tools, popover?: React.ReactNode }[
     {icon: <Superscript {...ToolbarIconProps}/>, type: "superscript"},
     // {icon: <Sheet {...ToolbarIconProps}/>, type: "table"},
     // {icon: <Baseline {...ToolbarIconProps}/>, type: "textStyle",},
-    // {icon: <PaintRoller {...ToolbarIconProps}/>, type: "highlight",},
     // {icon: <ListMinus {...ToolbarIconProps}/>, type: "textAlign"},
     // {icon: <ListOrdered {...ToolbarIconProps}/>, type: "bulletList"},
     // {icon: <List {...ToolbarIconProps}/>, type: "orderedList"},
@@ -120,8 +120,17 @@ const Toolbar = memo(() => {
             if (level === 'paragraph') {
                 editor?.chain().focus().setParagraph().run();
             } else {
-                editor?.chain().focus().toggleHeading({ level: Number(level) as Level }).run();
+                editor?.chain().focus().toggleHeading({level: Number(level) as Level}).run();
             }
+        },
+        [editor]
+    );
+
+    const setColor = useCallback(
+        (color?: string | null) => {
+            color
+                ? editor?.chain().focus().toggleHighlight({color}).run()
+                : editor?.chain().focus().unsetHighlight().run();
         },
         [editor]
     );
@@ -178,6 +187,22 @@ const Toolbar = memo(() => {
                     >{item.icon}</Button>
                 })
             }
+            <Popover placement="bottom" showArrow={false}>
+                <PopoverTrigger>
+                    <Button
+                        isIconOnly
+                        variant={"light"}
+                        onClick={() => {
+                        }}
+                    ><PaintRoller {...ToolbarIconProps}/></Button>
+                </PopoverTrigger>
+                <PopoverContent>
+                    <ColorPicker
+                        onSetColor={setColor}
+                    />
+                </PopoverContent>
+            </Popover>
+
         </div>
     );
 }, (prevProps, nextProps) => {

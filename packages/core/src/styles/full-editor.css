@@ -2,6 +2,7 @@
 @import './placeholder.css';
 @import './code.css';
 @import './heading.css';
+@import './highlight.css';
 
 @tailwind base;
 @tailwind components;
