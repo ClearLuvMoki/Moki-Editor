@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "pnpm -r --filter=./apps/preview/ run dev ",
-    "build:cmp": "nodemon"
+    "dev": "pnpm -r --filter=./apps/preview/ run dev",
+    "build:cmp": "nodemon",
+    "build:demo": "pnpm -r --filter=./apps/preview/ run build"
   },
   "author": "Moki <2893096286@qq.com>",
   "dependencies": {

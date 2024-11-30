@@ -6,7 +6,6 @@ const App = () => {
     return (
         <>
             <FullEditor
-                content={"<p>1212</p>"}
             />
         </>
     );
