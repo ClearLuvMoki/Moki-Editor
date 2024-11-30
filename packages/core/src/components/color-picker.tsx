@@ -91,7 +91,9 @@ const ColorPicker = memo((props: Props) => {
                                 transition: "all .2s",
                                 marginBottom: index > 60 ? 0 : 4,
                             }}
-                            onClick={() => props?.onSetColor(item)}
+                            onClick={() => {
+                                props?.onSetColor(item)
+                            }}
                         >
                             <span
                                 className="w-[20px] h-[20px] rounded cursor-pointer"

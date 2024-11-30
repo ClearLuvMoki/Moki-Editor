@@ -33,11 +33,10 @@ const ActionsArr: { icon: JSX.Element, type: Tools, popover?: React.ReactNode }[
     {icon: <Subscript {...ToolbarIconProps}/>, type: "subscript"},
     {icon: <Superscript {...ToolbarIconProps}/>, type: "superscript"},
     // {icon: <Sheet {...ToolbarIconProps}/>, type: "table"},
-    // {icon: <Baseline {...ToolbarIconProps}/>, type: "textStyle",},
     // {icon: <ListMinus {...ToolbarIconProps}/>, type: "textAlign"},
     // {icon: <ListOrdered {...ToolbarIconProps}/>, type: "bulletList"},
     // {icon: <List {...ToolbarIconProps}/>, type: "orderedList"},
-    {icon: <TextQuote {...ToolbarIconProps}/>, type: "blockquote"}
+    {icon: <TextQuote {...ToolbarIconProps}/>, type: "blockquote"},
 ]
 
 const Toolbar = memo(() => {
@@ -135,6 +134,15 @@ const Toolbar = memo(() => {
         [editor]
     );
 
+    const setFontColor = useCallback(
+        (color?: string | null) => {
+            color
+                ? editor?.chain().focus().setColor(color).run()
+                : editor?.chain().focus().unsetColor().run();
+        },
+        [editor]
+    );
+
 
     return (
         <div className="w-full h-[50px] px-10 flex gap-2 justify-center items-center border-b border-zinc-200">
@@ -192,13 +200,24 @@ const Toolbar = memo(() => {
                     <Button
                         isIconOnly
                         variant={"light"}
-                        onClick={() => {
-                        }}
                     ><PaintRoller {...ToolbarIconProps}/></Button>
                 </PopoverTrigger>
                 <PopoverContent>
                     <ColorPicker
                         onSetColor={setColor}
+                    />
+                </PopoverContent>
+            </Popover>
+            <Popover placement="bottom" showArrow={false}>
+                <PopoverTrigger>
+                    <Button
+                        isIconOnly
+                        variant={"light"}
+                    ><Baseline {...ToolbarIconProps}/></Button>
+                </PopoverTrigger>
+                <PopoverContent>
+                    <ColorPicker
+                        onSetColor={setFontColor}
                     />
                 </PopoverContent>
             </Popover>
