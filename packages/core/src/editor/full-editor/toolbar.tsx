@@ -17,7 +17,6 @@ import {Tools} from "../../modals/types/tools";
 import {Context} from "./context";
 import {Button, Select, SelectItem, Popover, PopoverTrigger, PopoverContent} from "@nextui-org/react";
 import {Level} from "@tiptap/extension-heading";
-import {useActive} from "../../hooks/use-active";
 import ColorPicker from "../../components/color-picker";
 
 export const ToolbarIconProps = {
@@ -37,6 +36,17 @@ export const Fonts = [
     'Monaco',
     'monospace',
 ];
+
+const Heading = Array.from({length: 5}).map((_, index) => {
+    return {
+        label: `Heading${index + 1}`,
+        value: String(index + 1)
+    }
+}).concat([{
+    label: "正文",
+    value: String(0)
+}])
+
 const ActionsArr: { icon: JSX.Element, type: Tools, popover?: React.ReactNode }[] = [
     {icon: <Bold {...ToolbarIconProps}/>, type: "bold",},
     {icon: <Italic {...ToolbarIconProps}/>, type: "italic"},
@@ -52,23 +62,9 @@ const ActionsArr: { icon: JSX.Element, type: Tools, popover?: React.ReactNode }[
     {icon: <TextQuote {...ToolbarIconProps}/>, type: "blockquote"},
 ]
 
+
 const Toolbar = memo(() => {
     const {editor} = useContext(Context);
-
-    const isH1 = useActive(editor, 'heading', {level: 1});
-    const isH2 = useActive(editor, 'heading', {level: 2});
-    const isH3 = useActive(editor, 'heading', {level: 3});
-    const isH4 = useActive(editor, 'heading', {level: 4});
-    const isH5 = useActive(editor, 'heading', {level: 5});
-
-    const currentHeader = useMemo(() => {
-        if (isH1) return '1';
-        if (isH2) return '2';
-        if (isH3) return '3';
-        if (isH4) return '4';
-        if (isH5) return '5';
-        return 'paragraph';
-    }, [isH1, isH2, isH3, isH4, isH5]);
 
     const onAction = (type: Tools) => {
         switch (type) {
@@ -114,14 +110,26 @@ const Toolbar = memo(() => {
         }
     }
 
+    const currentHeading = useCallback(() => {
+        return Heading.some(item => editor?.isActive('heading', {level: Number(item.value)})) ? Heading.map(item => {
+            return {
+                isActive: editor?.isActive('heading', {level: Number(item.value)}),
+                value: item.value,
+                label: item
+            }
+        }).filter(item => item.isActive)?.[0]?.value : "0"
+    }, [editor])
+
     const currentFontFamily = useCallback(() => {
         return Fonts.map(item => {
             return {
-                isActive: editor?.isActive('textStyle', { fontFamily: item }),
+                isActive: editor?.isActive('textStyle', {fontFamily: item}),
+                value: item,
                 label: item
             }
-        }).filter(item => item.isActive)?.[0]?.label;
+        }).filter(item => item.isActive)?.[0]?.value
     }, [editor])
+
 
     const onSetFontFamily = useCallback((font: string) => {
         return editor?.chain().focus().setFontFamily(font).run();
@@ -142,12 +150,12 @@ const Toolbar = memo(() => {
         }
     }, [editor])
 
-    const toggle = useCallback(
-        (level: string) => {
-            if (level === 'paragraph') {
+    const onSetHeading = useCallback(
+        (level: number) => {
+            if (level === 0) {
                 editor?.chain().focus().setParagraph().run();
             } else {
-                editor?.chain().focus().toggleHeading({level: Number(level) as Level}).run();
+                editor?.chain().focus().toggleHeading({level: level as Level}).run();
             }
         },
         [editor]
@@ -188,23 +196,15 @@ const Toolbar = memo(() => {
             ><Redo2 {...ToolbarIconProps}/></Button>
             <Select
                 className="w-[120px]"
-                selectedKeys={[currentHeader]}
+                selectedKeys={[currentHeading()]}
                 onChange={(event) => {
-                    toggle(event?.target.value);
+                    onSetHeading(Number(event?.target.value));
                 }}
             >
                 {
-                    Array.from({length: 5}).map((_, index) => {
-                        return {
-                            label: `Heading${index + 1}`,
-                            key: String(index + 1)
-                        }
-                    }).concat([{
-                        label: "正文",
-                        key: "paragraph"
-                    }]).map(item => {
+                    Heading.map(item => {
                         return <SelectItem
-                            key={item.key}
+                            key={item.value}
                         >
                             {item.label}
                         </SelectItem>
