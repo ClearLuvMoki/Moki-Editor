@@ -109,7 +109,7 @@ const ColorPicker = memo((props: Props) => {
             <Button
                 size="sm"
                 fullWidth={true}
-                variant="bordered"
+                variant="solid"
                 onPress={() => props?.onSetColor(null)}
             >
                 恢复默认

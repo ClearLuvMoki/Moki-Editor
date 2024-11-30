@@ -1,5 +1,6 @@
 import React, {memo, useCallback, useContext, useEffect, useMemo, useState} from 'react';
 import {isEqualReact} from "@react-hookz/deep-equal";
+import clsx from "clsx"
 import {
     Baseline,
     Bold, Braces, Heading1, Heading2, Heading3, Heading4, Heading5,
@@ -62,8 +63,12 @@ const ActionsArr: { icon: JSX.Element, type: Tools, popover?: React.ReactNode }[
     {icon: <TextQuote {...ToolbarIconProps}/>, type: "blockquote"},
 ]
 
+interface Props {
+    className?: string;
+    style?: React.CSSProperties;
+}
 
-const Toolbar = memo(() => {
+const Toolbar = memo((props: Props) => {
     const {editor} = useContext(Context);
 
     const onAction = (type: Tools) => {
@@ -181,7 +186,10 @@ const Toolbar = memo(() => {
 
 
     return (
-        <div className="w-full h-[50px] px-10 flex gap-2 justify-center items-center border-b border-zinc-200">
+        <div
+            className={clsx("moki-editor-toolbar", "w-full h-[50px] px-10 flex gap-2 justify-center items-center border-b border-zinc-200", props?.className)}
+            style={props?.style}
+        >
             <Button
                 isIconOnly
                 variant={"light"}
@@ -197,6 +205,9 @@ const Toolbar = memo(() => {
             <Select
                 className="w-[120px]"
                 selectedKeys={[currentHeading()]}
+                popoverProps={{
+                    portalContainer: document.getElementsByClassName("moki-full-editor-root")?.[0]
+                }}
                 onChange={(event) => {
                     onSetHeading(Number(event?.target.value));
                 }}
@@ -215,6 +226,9 @@ const Toolbar = memo(() => {
                 className="w-[120px]"
                 placeholder="字体"
                 selectedKeys={[currentFontFamily()]}
+                popoverProps={{
+                    portalContainer: document.getElementsByClassName("moki-full-editor-root")?.[0]
+                }}
                 onChange={(event) => {
                     onSetFontFamily(event?.target.value);
                 }}
@@ -241,7 +255,10 @@ const Toolbar = memo(() => {
                     >{item.icon}</Button>
                 })
             }
-            <Popover placement="bottom" showArrow={false}>
+            <Popover
+                placement="bottom" showArrow={false}
+                portalContainer={document.getElementsByClassName("moki-full-editor-root")?.[0]}
+            >
                 <PopoverTrigger>
                     <Button
                         isIconOnly
@@ -254,7 +271,10 @@ const Toolbar = memo(() => {
                     />
                 </PopoverContent>
             </Popover>
-            <Popover placement="bottom" showArrow={false}>
+            <Popover
+                placement="bottom" showArrow={false}
+                portalContainer={document.getElementsByClassName("moki-full-editor-root")?.[0]}
+            >
                 <PopoverTrigger>
                     <Button
                         isIconOnly

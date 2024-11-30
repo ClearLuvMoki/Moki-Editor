@@ -1,3 +1,5 @@
+import type {JSONContent} from "@tiptap/core";
+
 export interface FullEditorProps {
     classNames?: {
         root?: string;
@@ -9,4 +11,12 @@ export interface FullEditorProps {
         toolbar?: React.CSSProperties;
         editor?: React.CSSProperties;
     }
+    content?: string;
+    onUpdate?: ({json, html, text}: {
+        json: JSONContent;
+        text: string;
+        html: string;
+        isEmpty: boolean;
+    }) => void;
+    autofocus?: "start" | "end" | "all" | number | boolean | null
 }
