@@ -18,7 +18,8 @@ import {
     Heading,
     Highlight,
     TextStyle,
-    Color
+    Color,
+    FontFamily
 } from "../../extensions"
 
 export const FullExtensions = [
@@ -52,5 +53,6 @@ export const FullExtensions = [
     }),
     Highlight.configure({ multicolor: true }),
     TextStyle,
-    Color
+    Color,
+    FontFamily
 ]

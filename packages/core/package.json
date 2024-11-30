@@ -41,6 +41,7 @@
     "@tiptap/extension-code-block": "^2.10.2",
     "@tiptap/extension-color": "^2.10.3",
     "@tiptap/extension-document": "^2.10.2",
+    "@tiptap/extension-font-family": "^2.10.3",
     "@tiptap/extension-heading": "^2.10.3",
     "@tiptap/extension-highlight": "^2.10.3",
     "@tiptap/extension-history": "^2.10.2",

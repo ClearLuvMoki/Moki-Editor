@@ -24,6 +24,19 @@ export const ToolbarIconProps = {
     size: 16
 }
 
+export const Fonts = [
+    'Arial',
+    'Arial Black',
+    'Georgia',
+    'Impact',
+    'Tahoma',
+    'Times New Roman',
+    'Verdana',
+    'Courier New',
+    'Lucida Console',
+    'Monaco',
+    'monospace',
+];
 const ActionsArr: { icon: JSX.Element, type: Tools, popover?: React.ReactNode }[] = [
     {icon: <Bold {...ToolbarIconProps}/>, type: "bold",},
     {icon: <Italic {...ToolbarIconProps}/>, type: "italic"},
@@ -41,6 +54,7 @@ const ActionsArr: { icon: JSX.Element, type: Tools, popover?: React.ReactNode }[
 
 const Toolbar = memo(() => {
     const {editor} = useContext(Context);
+
     const isH1 = useActive(editor, 'heading', {level: 1});
     const isH2 = useActive(editor, 'heading', {level: 2});
     const isH3 = useActive(editor, 'heading', {level: 3});
@@ -99,6 +113,20 @@ const Toolbar = memo(() => {
             // }
         }
     }
+
+    const currentFontFamily = useCallback(() => {
+        return Fonts.map(item => {
+            return {
+                isActive: editor?.isActive('textStyle', { fontFamily: item }),
+                label: item
+            }
+        }).filter(item => item.isActive)?.[0]?.label;
+    }, [editor])
+
+    const onSetFontFamily = useCallback((font: string) => {
+        return editor?.chain().focus().setFontFamily(font).run();
+    }, [editor])
+
 
     const isDisabled = useCallback((type: Tools) => {
         switch (type) {
@@ -179,6 +207,24 @@ const Toolbar = memo(() => {
                             key={item.key}
                         >
                             {item.label}
+                        </SelectItem>
+                    })
+                }
+            </Select>
+            <Select
+                className="w-[120px]"
+                placeholder="字体"
+                selectedKeys={[currentFontFamily()]}
+                onChange={(event) => {
+                    onSetFontFamily(event?.target.value);
+                }}
+            >
+                {
+                    Fonts.map(item => {
+                        return <SelectItem
+                            key={item}
+                        >
+                            {item}
                         </SelectItem>
                     })
                 }
