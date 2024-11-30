@@ -2,6 +2,7 @@
   "name": "@clearluv/editor-monorepo",
   "version": "1.0.0",
   "main": "index.js",
+  "homepage": "https://clearluv-editor.vercel.app",
   "scripts": {
     "dev": "pnpm -r --filter=./apps/preview/ run dev",
     "build:cmp": "nodemon",
