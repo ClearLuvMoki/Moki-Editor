@@ -8,5 +8,6 @@ export default defineConfig({
         "./src/index.ts"
     ],
     dts: true,
-    treeshake: true
+    treeshake: true,
+    minify: true
 });

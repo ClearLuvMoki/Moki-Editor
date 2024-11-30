@@ -1,6 +1,6 @@
 {
-  "name": "@moki/editor",
-  "version": "1.0.0",
+  "name": "@clearluv/editor",
+  "version": "1.0.3",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "umd": "dist/index.umd.js",
@@ -18,12 +18,18 @@
   "files": [
     "dist"
   ],
+  "keywords": [
+    "editor",
+    "rich editor",
+    "react editor",
+    "rich text",
+    "react"
+  ],
   "scripts": {
     "build": "tsup"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Moki <2893096286@qq.com>",
+  "license": "AGPL",
   "description": "",
   "peerDependencies": {
     "react": ">=18",

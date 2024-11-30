@@ -1,6 +1,6 @@
 import './App.css';
-import "@moki/editor/index.css"
-import {FullEditor} from "@moki/editor"
+import "@clearluv/editor/index.css"
+import {FullEditor} from "@clearluv/editor"
 
 const App = () => {
     return (
@@ -8,7 +8,6 @@ const App = () => {
             <FullEditor
                 content={"<p>1212</p>"}
             />
-            <button onClick={() => {}}>demo</button>
         </>
     );
 };
