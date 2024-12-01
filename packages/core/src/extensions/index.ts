@@ -20,3 +20,5 @@ export {Highlight} from "./highlight"
 export {TextStyle} from "./text-style"
 export {Color} from "./color"
 export {FontFamily} from "./font-family"
+
+export {createSlash} from "./slash"

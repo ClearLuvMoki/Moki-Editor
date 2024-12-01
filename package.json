@@ -5,8 +5,8 @@
   "homepage": "https://clearluv-editor.vercel.app",
   "scripts": {
     "dev": "pnpm -r --filter=./apps/preview/ run dev",
-    "build:cmp": "nodemon",
-    "build:demo": "pnpm -r --filter=./apps/preview/ run build"
+    "build:preview": "pnpm -r --filter=./apps/preview/ run build",
+    "build:cmp": "nodemon"
   },
   "author": "Moki <2893096286@qq.com>",
   "dependencies": {
