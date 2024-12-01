@@ -127,9 +127,9 @@ export const FullExtensions = [
     TextStyle,
     Color,
     FontFamily,
-    createSlash('slash-/', {
-        char: '/',
-        pluginKey: "slash-/",
-        items: Commands
-    }),
+    // createSlash('slash-/', {
+    //     char: '/',
+    //     pluginKey: "slash-/",
+    //     items: Commands
+    // }),
 ]
