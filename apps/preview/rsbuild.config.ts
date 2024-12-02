@@ -8,4 +8,7 @@ export default defineConfig({
       ignoreWarnings: [/Critical dependency/],
     },
   },
+  html: {
+    title: 'ClearLuv Editor',
+  },
 });
