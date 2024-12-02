@@ -86,6 +86,7 @@ const ColorPicker = memo((props: Props) => {
                 {
                     colors.map((item, index) => {
                         return <div
+                            key={item}
                             className="w-[24px] h-[24px] flex justify-center items-center rounded border-1 border-transparent hover:border-1 hover:border-zinc-300"
                             style={{
                                 transition: "all .2s",
