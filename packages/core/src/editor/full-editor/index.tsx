@@ -1,4 +1,5 @@
 import "../../styles/full-editor.css"
+import 'mac-scrollbar/dist/mac-scrollbar.css';
 import React, {memo, useEffect} from 'react';
 import {useEditor, EditorContent} from "@tiptap/react"
 import {isEqualReact} from "@react-hookz/deep-equal";
