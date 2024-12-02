@@ -70,9 +70,9 @@ export const createSlash = (name: string, options?: SlashOptions) => {
                         const filter = (this.options.items || []).map(item => {
                             return {
                                 ...item,
-                                children: (item.children || []).filter(child => child?.slash?.indexOf(query) > -1 || child?.text?.indexOf(query) > -1)
+                                children: (item.children || []).filter(child => child?.slash?.indexOf(query) > -1 || child?.text?.indexOf(query) > -1) || []
                             }
-                        }).filter(item => item.children?.length > 0)
+                        }).filter(item => item.children?.length > 0) || []
                         return filter;
                     },
 

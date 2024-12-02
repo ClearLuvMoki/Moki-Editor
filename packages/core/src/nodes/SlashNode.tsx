@@ -1,5 +1,4 @@
 import React, {forwardRef, memo, useEffect, useImperativeHandle, useRef} from 'react';
-import {MacScrollbar} from 'mac-scrollbar';
 import {
     Listbox,
     ListboxSection,
@@ -14,7 +13,7 @@ const SlashNode = forwardRef((props: {
 }, ref) => {
     const $container = useRef<HTMLDivElement>(null);
     const [selectedKey, setSelectedKey] = React.useState<string>('');
-    const childrenList = (props?.items || []).reduce((acc: any[], obj) => acc.concat(obj.children || []), []);
+    const childrenList = (props?.items || []).reduce((acc: any[], obj) => acc.concat(obj.children || []), []) || [];
 
     useEffect(() => {
         (props.items && props.items.length) && setSelectedKey(props?.items?.[0]?.children?.[0]?.slash)
@@ -77,41 +76,42 @@ const SlashNode = forwardRef((props: {
     return (
         <div
             className="w-[250px] max-h-[240px] shadow-[rgb(0_0_0/10%)_0_0_10px] rounded-xl p-2 overflow-y-scroll no-scrollbar"
-            ref={$container}>
-            <Listbox
-                variant="flat"
-                selectionMode="single"
-                selectedKeys={[selectedKey]}
-                onSelectionChange={(key) => {
-                    const activeSlash = Array.from(key) as string[];
-                    const item = activeSlash[0];
-                    if (!item) return;
-                    selectItem(item)
-                }}
-            >
-                {(props.items && props.items.length > 0) ? (
-                    (props.items || []).map((item, index) => {
-                        return (
-                            <ListboxSection title={item.title} key={item.title}>
-                                {
-                                    (item.children || []).map(item => (
-                                        <ListboxItem
-                                            key={item.slash}
-                                            className="slash-menu-item"
-                                            description={item.slash}
-                                            startContent={item.icon}
-                                        >
-                                            {item.text}
-                                        </ListboxItem>
-                                    ))
-                                }
-                            </ListboxSection>
-                        )
-                    })
-                ) : (
-                    <div>{"暂无"}</div>
-                )}
-            </Listbox>
+            ref={$container}
+        >
+            {(props.items && props.items.length > 0) ? (
+                <Listbox
+                    variant="flat"
+                    selectionMode="single"
+                    selectedKeys={[selectedKey]}
+                    onSelectionChange={(key) => {
+                        const activeSlash = Array.from(key) as string[];
+                        const item = activeSlash[0];
+                        if (!item) return;
+                        selectItem(item)
+                    }}
+                >
+                    {
+                        (props?.items || []).map((item, index) => {
+                            return (
+                                <ListboxSection title={item.title} key={item.title}>
+                                    {
+                                        (item.children || []).map(item => (
+                                            <ListboxItem
+                                                key={item.slash}
+                                                className="slash-menu-item"
+                                                description={item.slash}
+                                                startContent={item.icon}
+                                            >
+                                                {item.text}
+                                            </ListboxItem>
+                                        ))
+                                    }
+                                </ListboxSection>
+                            )
+                        })
+                    }
+                </Listbox>
+            ) : (<div className="text-zinc-200 px-2">{"暂无"}</div>)}
         </div>
     );
 });
