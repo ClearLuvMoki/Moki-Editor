@@ -49,7 +49,7 @@ const SlashNode = forwardRef((props: {
     useEffect(() => {
         if (!selectedKey) return;
         const el = $container.current?.querySelector(`[data-key="${selectedKey}"]`)
-        el && scrollIntoView(el, { behavior: "smooth", scrollMode: "if-needed" });
+        el && scrollIntoView(el, {behavior: "smooth", scrollMode: "if-needed"});
     }, [selectedKey]);
 
     useImperativeHandle(ref, () => ({
@@ -75,43 +75,43 @@ const SlashNode = forwardRef((props: {
 
 
     return (
-        <div className="w-[250px] max-h-[240px] shadow-[rgb(0_0_0/10%)_0_0_10px] rounded-xl p-2" ref={$container}>
-            <MacScrollbar className="h-full max-h-[200px] overflow-y-scroll px-2">
-                <Listbox
-                    variant="flat"
-                    selectionMode="single"
-                    selectedKeys={[selectedKey]}
-                    onSelectionChange={(key) => {
-                        const activeSlash = Array.from(key) as string[];
-                        const item = activeSlash[0];
-                        if (!item) return;
-                        selectItem(item)
-                    }}
-                >
-                    {(props.items && props.items.length > 0) ? (
-                        (props.items || []).map((item, index) => {
-                            return (
-                                <ListboxSection title={item.title} key={item.title}>
-                                    {
-                                        (item.children || []).map(item => (
-                                            <ListboxItem
-                                                key={item.slash}
-                                                className="slash-menu-item"
-                                                description={item.slash}
-                                                startContent={item.icon}
-                                            >
-                                                {item.text}
-                                            </ListboxItem>
-                                        ))
-                                    }
-                                </ListboxSection>
-                            )
-                        })
-                    ) : (
-                        <div>{"暂无"}</div>
-                    )}
-                </Listbox>
-            </MacScrollbar>
+        <div
+            className="w-[250px] max-h-[240px] shadow-[rgb(0_0_0/10%)_0_0_10px] rounded-xl p-2 overflow-y-scroll no-scrollbar"
+            ref={$container}>
+            <Listbox
+                variant="flat"
+                selectionMode="single"
+                selectedKeys={[selectedKey]}
+                onSelectionChange={(key) => {
+                    const activeSlash = Array.from(key) as string[];
+                    const item = activeSlash[0];
+                    if (!item) return;
+                    selectItem(item)
+                }}
+            >
+                {(props.items && props.items.length > 0) ? (
+                    (props.items || []).map((item, index) => {
+                        return (
+                            <ListboxSection title={item.title} key={item.title}>
+                                {
+                                    (item.children || []).map(item => (
+                                        <ListboxItem
+                                            key={item.slash}
+                                            className="slash-menu-item"
+                                            description={item.slash}
+                                            startContent={item.icon}
+                                        >
+                                            {item.text}
+                                        </ListboxItem>
+                                    ))
+                                }
+                            </ListboxSection>
+                        )
+                    })
+                ) : (
+                    <div>{"暂无"}</div>
+                )}
+            </Listbox>
         </div>
     );
 });
