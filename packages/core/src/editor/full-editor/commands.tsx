@@ -1,31 +1,7 @@
-import {
-    Document,
-    Paragraph,
-    Text,
-    Placeholder,
-    Bold,
-    Italic,
-    Underline,
-    Strike,
-    Subscript,
-    Superscript,
-    OrderedList,
-    BulletList,
-    Code,
-    CodeBlock,
-    Blockquote,
-    History,
-    Heading,
-    Highlight,
-    TextStyle,
-    Color,
-    FontFamily,
-    createSlash
-} from "../../extensions"
 import {SlashMenuItem} from "../../extensions/slash";
-import {Heading1, Heading2, Heading3, Heading4, Braces} from "lucide-react";
+import {Braces, Image, Heading1, Heading2, Heading3, Heading4} from "lucide-react";
 
-const Commands: SlashMenuItem[] = [
+export const Commands: SlashMenuItem[] = [
     {
         title: "标题",
         children: [
@@ -82,7 +58,18 @@ const Commands: SlashMenuItem[] = [
         title: "插入",
         children: [
             {
-                icon: <Braces />,
+                icon: <Image/>,
+                text: "图片",
+                slash: "/image",
+                action: editor =>
+                    editor
+                        .chain()
+                        .focus()
+                        .setImageUpload()
+                        .run()
+            },
+            {
+                icon: <Braces/>,
                 text: "代码块",
                 slash: "/codeBlock",
                 action: editor =>
@@ -94,44 +81,4 @@ const Commands: SlashMenuItem[] = [
             },
         ]
     },
-]
-
-export const FullExtensions = [
-    Document,
-    Paragraph,
-    Text,
-    Blockquote,
-    Placeholder.configure({
-        includeChildren: false,
-        showOnlyCurrent: false,
-        placeholder: ({node}) => {
-            if (["codeBlock"].includes(node.type.name)) {
-                return ""
-            }
-            return 'Write some for self...'
-        },
-    }),
-    Bold,
-    Italic,
-    Underline,
-    Strike,
-    Subscript,
-    Superscript,
-    // OrderedList,
-    // BulletList,
-    Code,
-    CodeBlock,
-    History,
-    Heading.configure({
-        levels: [1, 2, 3, 4, 5],
-    }),
-    Highlight.configure({multicolor: true}),
-    TextStyle,
-    Color,
-    FontFamily,
-    createSlash('slash-/', {
-        char: '/',
-        pluginKey: "slash-/",
-        items: Commands
-    }),
 ]

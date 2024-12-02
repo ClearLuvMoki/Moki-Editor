@@ -17,6 +17,9 @@ const CodeBlockNode = memo(({editor, node: {attrs}, updateAttributes, extension}
                     <Autocomplete
                         className="w-[200px]"
                         defaultSelectedKey={defaultLanguage}
+                        popoverProps={{
+                            portalContainer: document.getElementsByClassName("moki-full-editor-root")?.[0]
+                        }}
                         onChange={(event) => {
                             const value = event?.target?.value;
                             updateAttributes({language: value})

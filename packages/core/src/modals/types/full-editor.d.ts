@@ -1,4 +1,5 @@
 import type {JSONContent} from "@tiptap/core";
+import {UploadParamsType} from "./upload";
 
 export interface FullEditorProps {
     classNames?: {
@@ -18,5 +19,7 @@ export interface FullEditorProps {
         html: string;
         isEmpty: boolean;
     }) => void;
-    autofocus?: "start" | "end" | "all" | number | boolean | null
+    autofocus?: "start" | "end" | "all" | number | boolean | null;
+    hiddenToast?: boolean;
+    onUploadFile?: (params: UploadParamsType) => Promise<string>;
 }

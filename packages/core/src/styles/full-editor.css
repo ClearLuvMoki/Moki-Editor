@@ -3,6 +3,7 @@
 @import './code.css';
 @import './heading.css';
 @import './highlight.css';
+@import './image.css';
 
 @tailwind base;
 @tailwind components;
@@ -13,15 +14,17 @@
     .moki-full-editor-root {
         width: 100%;
         height: 100%;
+        position: relative;
 
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
 
         /* Hide scrollbar for IE, Edge and Firefox */
+
         .no-scrollbar {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
         }
 
         * {
@@ -70,9 +73,11 @@
 
 
         .moki-full-editor {
+
             .ProseMirror {
                 outline: none;
                 border: 0;
+
 
                 > p:first-child {
                     margin: 0;

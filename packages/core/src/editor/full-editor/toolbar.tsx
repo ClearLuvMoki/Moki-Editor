@@ -132,11 +132,14 @@ const Toolbar = memo((props: Props) => {
                 value: item,
                 label: item
             }
-        }).filter(item => item.isActive)?.[0]?.value
+        }).filter(item => item.isActive)?.[0]?.value || "默认"
     }, [editor])
 
 
     const onSetFontFamily = useCallback((font: string) => {
+        if(font === "默认") {
+            return editor?.chain().focus().unsetFontFamily().run();
+        }
         return editor?.chain().focus().setFontFamily(font).run();
     }, [editor])
 
@@ -234,7 +237,7 @@ const Toolbar = memo((props: Props) => {
                 }}
             >
                 {
-                    Fonts.map(item => {
+                    ["默认"].concat(Fonts).map(item => {
                         return <SelectItem
                             key={item}
                         >

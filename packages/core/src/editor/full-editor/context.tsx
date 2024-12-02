@@ -1,5 +1,6 @@
-import React, { createContext } from "react";
-import type { Editor } from "@tiptap/react";
+import React, {createContext} from "react";
+import type {Editor} from "@tiptap/react";
+import {UploadParamsType} from "../../modals/types/upload";
 
 interface Props {
     children: React.ReactNode;
@@ -32,6 +33,7 @@ export interface MindModalState {
 
 interface ContextState {
     editor: Editor | null;
+    onUploadFile?: (params: UploadParamsType) => Promise<string>;
     // excalidrawModalState: ExcalidrawModalState | null;
     // setExcalidrawModalState: React.Dispatch<ExcalidrawModalState> | null;
     // flowModalState: FlowModalState | null;
@@ -43,11 +45,12 @@ interface ContextState {
 // @ts-ignore
 export const Context = createContext<ContextState>(null);
 
-const GlobalContextProvider = ({ editor,  children }: ContextState & Props) => {
+const GlobalContextProvider = ({editor, onUploadFile, children}: ContextState & Props) => {
 
     return <Context.Provider
         value={{
             editor,
+            onUploadFile
         }}
     >
         {children}
