@@ -38,7 +38,7 @@ pnpm add @clearluv/editor
 | Property   | Description                                       | Type                                                                                              | Default 
 |------------|---------------------------------------------------|---------------------------------------------------------------------------------------------------|---------|
 | classNames | Semantic DOM class                                | { root?: string; toolbar?: string; editor?: string }                                              | /       |
-| styles     | Semantic DOM style                                | root?: React.CSSProperties; toolbar?: React.CSSProperties; editor?: React.CSSProperties }         | /       |
+| styles     | Semantic DOM style                                | { root?: React.CSSProperties; toolbar?: React.CSSProperties; editor?: React.CSSProperties }       | /       |
 | content    | editor content                                    | string                                                                                            | ""      |
 | autofocus  | editor focus postion or type                      | "start" / "end" / "all" / number / boolean / null                                                 | /       |
 | hiddenToast     | is hidden toast                                   | boolean                                                                                           | false   |
