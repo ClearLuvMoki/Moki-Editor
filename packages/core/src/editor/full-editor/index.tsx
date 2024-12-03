@@ -4,12 +4,12 @@ import React, {memo, useEffect, useRef} from 'react';
 import {useEditor, EditorContent} from "@tiptap/react"
 import {isEqualReact} from "@react-hookz/deep-equal";
 import clsx from "clsx"
-import { Toaster, toast } from 'sonner'
+import { Toaster } from 'sonner'
 import {FullEditorProps} from "../../modals/types/full-editor";
 import {FullExtensions} from "./extenisons";
 import Toolbar from "./toolbar";
 import GlobalContextProvider from "./context";
-import ImageBubbleMenu from "../../bubble-menu/image-bubble-menu";
+import {ImageBubbleMenu, TableBubbleMenu} from "../../bubble-menu";
 
 const FullEditor = memo((props: FullEditorProps) => {
     const {classNames, styles, hiddenToast = false, onUploadFile} = props;
@@ -53,6 +53,8 @@ const FullEditor = memo((props: FullEditorProps) => {
                     style={styles?.editor}
                 />
                 <ImageBubbleMenu editor={editor} appendTo={menuContainerRef}/>
+                <TableBubbleMenu.Row editor={editor} appendTo={menuContainerRef}/>
+                <TableBubbleMenu.Column editor={editor} appendTo={menuContainerRef}/>
             </div>
         </GlobalContextProvider>
     );

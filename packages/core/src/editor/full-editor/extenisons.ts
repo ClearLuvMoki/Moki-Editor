@@ -23,6 +23,10 @@ import {
     ImageBlock,
     ImageUpload,
     Focus,
+    Table,
+    TableHeader,
+    TableRow,
+    TableCell,
     createSlash
 } from "../../extensions"
 import {Commands} from "./commands";
@@ -38,7 +42,7 @@ export const FullExtensions = [
         includeChildren: false,
         showOnlyCurrent: false,
         placeholder: ({node}) => {
-            if (["codeBlock"].includes(node.type.name)) {
+            if (["codeBlock", "table"].includes(node.type.name)) {
                 return ""
             }
             return 'Write some for self...'
@@ -72,5 +76,9 @@ export const FullExtensions = [
     Focus.configure({
         className: 'has-focus',
         mode: 'all',
-    })
+    }),
+    Table,
+    TableHeader,
+    TableRow,
+    TableCell,
 ]

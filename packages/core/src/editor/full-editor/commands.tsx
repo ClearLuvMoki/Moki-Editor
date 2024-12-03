@@ -1,5 +1,5 @@
 import {SlashMenuItem} from "../../extensions/slash";
-import {Braces, Image, Heading1, Heading2, Heading3, Heading4} from "lucide-react";
+import {Braces, Image, Sheet, Heading1, Heading2, Heading3, Heading4} from "lucide-react";
 
 export const Commands: SlashMenuItem[] = [
     {
@@ -57,6 +57,13 @@ export const Commands: SlashMenuItem[] = [
     {
         title: "插入",
         children: [
+            {
+                icon: <Sheet />,
+                text: "表格",
+                slash: "/table",
+                action: editor =>
+                    editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: false }).run()
+            },
             {
                 icon: <Image/>,
                 text: "图片",

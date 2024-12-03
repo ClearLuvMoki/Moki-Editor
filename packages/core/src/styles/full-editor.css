@@ -4,6 +4,7 @@
 @import './heading.css';
 @import './highlight.css';
 @import './image.css';
+@import './table.css';
 
 @tailwind base;
 @tailwind components;

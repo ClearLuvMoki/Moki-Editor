@@ -53,7 +53,7 @@ const ActionsArr: { icon: JSX.Element, type: Tools, popover?: React.ReactNode }[
     {icon: <Italic {...ToolbarIconProps}/>, type: "italic"},
     {icon: <Underline {...ToolbarIconProps}/>, type: "underline"},
     {icon: <Strikethrough {...ToolbarIconProps}/>, type: "strike"},
-    {icon: <Braces {...ToolbarIconProps}/>, type: "code"},
+    {icon: <Braces {...ToolbarIconProps}/>, type: "codeBlock"},
     {icon: <Subscript {...ToolbarIconProps}/>, type: "subscript"},
     {icon: <Superscript {...ToolbarIconProps}/>, type: "superscript"},
     // {icon: <Sheet {...ToolbarIconProps}/>, type: "table"},
@@ -85,7 +85,7 @@ const Toolbar = memo((props: Props) => {
             case "strike": {
                 return editor?.chain()?.focus()?.toggleStrike()?.run();
             }
-            case "code": {
+            case "codeBlock": {
                 return editor?.chain()?.focus()?.toggleCodeBlock()?.run();
             }
             case "subscript": {
