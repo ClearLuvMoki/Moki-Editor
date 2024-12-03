@@ -1,17 +1,16 @@
 <a href="https://github.com/ClearLuvMoki/clearluv-editor">
   <h1 align="center">@clearluv/editor</h1>
-  <img alt="Introduction @clearluv/editor" src="./public/images/introduction.png">
+  <img alt="Introduction @clearluv/editor" src="https://github.com/ClearLuvMoki/clearluv-editor/blob/main/packages/core/public/images/introduction.png">
 </a>
 
 <p align="center">
   An open-source WYSIWYG editor
 </p>
 <p align="center">
-  <a href="https://news.ycombinator.com/item?id=36360789"><img src="https://img.shields.io/badge/Hacker%20News-369-%23FF6600" alt="Hacker News"></a>
-  <a href="https://github.com/steven-tey/novel/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/steven-tey/novel?label=license&logo=github&color=f80&logoColor=fff" alt="License" />
+  <a href="https://github.com/ClearLuvMoki/clearluv-editor/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/ClearLuvMoki/clearluv-editor?label=license&logo=github&color=f80&logoColor=fff" alt="License" />
   </a>
-  <a href="https://github.com/steven-tey/novel"><img src="https://img.shields.io/github/stars/steven-tey/novel?style=social" alt="Novel.sh's GitHub repo"></a>
+  <a href="https://github.com/ClearLuvMoki/clearluv-editorr"><img src="https://img.shields.io/github/stars/ClearLuvMoki/clearluv-editor?style=social" alt="Novel.sh's GitHub repo"></a>
 </p>
 
 <p align="center">
