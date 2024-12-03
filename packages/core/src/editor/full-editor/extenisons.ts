@@ -29,6 +29,9 @@ import {
     TableRow,
     TableCell,
     Gapcursor,
+    Column,
+    Columns,
+    HorizontalRule,
     createSlash
 } from "../../extensions"
 import {Commands} from "./commands";
@@ -56,8 +59,6 @@ export const FullExtensions = [
     Strike,
     Subscript,
     Superscript,
-    // OrderedList,
-    // BulletList,
     Code,
     CodeBlock,
     History,
@@ -97,4 +98,7 @@ export const FullExtensions = [
             class: 'moki-editor-bullet-list',
         }
     }),
+    Column,
+    Columns,
+    HorizontalRule
 ]

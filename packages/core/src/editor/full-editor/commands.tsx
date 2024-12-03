@@ -1,5 +1,17 @@
 import {SlashMenuItem} from "../../extensions/slash";
-import {Braces, Image, Sheet, ListOrdered, Logs, Heading1, Heading2, Heading3, Heading4} from "lucide-react";
+import {
+    Braces,
+    Image,
+    Sheet,
+    ListOrdered,
+    Logs,
+    Heading1,
+    Heading2,
+    Heading3,
+    Heading4,
+    Columns2,
+    SeparatorHorizontal
+} from "lucide-react";
 
 export const Commands: SlashMenuItem[] = [
     {
@@ -70,6 +82,29 @@ export const Commands: SlashMenuItem[] = [
                 slash: "/bulletList",
                 action: editor =>
                     editor.chain().focus().toggleBulletList().run()
+            },
+            {
+                icon: <Columns2 />,
+                text: "分列",
+                slash: "/columns",
+                action: editor =>
+                    editor
+                        .chain()
+                        .focus()
+                        .setColumns()
+                        .focus(editor.state.selection.head - 1)
+                        .run()
+            },
+            {
+                icon: <SeparatorHorizontal />,
+                text: "分割线",
+                slash: "/horizontal-rule",
+                action: editor =>
+                    editor
+                        .chain()
+                        .focus()
+                        .setHorizontalRule()
+                        .run()
             },
             {
                 icon: <Sheet/>,

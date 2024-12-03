@@ -29,5 +29,8 @@ export {TableHeader} from "./table-header"
 export {TableRow} from "./table-row"
 export {TableCell} from "./table-cell"
 export {Gapcursor} from "./gapcursor"
+export {Column} from "./column"
+export {Columns} from "./columns"
+export {HorizontalRule} from "./horizontal-rule"
 
 export {createSlash} from "./slash"

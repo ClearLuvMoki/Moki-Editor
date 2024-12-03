@@ -1,7 +1,7 @@
 .moki-full-editor {
     .ProseMirror {
 
-        .is-empty::before {
+        .is-empty:not([data-type="columns"])::before {
             color: rgba(0, 0, 0, 0.4);
             content: attr(data-placeholder);
             float: left;
@@ -12,10 +12,6 @@
 
         &.ProseMirror-focused {
             > p.has-focus.is-empty::before {
-                content: 'Type  /  to browse options';
-            }
-
-            > [data-type='columns'] > [data-type='column'] > p.is-empty.has-focus::before {
                 content: 'Type  /  to browse options';
             }
         }

@@ -6,6 +6,8 @@
 @import './image.css';
 @import './table.css';
 @import './list.css';
+@import './columns.css';
+@import './horizontal-rule.css';
 
 @tailwind base;
 @tailwind components;
