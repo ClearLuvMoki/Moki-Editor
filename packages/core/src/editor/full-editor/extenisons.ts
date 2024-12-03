@@ -9,6 +9,7 @@ import {
     Strike,
     Subscript,
     Superscript,
+    ListItem,
     OrderedList,
     BulletList,
     Code,
@@ -27,6 +28,7 @@ import {
     TableHeader,
     TableRow,
     TableCell,
+    Gapcursor,
     createSlash
 } from "../../extensions"
 import {Commands} from "./commands";
@@ -42,7 +44,7 @@ export const FullExtensions = [
         includeChildren: false,
         showOnlyCurrent: false,
         placeholder: ({node}) => {
-            if (["codeBlock", "table"].includes(node.type.name)) {
+            if (["codeBlock"].includes(node.type.name)) {
                 return ""
             }
             return 'Write some for self...'
@@ -81,4 +83,18 @@ export const FullExtensions = [
     TableHeader,
     TableRow,
     TableCell,
+    Gapcursor,
+    ListItem.configure({
+
+    }),
+    OrderedList.configure({
+        HTMLAttributes: {
+            class: 'moki-editor-order-list',
+        }
+    }),
+    BulletList.configure({
+        HTMLAttributes: {
+            class: 'moki-editor-bullet-list',
+        }
+    }),
 ]

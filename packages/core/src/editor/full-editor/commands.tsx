@@ -1,5 +1,5 @@
 import {SlashMenuItem} from "../../extensions/slash";
-import {Braces, Image, Sheet, Heading1, Heading2, Heading3, Heading4} from "lucide-react";
+import {Braces, Image, Sheet, ListOrdered, Logs, Heading1, Heading2, Heading3, Heading4} from "lucide-react";
 
 export const Commands: SlashMenuItem[] = [
     {
@@ -58,11 +58,25 @@ export const Commands: SlashMenuItem[] = [
         title: "插入",
         children: [
             {
-                icon: <Sheet />,
+                icon: <ListOrdered/>,
+                text: "有序列表",
+                slash: "/orderList",
+                action: editor =>
+                    editor.chain().focus().toggleOrderedList().run()
+            },
+            {
+                icon: <Logs/>,
+                text: "无序列表",
+                slash: "/bulletList",
+                action: editor =>
+                    editor.chain().focus().toggleBulletList().run()
+            },
+            {
+                icon: <Sheet/>,
                 text: "表格",
                 slash: "/table",
                 action: editor =>
-                    editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: false }).run()
+                    editor.chain().focus().insertTable({rows: 3, cols: 3, withHeaderRow: false}).run()
             },
             {
                 icon: <Image/>,

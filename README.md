@@ -59,13 +59,13 @@ pnpm run dev
 
 @clearluv/editor is built on the following stack:
 
-- [React.js](https://react.dev/) – framework
-- [Tiptap](https://tiptap.dev/) – text editor
+- [React.js](https://react.dev/) – Framework
+- [Tiptap](https://tiptap.dev/) – Text editor
 - [NextUI](https://nextui.org/) – UI
 - [RsBuild](https://rsbuild.dev/) – Page build framework
 - [Tsup](https://tsup.egoist.dev/) – Editor build framework
-- [Vercel](https://vercel.com) – deployments
-- [TailwindCSS](https://tailwindcss.com/) – styles
+- [Vercel](https://vercel.com) – Deployments
+- [TailwindCSS](https://tailwindcss.com/) – Styles
 
 ## License
 

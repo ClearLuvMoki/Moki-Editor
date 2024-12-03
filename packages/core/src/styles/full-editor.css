@@ -5,6 +5,7 @@
 @import './highlight.css';
 @import './image.css';
 @import './table.css';
+@import './list.css';
 
 @tailwind base;
 @tailwind components;
