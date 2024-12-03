@@ -42,8 +42,8 @@ pnpm add @clearluv/editor
 | content    | editor content                                    | string                                                                                            | ""      |
 | autofocus  | editor focus postion or type                      | "start" / "end" / "all" / number / boolean / null                                                 | /       |
 | hiddenToast     | is hidden toast                                   | boolean                                                                                           | false   |
-| onUploadFile     | transform upload file, callback base64/upload url | ({type: "image", data: File}) => Promise<string>                                                  | false   |
-| onUpdate     | get editor content when editor update             | ({json, html, text}: {json: JSONContent; text: string; html: string; isEmpty: boolean;}) => void; | false   |
+| onUploadFile     | transform upload file, callback base64/upload url | ({type: "image", data: File}) => Promise<string>                                                  | void    |
+| onUpdate     | get editor content when editor update             | ({json, html, text}: {json: JSONContent; text: string; html: string; isEmpty: boolean;}) => void; | void    |
 
 ## Setting Up Locally
 
