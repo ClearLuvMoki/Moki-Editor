@@ -32,5 +32,6 @@ export {Gapcursor} from "./gapcursor"
 export {Column} from "./column"
 export {Columns} from "./columns"
 export {HorizontalRule} from "./horizontal-rule"
+export {Excalidraw} from "./excalidraw"
 
 export {createSlash} from "./slash"

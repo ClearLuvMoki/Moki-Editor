@@ -10,8 +10,9 @@ import {
     Heading3,
     Heading4,
     Columns2,
-    SeparatorHorizontal
+    SeparatorHorizontal, DraftingCompass
 } from "lucide-react";
+import {DEFAULT_EXCALIDRAW_DATA} from "../../extensions/excalidraw";
 
 export const Commands: SlashMenuItem[] = [
     {
@@ -82,6 +83,13 @@ export const Commands: SlashMenuItem[] = [
                 slash: "/bulletList",
                 action: editor =>
                     editor.chain().focus().toggleBulletList().run()
+            },
+            {
+                icon: <DraftingCompass/>,
+                text: "Draw",
+                slash: "/draw",
+                action: editor =>
+                    editor.chain().focus().insertExcalidraw({ data: DEFAULT_EXCALIDRAW_DATA, blockId: "" }).run()
             },
             {
                 icon: <Columns2 />,

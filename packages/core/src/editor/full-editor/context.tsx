@@ -1,6 +1,9 @@
 import React, {createContext} from "react";
 import type {Editor} from "@tiptap/react";
-import {UploadParamsType} from "../../modals/types/upload";
+import {UploadParamsType} from "../../domains/types/upload";
+import {SetState} from "ahooks/lib/useSetState";
+import {AppState, BinaryFiles} from "@excalidraw/excalidraw/types/types";
+import {ExcalidrawElement} from "@excalidraw/excalidraw/types/element/types";
 
 interface Props {
     children: React.ReactNode;
@@ -10,8 +13,12 @@ export interface ExcalidrawModalState {
     open: boolean;
     data: {
         blockId: string;
-        excalidrawData: null
-    } | null
+        excalidrawData: {
+            elements: readonly ExcalidrawElement[],
+            appState?: AppState,
+            files?: BinaryFiles,
+        }
+    }
 }
 
 export interface FlowModalState {
@@ -34,8 +41,8 @@ export interface MindModalState {
 interface ContextState {
     editor: Editor | null;
     onUploadFile?: (params: UploadParamsType) => Promise<string>;
-    // excalidrawModalState: ExcalidrawModalState | null;
-    // setExcalidrawModalState: React.Dispatch<ExcalidrawModalState> | null;
+    excalidrawModalState: ExcalidrawModalState;
+    setExcalidrawModalState: SetState<ExcalidrawModalState>;
     // flowModalState: FlowModalState | null;
     // setFlowModalState: React.Dispatch<FlowModalState> | null;
     // mindModalState: MindModalState | null;
@@ -45,11 +52,20 @@ interface ContextState {
 // @ts-ignore
 export const Context = createContext<ContextState>(null);
 
-const GlobalContextProvider = ({editor, onUploadFile, children}: ContextState & Props) => {
+const GlobalContextProvider = (
+    {
+        editor,
+        onUploadFile,
+        excalidrawModalState,
+        setExcalidrawModalState,
+        children
+    }: ContextState & Props) => {
 
     return <Context.Provider
         value={{
             editor,
+            excalidrawModalState,
+            setExcalidrawModalState,
             onUploadFile
         }}
     >

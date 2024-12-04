@@ -75,12 +75,11 @@
             margin: 0;
         }
 
-
         .moki-full-editor {
-
             .ProseMirror {
                 outline: none;
                 border: 0;
+                height: 100%;
 
 
                 > p:first-child {

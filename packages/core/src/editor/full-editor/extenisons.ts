@@ -32,6 +32,7 @@ import {
     Column,
     Columns,
     HorizontalRule,
+    Excalidraw,
     createSlash
 } from "../../extensions"
 import {Commands} from "./commands";
@@ -100,5 +101,6 @@ export const FullExtensions = [
     }),
     Column,
     Columns,
-    HorizontalRule
+    HorizontalRule,
+    Excalidraw
 ]

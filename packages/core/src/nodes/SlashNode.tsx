@@ -75,7 +75,7 @@ const SlashNode = forwardRef((props: {
 
     return (
         <div
-            className="w-[250px] max-h-[240px] shadow-[rgb(0_0_0/10%)_0_0_10px] rounded-xl p-2 overflow-y-scroll no-scrollbar"
+            className="w-[250px] max-h-[240px] shadow-[rgb(0_0_0/10%)_0_0_10px] rounded-xl p-2 overflow-y-scroll no-scrollbar bg-white"
             ref={$container}
         >
             {(props.items && props.items.length > 0) ? (

@@ -3,7 +3,7 @@ import {BubbleMenu} from '@tiptap/react'
 import {Instance, sticky} from "tippy.js";
 import {uuid} from "../utils/uuid";
 import {isEqualReact} from "@react-hookz/deep-equal";
-import {BubbleMenuProps} from "../modals/types/bubble-menu";
+import {BubbleMenuProps} from "../domains/types/bubble-menu";
 import getRenderContainer from "../utils/getRenderContainer";
 import {Button, Slider} from "@nextui-org/react";
 import {

@@ -1,6 +1,6 @@
 import React, {memo, useCallback} from 'react';
 import {BubbleMenu} from "@tiptap/react";
-import {BubbleMenuProps, ShouldShowProps} from "../modals/types/bubble-menu";
+import {BubbleMenuProps, ShouldShowProps} from "../domains/types/bubble-menu";
 import {isEqualReact} from "@react-hookz/deep-equal";
 import {isColumnGripSelected, isRowGripSelected} from "../utils/table"
 import {Button} from "@nextui-org/react";

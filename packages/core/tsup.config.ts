@@ -8,6 +8,9 @@ export default defineConfig({
         "./src/index.ts"
     ],
     dts: true,
-    treeshake: true,
+    define: {
+        "process.env.IS_PREACT": JSON.stringify("true"),
+    },
+    // treeshake: true,
     minify: true
 });

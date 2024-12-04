@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
 import {BubbleMenu} from "@tiptap/react";
-import {BubbleMenuProps} from "../modals/types/bubble-menu";
+import {BubbleMenuProps} from "../domains/types/bubble-menu";
 import getRenderContainer from "../utils/getRenderContainer";
 import {uuid} from "../utils/uuid";
 import {sticky} from "tippy.js";

@@ -14,7 +14,7 @@ import {
     Underline,
     Undo2
 } from "lucide-react";
-import {Tools} from "../../modals/types/tools";
+import {Tools} from "../../domains/types/tools";
 import {Context} from "./context";
 import {Button, Select, SelectItem, Popover, PopoverTrigger, PopoverContent} from "@nextui-org/react";
 import {Level} from "@tiptap/extension-heading";
