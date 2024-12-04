@@ -1,14 +1,17 @@
-import React, {memo, useRef} from 'react';
+import React, {memo, useRef, useState} from 'react';
 import {isEqualReact} from "@react-hookz/deep-equal";
 import {NodeViewContent, NodeViewWrapper} from "@tiptap/react";
 import {
     Autocomplete,
-    AutocompleteItem
+    AutocompleteItem,
+    DropdownItem
 } from "@nextui-org/react";
 
 const CodeBlockNode = memo(({node: {attrs}, updateAttributes, extension}: any) => {
     const $container = useRef<HTMLDivElement>(null);
     const {language: defaultLanguage} = attrs;
+    // const [isOpen, setIsOpen] = useState(false);
+    // const LanguageList = (extension.options.lowlight.listLanguages()).concat(["auto"]);
 
     return (
         <NodeViewWrapper>
@@ -16,8 +19,10 @@ const CodeBlockNode = memo(({node: {attrs}, updateAttributes, extension}: any) =
                 <div className="flex items-center ">
                     <Autocomplete
                         className="w-[200px]"
+                        items={(extension.options.lowlight.listLanguages()).concat(["auto"]).map(item => {return {value: item}})}
                         defaultSelectedKey={defaultLanguage}
                         autoFocus={false}
+                        allowsEmptyCollection={false}
                         popoverProps={{
                             portalContainer: $container.current!
                         }}
@@ -27,11 +32,11 @@ const CodeBlockNode = memo(({node: {attrs}, updateAttributes, extension}: any) =
                             updateAttributes({language: value})
                         }}
                     >
-                        {(extension.options.lowlight.listLanguages()).concat(["auto"]).map((lang, index) => (
-                            <AutocompleteItem key={lang} value={lang}>
-                                {lang}
+                        {(item: any)=>(
+                            <AutocompleteItem key={item.value}>
+                                {item.value}
                             </AutocompleteItem>
-                        ))}
+                        )}
                     </Autocomplete>
                 </div>
                 <pre className="!m-0 !mt-6">

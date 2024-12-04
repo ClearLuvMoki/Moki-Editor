@@ -33,6 +33,7 @@ import {
     Columns,
     HorizontalRule,
     Excalidraw,
+    HardBreak,
     createSlash
 } from "../../extensions"
 import {Commands} from "./commands";
@@ -102,5 +103,6 @@ export const FullExtensions = [
     Column,
     Columns,
     HorizontalRule,
-    Excalidraw
+    Excalidraw,
+    HardBreak
 ]

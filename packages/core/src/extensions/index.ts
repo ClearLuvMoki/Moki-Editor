@@ -33,5 +33,6 @@ export {Column} from "./column"
 export {Columns} from "./columns"
 export {HorizontalRule} from "./horizontal-rule"
 export {Excalidraw} from "./excalidraw"
+export {HardBreak} from "./hard-break"
 
 export {createSlash} from "./slash"
