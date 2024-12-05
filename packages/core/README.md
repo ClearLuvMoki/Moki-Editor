@@ -61,7 +61,7 @@ pnpm run dev
 
 - [React.js](https://react.dev/) – Framework
 - [Tiptap](https://tiptap.dev/) – Text editor
-- [NextUI](https://nextui.org/) – UI
+- [Shadcn](https://ui.shadcn.com) – UI
 - [RsBuild](https://rsbuild.dev/) – Page build framework
 - [Tsup](https://tsup.egoist.dev/) – Editor build framework
 - [Vercel](https://vercel.com) – Deployments

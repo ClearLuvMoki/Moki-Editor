@@ -2,11 +2,12 @@ import React, {ChangeEvent, memo, useCallback} from 'react';
 import {isEqualReact} from "@react-hookz/deep-equal";
 import {Editor, NodeViewWrapper} from "@tiptap/react";
 import clsx from "clsx"
-import {Button, Spinner} from "@nextui-org/react";
+import {Button} from "@/components/button";
 import {Images, ImageUp} from "lucide-react";
-import {useDropZone} from "../hooks/use-drop-zone";
-import {useUploader} from "../hooks/use-uploader";
-import {useFileUpload} from "../hooks/use-file-upload";
+import {useDropZone} from "@/hooks/use-drop-zone";
+import {useUploader} from "@/hooks/use-uploader";
+import {useFileUpload} from "@/hooks/use-file-upload";
+import {Spinner} from "@/components/spinner";
 
 
 const ImageUploader = ({onUpload}: { onUpload: (url: string) => void }) => {
@@ -29,7 +30,7 @@ const ImageUploader = ({onUpload}: { onUpload: (url: string) => void }) => {
     if (loading) {
         return (
             <div className="flex items-center justify-center p-8 rounded-lg min-h-[10rem] bg-opacity-80">
-                <Spinner color="default" size="lg"/>
+                <Spinner/>
             </div>
         )
     }
@@ -47,7 +48,7 @@ const ImageUploader = ({onUpload}: { onUpload: (url: string) => void }) => {
                 {draggedInside ? 'Drop image here' : 'Drag and drop or'}
             </div>
             <div>
-                <Button disabled={draggedInside} onClick={handleUploadClick} variant="solid" size="sm">
+                <Button disabled={draggedInside} onClick={handleUploadClick} variant="secondary" size="sm">
                     <ImageUp className="text-zinc-600" size={18}/>
                     Upload an image
                 </Button>

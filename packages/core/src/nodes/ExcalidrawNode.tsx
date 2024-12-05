@@ -1,9 +1,10 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {NodeViewWrapper} from "@tiptap/react";
 import {ExportOpts} from "@excalidraw/excalidraw/types/types";
-import {Button, Image, Spinner} from "@nextui-org/react";
 import {DraftingCompass, ZoomIn, ZoomOut} from "lucide-react";
-import {clamp, svgToDataURI} from "../utils/svg-to-url";
+import {clamp, svgToDataURI} from "@/utils/svg-to-url";
+import {Button} from "@/components/button";
+import {Spinner} from "@/components/spinner";
 
 const ExcalidrawNode = (
     {
@@ -66,7 +67,7 @@ const ExcalidrawNode = (
                     width,
                     height
                 }}
-                className="relative w-full max-w-full border-1 border-zinc-300 rounded-xl overflow-hidden my-2 flex items-center justify-center"
+                className="relative w-full max-w-full border border-1 border-zinc-300 rounded-xl overflow-hidden my-2 flex items-center justify-center"
             >
                 <div
                     className="absolute top-4 left-4 px-2 py-1 rounded-xl bg-yellow-500 flex items-center justify-center gap-2 text-white z-20">
@@ -74,10 +75,10 @@ const ExcalidrawNode = (
                     <span className="text-small">Excalidraw</span>
                 </div>
                 <div className="absolute bottom-4 right-4 flex gap-1 z-20">
-                    <Button isIconOnly size="sm" onPress={() => onZoom("out")}><ZoomOut/></Button>
-                    <Button isIconOnly size="sm" onPress={() => onZoom("in")}><ZoomIn/></Button>
+                    <Button size="sm" onClick={() => onZoom("out")}><ZoomOut/></Button>
+                    <Button size="sm" onClick={() => onZoom("in")}><ZoomIn/></Button>
                 </div>
-                {loading && <Spinner color="default"/>}
+                {loading && <Spinner />}
                 {!loading && !error && (
                     <div
                         style={{
@@ -90,7 +91,7 @@ const ExcalidrawNode = (
                             transform: `scale(${zoom})`,
                             transition: `transform ease-in-out .2s`
                         }}>
-                        {svg ? <Image src={svg} className="w-full h-auto"/> : null}
+                        {svg ? <img src={svg} className="w-full h-auto"/> : null}
                     </div>
                 )}
             </div>

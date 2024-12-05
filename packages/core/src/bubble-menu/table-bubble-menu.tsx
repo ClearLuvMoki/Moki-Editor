@@ -1,9 +1,9 @@
 import React, {memo, useCallback} from 'react';
 import {BubbleMenu} from "@tiptap/react";
-import {BubbleMenuProps, ShouldShowProps} from "../domains/types/bubble-menu";
+import {BubbleMenuProps, ShouldShowProps} from "@/domains/types/bubble-menu";
 import {isEqualReact} from "@react-hookz/deep-equal";
-import {isColumnGripSelected, isRowGripSelected} from "../utils/table"
-import {Button} from "@nextui-org/react";
+import {isColumnGripSelected, isRowGripSelected} from "@/utils/table"
+import {Button} from "@/components/button";
 import {ArrowDownToLine, ArrowUpToLine, Trash} from "lucide-react";
 
 
@@ -50,15 +50,15 @@ const RowBubbleMenu = memo(({editor, appendTo}: BubbleMenuProps) => {
         >
             <div
                 className="text-black inline-flex h-full leading-none gap-0.5 flex-col p-2 bg-white rounded-lg dark:bg-black shadow-sm border border-neutral-200 dark:border-neutral-800">
-                <Button variant="light" size="sm" className="flex justify-start" onPress={onAddRowBefore}>
+                <Button variant="ghost" size="sm" className="flex justify-start" onClick={onAddRowBefore}>
                     <ArrowUpToLine size={18}/>
                     Add row before
                 </Button>
-                <Button variant="light" size="sm" className="flex justify-start" onPress={onAddRowAfter}>
+                <Button variant="ghost" size="sm" className="flex justify-start" onClick={onAddRowAfter}>
                     <ArrowDownToLine size={18}/>
                     Add row after
                 </Button>
-                <Button variant="light" color="danger" size="sm" className="flex justify-start" onPress={onDeleteRow}>
+                <Button variant="ghost" color="danger" size="sm" className="flex justify-start" onClick={onDeleteRow}>
                     <Trash size={18}/>
                     Delete row
                 </Button>
@@ -105,23 +105,23 @@ const ColumnBubbleMenu = memo(({editor, appendTo}: BubbleMenuProps) => {
                 },
                 offset: [0, 15],
                 popperOptions: {
-                    modifiers: [{ name: 'flip', enabled: false }],
+                    modifiers: [{name: 'flip', enabled: false}],
                 },
             }}
             shouldShow={shouldShow as any}
         >
             <div
                 className="text-black inline-flex h-full leading-none gap-0.5 p-2 bg-white rounded-lg dark:bg-black shadow-sm border border-neutral-200 dark:border-neutral-800">
-                <Button variant="light" size="sm" className="flex justify-start" onPress={onAddColumnBefore}>
+                <Button variant="ghost" size="sm" className="flex justify-start" onClick={onAddColumnBefore}>
                     <ArrowUpToLine size={18}/>
                     Add column before
                 </Button>
-                <Button variant="light" size="sm" className="flex justify-start" onPress={onAddColumnAfter}>
+                <Button variant="ghost" size="sm" className="flex justify-start" onClick={onAddColumnAfter}>
                     <ArrowDownToLine size={18}/>
                     Add column after
                 </Button>
-                <Button variant="light" color="danger" size="sm" className="flex justify-start"
-                        onPress={onDeleteColumn}>
+                <Button variant="ghost" color="danger" size="sm" className="flex justify-start"
+                        onClick={onDeleteColumn}>
                     <Trash size={18}/>
                     Delete column
                 </Button>

@@ -1,11 +1,13 @@
 import React, {forwardRef, memo, useEffect, useImperativeHandle, useRef} from 'react';
-import {
-    Listbox,
-    ListboxSection,
-    ListboxItem
-} from "@nextui-org/react";
 import scrollIntoView from "scroll-into-view-if-needed";
-import {SlashMenuItem} from "../extensions/slash";
+import {SlashMenuItem} from "@/extensions/slash";
+import {
+    Command,
+    CommandEmpty,
+    CommandGroup,
+    CommandItem,
+    CommandList,
+} from "@/components/command"
 
 const SlashNode = forwardRef((props: {
     items: SlashMenuItem[];
@@ -47,7 +49,7 @@ const SlashNode = forwardRef((props: {
 
     useEffect(() => {
         if (!selectedKey) return;
-        const el = $container.current?.querySelector(`[data-key="${selectedKey}"]`)
+        const el = $container.current?.querySelector(`[data-value="${selectedKey}"]`)
         el && scrollIntoView(el, {behavior: "smooth", scrollMode: "if-needed"});
     }, [selectedKey]);
 
@@ -75,43 +77,43 @@ const SlashNode = forwardRef((props: {
 
     return (
         <div
-            className="w-[250px] max-h-[240px] shadow-[rgb(0_0_0/10%)_0_0_10px] rounded-xl p-2 overflow-y-scroll no-scrollbar bg-white"
             ref={$container}
+            className="w-[250px] shadow-[rgb(0_0_0/10%)_0_0_10px] rounded-xl p-2 bg-white"
         >
-            {(props.items && props.items.length > 0) ? (
-                <Listbox
-                    variant="flat"
-                    selectionMode="single"
-                    selectedKeys={[selectedKey]}
-                    onSelectionChange={(key) => {
-                        const activeSlash = Array.from(key) as string[];
-                        const item = activeSlash[0];
-                        if (!item) return;
-                        selectItem(item)
-                    }}
+            {
+                <Command
+                    value={selectedKey}
                 >
-                    {
-                        (props?.items || []).map((item, index) => {
-                            return (
-                                <ListboxSection title={item.title} key={item.title}>
-                                    {
-                                        (item.children || []).map(item => (
-                                            <ListboxItem
-                                                key={item.slash}
-                                                className="slash-menu-item"
-                                                description={item.slash}
-                                                startContent={item.icon}
-                                            >
-                                                {item.text}
-                                            </ListboxItem>
-                                        ))
-                                    }
-                                </ListboxSection>
-                            )
-                        })
-                    }
-                </Listbox>
-            ) : (<div className="text-zinc-200 px-2">{"暂无"}</div>)}
+                    <CommandEmpty>No results found.</CommandEmpty>
+                    <CommandList className="no-scrollbar">
+                        {
+                            (props?.items || []).map((item, index) => {
+                                return (
+                                    <CommandGroup heading={item.title} key={item.title}
+                                    >
+                                        {
+                                            (item.children || []).map(item => (
+                                                <CommandItem
+                                                    key={item.slash}
+                                                    value={item.slash}
+                                                    className="slash-menu-item flex items-center gap-1 hover:bg-accent"
+                                                    onSelect={(value) => {
+                                                        if(!value) return;
+                                                        selectItem(value);
+                                                    }}
+                                                >
+                                                    {item.icon}
+                                                    <span>{item.text}</span>
+                                                </CommandItem>
+                                            ))
+                                        }
+                                    </CommandGroup>
+                                )
+                            })
+                        }
+                    </CommandList>
+                </Command>
+            }
         </div>
     );
 });

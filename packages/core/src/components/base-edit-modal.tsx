@@ -1,6 +1,7 @@
 import React, {memo} from 'react';
 import {isEqualReact} from "@react-hookz/deep-equal";
-import {Modal, ModalBody, ModalContent, ModalHeader, Button} from "@nextui-org/react";
+import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose} from '@/components/dialog'
+import {Button} from "@/components/button";
 
 interface Props {
     open: boolean;
@@ -13,30 +14,29 @@ interface Props {
 const BaseEditModal = memo((props: Props) => {
     const {open, title, children, onSubmit, onClose} = props;
     return (
-        <Modal
-            size="full"
-            isOpen={open}
-            hideCloseButton={true}
-            portalContainer={document.getElementsByClassName("moki-full-editor-root")?.[0]}
-            onClose={onClose}
+        <Dialog
+            open={open}
+            onOpenChange={(open) => !open && onClose()}
         >
-            <ModalContent>
-                {() => (
-                    <React.Fragment>
-                        <ModalHeader className="flex justify-between items-center">
-                            <span>{title}</span>
-                            <div className="flex items-center gap-2">
-                                <Button color="primary" onPress={onSubmit}>确定</Button>
-                                <Button onPress={onClose}>取消</Button>
-                            </div>
-                        </ModalHeader>
-                        <ModalBody>
-                            {children}
-                        </ModalBody>
-                    </React.Fragment>
-                )}
-            </ModalContent>
-        </Modal>
+            <DialogContent
+                className="max-w-screen h-screen flex flex-col"
+                autoFocus={false}
+                closeIcon={<div className="flex gap-2 items-center">
+                    <Button onClick={onSubmit}>确定</Button>
+                    <Button variant="secondary" onClick={onClose}>取消</Button>
+                </div>}
+            >
+                <DialogHeader
+                    className="flex justify-between items-center h-[20px]"
+                >
+                    <DialogTitle>{title}</DialogTitle>
+                    <DialogClose autoFocus={false}/>
+                </DialogHeader>
+                <div className="flex flex-1">
+                    {children}
+                </div>
+            </DialogContent>
+        </Dialog>
     );
 }, (prevProps, nextProps) => {
     return isEqualReact(prevProps, nextProps)

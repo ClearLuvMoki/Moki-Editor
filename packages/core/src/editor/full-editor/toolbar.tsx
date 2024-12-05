@@ -1,24 +1,34 @@
-import React, {memo, useCallback, useContext, useEffect, useMemo, useState} from 'react';
+import React, {memo, useCallback, useContext} from 'react';
 import {isEqualReact} from "@react-hookz/deep-equal";
 import clsx from "clsx"
 import {
     Baseline,
-    Bold, Braces, Heading1, Heading2, Heading3, Heading4, Heading5,
-    Italic, List, ListMinus, ListOrdered, PaintRoller,
-    Pilcrow,
+    Bold, Braces,
+    Italic, PaintRoller,
     Redo2,
-    Sheet,
     Strikethrough,
     Subscript,
     Superscript, TextQuote,
     Underline,
     Undo2
 } from "lucide-react";
-import {Tools} from "../../domains/types/tools";
+import {Tools} from "@/domains/types/tools";
 import {Context} from "./context";
-import {Button, Select, SelectItem, Popover, PopoverTrigger, PopoverContent} from "@nextui-org/react";
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/popover"
+import {Button} from "@/components/button"
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/select"
 import {Level} from "@tiptap/extension-heading";
-import ColorPicker from "../../components/color-picker";
+import ColorPicker from "@/components/color-picker";
 
 export const ToolbarIconProps = {
     size: 16
@@ -137,7 +147,7 @@ const Toolbar = memo((props: Props) => {
 
 
     const onSetFontFamily = useCallback((font: string) => {
-        if(font === "默认") {
+        if (font === "默认") {
             return editor?.chain().focus().unsetFontFamily().run();
         }
         return editor?.chain().focus().setFontFamily(font).run();
@@ -194,97 +204,89 @@ const Toolbar = memo((props: Props) => {
             style={props?.style}
         >
             <Button
-                isIconOnly
-                variant={"light"}
-                isDisabled={isDisabled("undo")}
+                variant={"ghost"}
+                disabled={isDisabled("undo")}
                 onClick={() => onAction("undo")}
             ><Undo2 {...ToolbarIconProps}/></Button>
             <Button
-                isIconOnly
-                variant={"light"}
-                isDisabled={isDisabled("redo")}
+                variant={"ghost"}
+                disabled={isDisabled("redo")}
                 onClick={() => onAction("redo")}
             ><Redo2 {...ToolbarIconProps}/></Button>
             <Select
-                className="w-[120px]"
-                selectedKeys={[currentHeading()]}
-                popoverProps={{
-                    portalContainer: document.getElementsByClassName("moki-full-editor-root")?.[0]
-                }}
-                onChange={(event) => {
-                    onSetHeading(Number(event?.target.value));
+                value={currentHeading()}
+                onValueChange={(data) => {
+                    onSetHeading(Number(data));
                 }}
             >
-                {
-                    Heading.map(item => {
-                        return <SelectItem
-                            key={item.value}
-                        >
-                            {item.label}
-                        </SelectItem>
-                    })
-                }
+                <SelectTrigger className="w-[120px]">
+                    <SelectValue/>
+                </SelectTrigger>
+                <SelectContent>
+                    {
+                        Heading.map(item => {
+                            return <SelectItem
+                                key={item.value}
+                                value={item.value}
+                            >
+                                {item.label}
+                            </SelectItem>
+                        })
+                    }
+                </SelectContent>
             </Select>
             <Select
-                className="w-[120px]"
-                placeholder="字体"
-                selectedKeys={[currentFontFamily()]}
-                popoverProps={{
-                    portalContainer: document.getElementsByClassName("moki-full-editor-root")?.[0]
-                }}
-                onChange={(event) => {
-                    onSetFontFamily(event?.target.value);
+                value={currentFontFamily()}
+                onValueChange={(data) => {
+                    onSetFontFamily(data);
                 }}
             >
-                {
-                    ["默认"].concat(Fonts).map(item => {
-                        return <SelectItem
-                            key={item}
-                        >
-                            {item}
-                        </SelectItem>
-                    })
-                }
+                <SelectTrigger className="w-[120px]">
+                    <SelectValue/>
+                </SelectTrigger>
+                <SelectContent>
+                    {
+                        ["默认"].concat(Fonts).map(item => {
+                            return <SelectItem
+                                key={item}
+                                value={item}
+                            >
+                                {item}
+                            </SelectItem>
+                        })
+                    }
+                </SelectContent>
             </Select>
             {
                 ActionsArr.map((item, index) => {
                     const isActive = Boolean(item?.type === "textAlign" || editor?.isActive(item?.type));
                     return <Button
                         key={index}
-                        isIconOnly
-                        variant={isActive ? "solid" : "light"}
-                        isDisabled={isDisabled(item.type)}
+                        variant={isActive ? "default" : "ghost"}
+                        disabled={isDisabled(item.type)}
                         onClick={() => onAction(item.type)}
                     >{item.icon}</Button>
                 })
             }
-            <Popover
-                placement="bottom" showArrow={false}
-                portalContainer={document.getElementsByClassName("moki-full-editor-root")?.[0]}
-            >
+            <Popover>
                 <PopoverTrigger>
                     <Button
-                        isIconOnly
-                        variant={"light"}
+                        variant={"ghost"}
                     ><PaintRoller {...ToolbarIconProps}/></Button>
                 </PopoverTrigger>
-                <PopoverContent>
+                <PopoverContent className="w-[278px]">
                     <ColorPicker
                         onSetColor={setColor}
                     />
                 </PopoverContent>
             </Popover>
-            <Popover
-                placement="bottom" showArrow={false}
-                portalContainer={document.getElementsByClassName("moki-full-editor-root")?.[0]}
-            >
+            <Popover>
                 <PopoverTrigger>
                     <Button
-                        isIconOnly
-                        variant={"light"}
+                        variant={"ghost"}
                     ><Baseline {...ToolbarIconProps}/></Button>
                 </PopoverTrigger>
-                <PopoverContent>
+                <PopoverContent className="w-[278px]">
                     <ColorPicker
                         onSetColor={setFontColor}
                     />

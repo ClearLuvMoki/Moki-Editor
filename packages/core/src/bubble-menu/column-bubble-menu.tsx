@@ -1,12 +1,12 @@
 import React, {useCallback} from 'react';
 import {BubbleMenu} from "@tiptap/react";
-import {BubbleMenuProps} from "../domains/types/bubble-menu";
+import {BubbleMenuProps} from "@/domains/types/bubble-menu";
 import getRenderContainer from "../utils/getRenderContainer";
-import {uuid} from "../utils/uuid";
+import {uuid} from "@/utils/uuid";
 import {sticky} from "tippy.js";
-import {Button} from "@nextui-org/react";
+import {Button} from "@/components/button";
 import {Columns2, PanelLeftClose, PanelRightClose} from "lucide-react";
-import {ColumnLayout} from "../extensions/columns";
+import {ColumnLayout} from "@/extensions/columns";
 
 const ColumnBubbleMenu = ({editor, appendTo}: BubbleMenuProps) => {
     const getReferenceClientRect = useCallback(() => {
@@ -54,26 +54,23 @@ const ColumnBubbleMenu = ({editor, appendTo}: BubbleMenuProps) => {
                 className="text-black inline-flex h-full leading-none gap-0.5 flex-row p-1 items-center bg-white shadow-sm  border border-neutral-200 dark:border-neutral-800 rounded-lg dark:bg-black "
             >
                 <Button
-                    isIconOnly
-                    variant={editor?.isActive('columns', {layout: ColumnLayout.SidebarLeft}) ? "solid" : "light"}
                     size="sm"
-                    onPress={onColumnLeft}
+                    variant={editor?.isActive('columns', {layout: ColumnLayout.SidebarLeft}) ? "secondary" : "ghost"}
+                    onClick={onColumnLeft}
                 >
                     <PanelLeftClose size={18} className="text-zinc-600"/>
                 </Button>
                 <Button
-                    isIconOnly
-                    variant={editor?.isActive('columns', {layout: ColumnLayout.TwoColumn}) ? "solid" : "light"}
                     size="sm"
-                    onPress={onColumnTwo}
+                    variant={editor?.isActive('columns', {layout: ColumnLayout.TwoColumn}) ? "secondary" : "ghost"}
+                    onClick={onColumnTwo}
                 >
                     <Columns2 size={18} className="text-zinc-600"/>
                 </Button>
                 <Button
-                    isIconOnly
-                    variant={editor?.isActive('columns', {layout: ColumnLayout.SidebarRight}) ? "solid" : "light"}
                     size="sm"
-                    onPress={onColumnRight}
+                    variant={editor?.isActive('columns', {layout: ColumnLayout.SidebarRight}) ? "secondary" : "ghost"}
+                    onClick={onColumnRight}
                 >
                     <PanelRightClose size={18} className="text-zinc-600"/>
                 </Button>

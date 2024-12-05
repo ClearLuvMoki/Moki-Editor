@@ -1,43 +1,76 @@
-import React, {memo, useRef, useState} from 'react';
+import React, {memo, useRef, useState, Suspense} from 'react';
 import {isEqualReact} from "@react-hookz/deep-equal";
 import {NodeViewContent, NodeViewWrapper} from "@tiptap/react";
+import {Button} from "@/components/button"
 import {
-    Autocomplete,
-    AutocompleteItem,
-    DropdownItem
-} from "@nextui-org/react";
+    Command,
+    CommandEmpty,
+    CommandGroup,
+    CommandInput,
+    CommandItem,
+    CommandList,
+} from "@/components/command"
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/popover"
+import {Check, ChevronsUpDown} from "lucide-react";
+import {cn} from "@/utils/tools";
 
 const CodeBlockNode = memo(({node: {attrs}, updateAttributes, extension}: any) => {
-    const $container = useRef<HTMLDivElement>(null);
     const {language: defaultLanguage} = attrs;
-    // const [isOpen, setIsOpen] = useState(false);
-    // const LanguageList = (extension.options.lowlight.listLanguages()).concat(["auto"]);
+    const [open, setOpen] = useState(false)
+    const [value, setValue] = useState("")
+    const LanguageList = (extension.options.lowlight.listLanguages()).concat(["auto"]);
 
     return (
         <NodeViewWrapper>
-            <div className="border-1 border-zinc-200 rounded-xl p-4 mb-4" ref={$container}>
+            <div className="border border-1 border-zinc-200 rounded-xl p-4 mb-4">
                 <div className="flex items-center ">
-                    <Autocomplete
-                        className="w-[200px]"
-                        items={(extension.options.lowlight.listLanguages()).concat(["auto"]).map(item => {return {value: item}})}
-                        defaultSelectedKey={defaultLanguage}
-                        autoFocus={false}
-                        allowsEmptyCollection={false}
-                        popoverProps={{
-                            portalContainer: $container.current!
-                        }}
-                        onChange={(event) => {
-                            const value = event?.target?.value;
-                            if (!value) return;
-                            updateAttributes({language: value})
-                        }}
-                    >
-                        {(item: any)=>(
-                            <AutocompleteItem key={item.value}>
-                                {item.value}
-                            </AutocompleteItem>
-                        )}
-                    </Autocomplete>
+                    <Popover open={open} onOpenChange={setOpen}>
+                        <PopoverTrigger asChild>
+                            <Button
+                                variant="outline"
+                                role="combobox"
+                                aria-expanded={open}
+                                className="w-[200px] justify-between"
+                            >
+                                {value
+                                    ? LanguageList.find((lang) => lang === value)
+                                    : (defaultLanguage || "Search language...")}
+                                <ChevronsUpDown className="opacity-50"/>
+                            </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-[200px] p-0">
+                            <Command>
+                                <CommandInput placeholder="Search language..." className="h-9"/>
+                                <CommandList>
+                                    <CommandEmpty>No language found.</CommandEmpty>
+                                    <CommandGroup>
+                                        {LanguageList.map((lang) => (
+                                            <CommandItem
+                                                key={lang}
+                                                value={lang}
+                                                onSelect={(currentValue) => {
+                                                    setValue(currentValue === value ? "" : currentValue)
+                                                    setOpen(false)
+                                                }}
+                                            >
+                                                {lang}
+                                                <Check
+                                                    className={cn(
+                                                        "ml-auto",
+                                                        value === lang ? "opacity-100" : "opacity-0"
+                                                    )}
+                                                />
+                                            </CommandItem>
+                                        ))}
+                                    </CommandGroup>
+                                </CommandList>
+                            </Command>
+                        </PopoverContent>
+                    </Popover>
                 </div>
                 <pre className="!m-0 !mt-6">
                     <NodeViewContent as="code"/>

@@ -1,7 +1,5 @@
-import React, {memo, useCallback, useEffect, useMemo, useRef} from 'react';
-import {isEqualReact} from "@react-hookz/deep-equal";
+import React, {useCallback, useMemo, useRef} from 'react';
 import {Editor, NodeViewWrapper} from "@tiptap/react";
-import {Image} from "@nextui-org/react";
 import clsx from "clsx";
 
 interface ImageBlockViewProps {
@@ -43,17 +41,10 @@ const ImageBlockNode = (props: ImageBlockViewProps) => {
         <NodeViewWrapper>
             <div className={clsx("border-2 border-zinc-300 rounded-2xl",wrapperClassName)} style={{ width: node.attrs.width }}>
                 <div contentEditable={false} ref={imageWrapperRef} className="w-full">
-                    <Image
-                        isZoomed
-                        isBlurred
+                    <img
                         width={"100%"}
-                        className="block"
-                        classNames={{
-                            wrapper: "w-full",
-                            img: "w-full"
-                        }}
+                        className="block w-full"
                         src={$src}
-                        fallbackSrc={FallBackImage}
                         onClick={onClick}
                     />
                 </div>

@@ -1,6 +1,6 @@
 import React, {memo} from 'react';
 import {isEqualReact} from "@react-hookz/deep-equal";
-import {Button} from "@nextui-org/react";
+import {Button} from "@/components/button";
 
 const colors = [
     '#000000',
@@ -81,7 +81,7 @@ interface Props {
 
 const ColorPicker = memo((props: Props) => {
     return (
-        <div className="flex flex-wrap px-4 py-3 w-[272px]">
+        <div className="flex flex-wrap w-full">
             <div className="flex flex-wrap">
                 {
                     colors.map((item, index) => {
@@ -108,10 +108,9 @@ const ColorPicker = memo((props: Props) => {
                 }
             </div>
             <Button
-                size="sm"
-                fullWidth={true}
-                variant="solid"
-                onPress={() => props?.onSetColor(null)}
+                className="w-full mt-2"
+                variant="secondary"
+                onClick={() => props?.onSetColor(null)}
             >
                 恢复默认
             </Button>

@@ -1,11 +1,11 @@
 import React, {useCallback, useContext, useEffect, useRef} from 'react';
 import {Instance} from "tippy.js";
 import {BubbleMenu} from "@tiptap/react";
-import {Button} from "@nextui-org/react";
+import {Button} from "@/components/button";
 import {PencilRuler} from "lucide-react";
-import {BubbleMenuProps} from "../domains/types/bubble-menu";
-import {uuid} from "../utils/uuid";
-import {Context} from "../editor/full-editor/context";
+import {BubbleMenuProps} from "@/domains/types/bubble-menu";
+import {uuid} from "@/utils/uuid";
+import {Context} from "@/editor/full-editor/context";
 
 const ExcalidrawBubbleMenu = ({editor, appendTo}: BubbleMenuProps) => {
     const {excalidrawModalState, setExcalidrawModalState} = useContext(Context);
@@ -46,10 +46,9 @@ const ExcalidrawBubbleMenu = ({editor, appendTo}: BubbleMenuProps) => {
                 className="text-black inline-flex h-full leading-none gap-0.5 flex-row p-1 items-center bg-white shadow-sm  border border-neutral-200 dark:border-neutral-800 rounded-lg dark:bg-black "
             >
                 <Button
-                    isIconOnly
-                    variant={editor?.isActive('imageBlock', {align: 'left'}) ? "solid" : "light"}
+                    variant={editor?.isActive('imageBlock', {align: 'left'}) ? "secondary" : "ghost"}
                     size="sm"
-                    onPress={() => setExcalidrawModalState({
+                    onClick={() => setExcalidrawModalState({
                         open: true,
                         data: {
                             blockId: initData?.blockId,
