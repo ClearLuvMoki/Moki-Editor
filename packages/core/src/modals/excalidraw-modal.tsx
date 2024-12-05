@@ -49,6 +49,13 @@ const ExcalidrawModal = ({editor}: ModalProps) => {
             <Excalidraw
                 initialData={excalidrawModalState.data?.excalidrawData || DEFAULT_EXCALIDRAW_DATA}
                 onChange={onChange}
+                UIOptions={{
+                    canvasActions: {
+                        export: false,
+                        saveToActiveFile: false,
+                        saveAsImage: false,
+                    },
+                }}
             />
         </BaseEditModal>
     );
