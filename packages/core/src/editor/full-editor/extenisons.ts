@@ -34,6 +34,7 @@ import {
     HorizontalRule,
     Excalidraw,
     HardBreak,
+    Katex,
     createSlash
 } from "../../extensions"
 import {Commands} from "./commands";
@@ -104,5 +105,11 @@ export const FullExtensions = [
     Columns,
     HorizontalRule,
     Excalidraw,
-    HardBreak
+    HardBreak,
+    Katex.configure({
+        shouldRender: (state, pos, node) => {
+            const $pos = state.doc.resolve(pos)
+            return node.type.name === 'text' && $pos.parent.type.name !== 'codeBlock'
+        }
+    })
 ]

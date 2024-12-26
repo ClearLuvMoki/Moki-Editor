@@ -10,6 +10,7 @@
 @import './columns.css';
 @import './horizontal-rule.css';
 @import "./excalidraw.css";
+@import "./math.css";
 
 @tailwind base;
 @tailwind components;

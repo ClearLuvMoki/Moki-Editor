@@ -10,7 +10,7 @@ import {
     Heading3,
     Heading4,
     Columns2,
-    SeparatorHorizontal, DraftingCompass
+    SeparatorHorizontal, DraftingCompass, Sigma
 } from "lucide-react";
 import {DEFAULT_EXCALIDRAW_DATA} from "../../extensions/excalidraw";
 
@@ -85,14 +85,21 @@ export const Commands: SlashMenuItem[] = [
                     editor.chain().focus().toggleBulletList().run()
             },
             {
+                icon: <Sigma/>,
+                text: "数学公式",
+                slash: "/math",
+                action: editor =>
+                    editor.chain().focus().insertContent("$ $").setTextSelection(editor.state.selection.from + 1).run()
+            },
+            {
                 icon: <DraftingCompass/>,
                 text: "Draw",
                 slash: "/draw",
                 action: editor =>
-                    editor.chain().focus().insertExcalidraw({ data: DEFAULT_EXCALIDRAW_DATA, blockId: "" }).run()
+                    editor.chain().focus().insertExcalidraw({data: DEFAULT_EXCALIDRAW_DATA, blockId: ""}).run()
             },
             {
-                icon: <Columns2 />,
+                icon: <Columns2/>,
                 text: "分列",
                 slash: "/columns",
                 action: editor =>
@@ -104,7 +111,7 @@ export const Commands: SlashMenuItem[] = [
                         .run()
             },
             {
-                icon: <SeparatorHorizontal />,
+                icon: <SeparatorHorizontal/>,
                 text: "分割线",
                 slash: "/horizontal-rule",
                 action: editor =>
