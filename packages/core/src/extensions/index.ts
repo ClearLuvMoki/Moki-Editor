@@ -35,5 +35,6 @@ export {HorizontalRule} from "./horizontal-rule"
 export {Excalidraw} from "./excalidraw"
 export {HardBreak} from "./hard-break"
 export {Katex} from "./katex"
+export {Iframe} from "./iframe"
 
 export {createSlash} from "./slash"

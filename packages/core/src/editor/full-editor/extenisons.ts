@@ -35,6 +35,7 @@ import {
     Excalidraw,
     HardBreak,
     Katex,
+    Iframe,
     createSlash
 } from "../../extensions"
 import {Commands} from "./commands";
@@ -111,5 +112,6 @@ export const FullExtensions = [
             const $pos = state.doc.resolve(pos)
             return node.type.name === 'text' && $pos.parent.type.name !== 'codeBlock'
         }
-    })
+    }),
+    Iframe
 ]

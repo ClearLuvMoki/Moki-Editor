@@ -11,7 +11,13 @@ import {FullEditorProps} from "../../domains/types/full-editor";
 import {FullExtensions} from "./extenisons";
 import Toolbar from "./toolbar";
 import GlobalContextProvider, {ExcalidrawModalState} from "./context";
-import {ColumnBubbleMenu, ExcalidrawBubbleMenu, ImageBubbleMenu, TableBubbleMenu} from "../../bubble-menu";
+import {
+    ColumnBubbleMenu,
+    ExcalidrawBubbleMenu,
+    IframeBubbleMenu,
+    ImageBubbleMenu,
+    TableBubbleMenu
+} from "../../bubble-menu";
 import {DEFAULT_EXCALIDRAW_DATA} from "../../extensions/excalidraw";
 import {ExcalidrawModal} from "../../modals";
 
@@ -70,6 +76,7 @@ const FullEditor = memo((props: FullEditorProps) => {
                 <ImageBubbleMenu editor={editor} appendTo={menuContainerRef}/>
                 <ColumnBubbleMenu editor={editor} appendTo={menuContainerRef}/>
                 <ExcalidrawBubbleMenu editor={editor} appendTo={menuContainerRef}/>
+                <IframeBubbleMenu editor={editor} appendTo={menuContainerRef}/>
                 <TableBubbleMenu.Row editor={editor} appendTo={menuContainerRef}/>
                 <TableBubbleMenu.Column editor={editor} appendTo={menuContainerRef}/>
                 <ExcalidrawModal editor={editor}/>

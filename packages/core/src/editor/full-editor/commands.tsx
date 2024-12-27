@@ -10,7 +10,7 @@ import {
     Heading3,
     Heading4,
     Columns2,
-    SeparatorHorizontal, DraftingCompass, Sigma
+    SeparatorHorizontal, DraftingCompass, Sigma, PanelsTopLeft
 } from "lucide-react";
 import {DEFAULT_EXCALIDRAW_DATA} from "../../extensions/excalidraw";
 
@@ -137,6 +137,17 @@ export const Commands: SlashMenuItem[] = [
                         .chain()
                         .focus()
                         .setImageUpload()
+                        .run()
+            },
+            {
+                icon: <PanelsTopLeft/>,
+                text: "网页",
+                slash: "/iframe",
+                action: editor =>
+                    editor
+                        .chain()
+                        .focus()
+                        .setIframe({src: ""})
                         .run()
             },
             {

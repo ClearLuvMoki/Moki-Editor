@@ -26,7 +26,7 @@ const CodeBlockNode = memo(({node: {attrs}, updateAttributes, extension}: any) =
 
     return (
         <NodeViewWrapper>
-            <div className="border border-1 border-zinc-200 rounded-xl p-4 mb-4">
+            <div className="border border-1 border-zinc-200 rounded-xl p-4 my-4">
                 <div className="flex items-center ">
                     <Popover open={open} onOpenChange={setOpen}>
                         <PopoverTrigger asChild>
